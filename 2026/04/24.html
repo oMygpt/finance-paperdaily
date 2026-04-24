@@ -1097,6 +1097,27 @@
   }
 
   /* print */
+  /* ----------- iOS / narrow-phone guardrails ----------- */
+  /* mobile_patch v1 */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { overflow-x: hidden; overflow-wrap: break-word; }
+  @media (max-width: 480px) {
+    .sheet { padding: 16px 12px 40px; }
+    .nameplate .title { font-size: 28px; }
+    .nameplate .subtitle { font-size: 9px; letter-spacing: 0.24em; }
+    .ticker .val { font-size: 13px; }
+    .ticker .chg { font-size: 9.5px; }
+    .splash h1.hed { font-size: 26px; }
+    .section-head .num { font-size: 30px; }
+    .section-head h2 { font-size: 17px; }
+    .prices, .tail { font-size: 12px; }
+    .prices thead th, .tail thead th { padding: 5px 6px; font-size: 9px; letter-spacing: 0.12em; }
+    .prices tbody td, .tail tbody td { padding: 5px 6px; }
+    .prices td.num, .prices td.note { font-size: 11.5px; }
+    details.appx .appx-body table { font-size: 11px; }
+    details.appx .appx-body td, details.appx .appx-body th { padding: 4px 6px; }
+  }
+
   @media print {
     body { background: #fff; font-size: 10pt; }
     .sheet { background: #fff; background-image: none; padding: 0; max-width: 100%; }
