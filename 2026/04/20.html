@@ -881,9 +881,14 @@
 
   /* print */
   /* ----------- iOS / narrow-phone guardrails ----------- */
-  /* mobile_patch v1 */
+  /* mobile_patch BEGIN v2 */
+  /* mobile_patch v2 */
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body { overflow-x: hidden; overflow-wrap: break-word; }
+  /* .story.cols-2 的特异性高于 .story 的单列 @680 覆盖，这里显式补齐 */
+  @media (max-width: 680px) {
+    .story.cols-2 { column-count: 1; }
+  }
   @media (max-width: 480px) {
     .sheet { padding: 16px 12px 40px; }
     .nameplate .title { font-size: 28px; }
@@ -893,6 +898,17 @@
     .splash h1.hed { font-size: 26px; }
     .section-head .num { font-size: 30px; }
     .section-head h2 { font-size: 17px; }
+    /* §II 核心驱动：article 内部宽度与负 margin 对齐到 sheet 左 padding */
+    .article { padding: 14px 0; gap: 4px; }
+    .article .artnum { font-size: 26px; }
+    .article h3.arthed { font-size: 19px; line-height: 1.2; }
+    .article .artkicker { font-size: 9.5px; letter-spacing: 0.16em; }
+    .article p.artdeck { font-size: 14px; line-height: 1.45; }
+    .article.redline, .article.warnline { margin-left: -12px; padding-left: 12px; }
+    .story p { font-size: 14.5px; line-height: 1.65; text-indent: 0; }
+    .story .subhed { font-size: 13px; }
+    .pullquote { font-size: 18px; padding: 14px 0 12px; margin: 18px 0 6px; }
+    .pullquote::before, .pullquote::after { font-size: 36px; }
     .prices, .tail { font-size: 12px; }
     .prices thead th, .tail thead th { padding: 5px 6px; font-size: 9px; letter-spacing: 0.12em; }
     .prices tbody td, .tail tbody td { padding: 5px 6px; }
@@ -900,6 +916,7 @@
     details.appx .appx-body table { font-size: 11px; }
     details.appx .appx-body td, details.appx .appx-body th { padding: 4px 6px; }
   }
+  /* mobile_patch END */
 
   @media print {
     body { background: #fff; font-size: 10pt; }
