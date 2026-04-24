@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>全球财经日报 · 2026-04-20</title>
+<title>全球财经日报 · 2026-04-22</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -35,8 +35,10 @@
     font-family: "Source Serif 4", "Source Han Serif SC", "Songti SC", Georgia, serif;
     font-size: 15px;
     line-height: 1.55;
-    font-feature-settings: "kern", "liga", "onum", "pnum";
+    font-feature-settings: "kern", "liga", "onum", "pnum", "palt";
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    text-spacing-trim: space-first;
   }
   .mono, code, .num {
     font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -129,8 +131,14 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
   }
   .ticker .cell:last-child { border-right: none; }
+  .ticker .sym, .ticker .val, .ticker .chg {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .ticker .sym {
     font-family: "Inter", sans-serif;
     font-size: 10px;
@@ -151,19 +159,20 @@
     font-feature-settings: "tnum";
   }
 
-  /* ------------- opening splash ·  header 横跨 + body 两列并排 ------------- */
+  /* ------------- opening splash · hero 8:4 grid + full-width byline meta ------------- */
   .splash {
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 28px;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
-  .splash-head { margin-bottom: 18px; }
-  .splash-body {
+  .splash-hero {
     display: grid;
-    grid-template-columns: 2.15fr 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 36px;
     align-items: start;
+    margin-bottom: 18px;
   }
+  .splash-hero > .hero-left  { grid-column: span 8; min-width: 0; }
+  .splash-hero > .hero-right { grid-column: span 4; min-width: 0; }
   .splash .kicker {
     font-family: "Inter", sans-serif;
     font-size: 10.5px;
@@ -200,63 +209,46 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 6px 0;
+    padding: 6px 0 0;
     border-top: 1px solid var(--hair);
-    border-bottom: 1px solid var(--hair);
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
   }
   .splash .byline b { color: var(--ink); font-weight: 600; }
 
-  .splash-lede {
-    column-count: 2;
-    column-gap: 22px;
-    column-rule: 1px solid var(--hair);
-    margin-top: 0;
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink-2);
-  }
-  .splash-lede p { margin: 0 0 10px; text-indent: 1.2em; }
-  .splash-lede p:first-child { text-indent: 0; }
-  .splash-lede p:first-child::first-letter {
-    font-family: "Source Serif 4", serif;
-    font-weight: 800;
-    float: left;
-    font-size: 52px;
-    line-height: 0.9;
-    padding: 4px 8px 0 0;
-    color: var(--accent);
-    font-variation-settings: "opsz" 60;
-  }
-
-  /* right rail box */
-  .splash-rail {
-    border: 1px solid var(--rule);
-    padding: 18px 18px 14px;
-    background: var(--paper-2);
+  /* right-column brief · independent slab (accent left bar, no card frame) */
+  .hero-right {
+    border: none;
+    background: transparent;
+    border-left: 4px solid var(--accent);
+    padding: 0 0 4px 18px;
     align-self: start;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .rail-kicker {
     font-family: "Inter", sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.24em;
+    font-size: 11px;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--accent);
-    font-weight: 700;
-    padding-bottom: 6px;
-    margin-bottom: 10px;
-    border-bottom: 1.5px solid var(--rule);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 6px;
   }
   .rail h3 {
-    font-size: 16px;
-    margin: 0 0 8px;
-    font-weight: 700;
-    line-height: 1.2;
+    font-family: "Source Serif 4", serif;
+    font-size: 20px;
+    margin: 0 0 12px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--rule);
   }
   .rail ol {
-    margin: 8px 0 0;
+    margin: 14px 0 0;
     padding: 0;
     list-style: none;
     counter-reset: rail;
@@ -264,23 +256,24 @@
   .rail ol li {
     counter-increment: rail;
     position: relative;
-    padding: 10px 0 10px 26px;
-    border-top: 1px solid var(--hair);
+    padding: 0 0 0 30px;
+    margin-bottom: 16px;
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--ink-2);
   }
+  .rail ol li:last-child { margin-bottom: 0; }
   .rail ol li::before {
     content: counter(rail, decimal-leading-zero);
     position: absolute;
-    left: 0; top: 10px;
+    left: 0; top: 2px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
+    font-size: 12px;
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.04em;
   }
-  .rail ol li b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; font-size: 13.5px; }
+  .rail ol li b { color: var(--ink); font-weight: 700; display: block; margin-bottom: 3px; font-size: 13.5px; }
 
   /* ------------- section header ------------- */
   .section {
@@ -480,14 +473,16 @@
   }
   .pullquote::before { content: "\201C"; color: var(--accent); font-family: "Source Serif 4", serif; font-style: normal; font-weight: 800; font-size: 48px; line-height: 0; vertical-align: -18px; margin-right: 4px; }
   .pullquote::after  { content: "\201D"; color: var(--accent); font-family: "Source Serif 4", serif; font-style: normal; font-weight: 800; font-size: 48px; line-height: 0; vertical-align: -18px; margin-left: 2px; }
-  .pullquote + .src {
+  .src {
     font-family: "Inter", sans-serif;
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
+    margin: 0 0 18px;
+  }
+  .pullquote + .src {
     margin-top: -12px;
-    margin-bottom: 18px;
   }
 
   /* marginalia sidebar */
@@ -503,6 +498,8 @@
     font-size: 12.5px;
     line-height: 1.5;
     color: var(--ink-2);
+    min-width: 0;                 /* allow aside to shrink to its 260px column */
+    overflow-wrap: anywhere;
   }
   aside.aside .aside-kicker {
     font-family: "Inter", sans-serif;
@@ -516,9 +513,10 @@
   aside.aside h4 { font-size: 14px; margin: 4px 0 8px; font-weight: 700; line-height: 1.2; }
   aside.aside p { margin: 0 0 8px; }
   aside.aside dl { margin: 6px 0 0; font-size: 11.5px; }
-  aside.aside dl div { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 4px 0; border-top: 1px solid var(--hair); }
-  aside.aside dt { color: var(--muted); }
-  aside.aside dd { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 600; }
+  /* dt / dd stacked vertically: dt (日期/标签) on top, dd (说明) underneath · 长句 dd 不再被挤到 auto 列 */
+  aside.aside dl div { padding: 6px 0; border-top: 1px solid var(--hair); }
+  aside.aside dt { color: var(--ink-2); font-weight: 600; font-family: "Source Serif 4", serif; font-size: 12px; line-height: 1.35; margin-bottom: 2px; }
+  aside.aside dd { margin: 0; font-family: "Source Serif 4", serif; font-size: 11.5px; font-weight: 400; color: var(--muted); line-height: 1.45; }
 
   /* callouts / boxes */
   .box {
@@ -529,6 +527,168 @@
   }
   .box.red { border-left: 4px solid var(--accent); }
   .box.warn { border-left: 4px solid var(--warn); background: var(--warn-soft); }
+  /* .box.audit — 第四方独立校验 · 体外审计 (Phase 3b critique_codex.md)
+     视觉上需要与 .box.red (Core tension) / .box.warn (Corrective scan) 区分：
+     用深灰左条 + 纸色背景，表示"审计/校验/冷眼旁观", 非"主张/告警"。
+     kicker 颜色改为 ink-soft 以弱化其与 .accent 色系的红线关联。 */
+  .box.audit {
+    border-left: 4px solid var(--ink);
+    background: var(--paper-2);
+  }
+  .box.audit .box-kicker { color: var(--ink-soft); letter-spacing: 0.18em; }
+  .audit-review {
+    padding-top: 18px;
+  }
+  .audit-review h3 {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    margin-bottom: 12px;
+    max-width: 30ch;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: break-word;
+  }
+  .audit-review .audit-lead {
+    font-family: "Source Serif 4", serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+    max-width: 72ch;
+    text-wrap: pretty;
+  }
+  .audit-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) 320px;
+    gap: 28px;
+    align-items: start;
+  }
+  .audit-main {
+    min-width: 0;
+  }
+  .audit-block {
+    border-top: 1px solid var(--hair);
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+  .audit-block:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .audit-kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .audit-kicker.spaced {
+    margin-top: 18px;
+  }
+  .audit-list {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .audit-list li {
+    margin: 0 0 12px;
+    padding-left: 4px;
+    font-size: 13.5px;
+    line-height: 1.58;
+    color: var(--ink-2);
+  }
+  .audit-list li:last-child {
+    margin-bottom: 0;
+  }
+  .audit-list li b {
+    color: var(--ink);
+  }
+  .audit-side {
+    border-left: 1px solid var(--hair);
+    padding-left: 20px;
+    min-width: 0;
+  }
+  .audit-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .audit-card {
+    border: 1px solid var(--hair);
+    background: rgba(255, 252, 244, 0.55);
+    padding: 12px 12px 10px;
+  }
+  .audit-card-label {
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .audit-card-value {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .audit-card-note {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .audit-side dl {
+    margin: 0;
+    font-size: 12px;
+  }
+  .audit-side dl div {
+    padding: 8px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .audit-side dt {
+    color: var(--ink);
+    font-weight: 700;
+    font-family: "Source Serif 4", serif;
+    font-size: 12.5px;
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+  .audit-side dd {
+    margin: 0;
+    font-size: 11.8px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .audit-side-note {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .audit-verdict {
+    border-top: 1.5px solid var(--rule);
+    margin-top: 18px;
+    padding-top: 12px;
+  }
+  .audit-verdict p {
+    margin: 0;
+  }
+  .audit-source {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--hair);
+    padding-top: 6px;
+    margin-top: 14px;
+  }
+  .audit-source b {
+    color: var(--ink);
+  }
   .box .box-kicker {
     font-family: "Inter", sans-serif;
     font-size: 10px;
@@ -565,18 +725,19 @@
   .chip.fr  { background: #dcd7ea; color: #2d2260; }
   .chip.t1  { background: var(--accent); color: #fff8ef; }
   .chip.t2  { background: var(--ink-2); color: var(--paper); }
-  .chip.unv { background: #f3e4c4; color: #7a4b10; }      /* needs cross-check · Unverified */
-  .chip.single { background: #ecd4c9; color: #6b2418; }    /* single-source */
-  .chip.official { background: #d8e8d4; color: #244a1f; }  /* primary / official */
-  .chip.wire { background: #e3e1d4; color: #4a4331; }      /* wire */
-  .chip.pw { background: #efe0d0; color: #6a4512; }        /* paywall-summary */
-  .chip.cmt { background: #e4dee8; color: #3d2a55; }       /* commentary */
-  .chip.blocked { background: #e2d0d0; color: #642020; }   /* blocked */
+  /* source-confidence chips（就近置信） */
+  .chip.official { background: #d8e8d4; color: #244a1f; }
+  .chip.wire     { background: #e3e1d4; color: #4a4331; }
+  .chip.pw       { background: #efe0d0; color: #6a4512; }
+  .chip.cmt      { background: #e4dee8; color: #3d2a55; }
+  .chip.single   { background: #ecd4c9; color: #6b2418; }
+  .chip.unv      { background: #f3e4c4; color: #7a4b10; }
+  .chip.blocked  { background: #e2d0d0; color: #642020; }
 
   /* region cards */
   .regions {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0;
     border-top: 1.5px solid var(--rule);
     border-bottom: 1.5px solid var(--rule);
@@ -584,27 +745,35 @@
   .region {
     padding: 16px 18px 18px;
     border-right: 1px solid var(--hair);
+    min-width: 0;                 /* allow grid child to shrink below min-content */
   }
   .region:last-child { border-right: none; }
   .region-head {
     display: flex;
+    flex-wrap: wrap;              /* let rdelta drop to next line on narrow cards */
     align-items: baseline;
     justify-content: space-between;
-    gap: 10px;
+    gap: 4px 10px;
     margin-bottom: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--hair);
   }
   .region-head .rname {
     font-family: "Source Serif 4", serif;
-    font-size: 20px;
+    font-size: 17px;              /* was 20px · narrower 1/5 cards need tighter title */
     font-weight: 700;
     letter-spacing: -0.01em;
+    line-height: 1.2;
+    overflow-wrap: anywhere;      /* CJK title can wrap even without spaces */
+    min-width: 0;
+    flex: 1 1 auto;
   }
   .region-head .rdelta {
     font-family: "JetBrains Mono", monospace;
     font-size: 11.5px;
     font-weight: 600;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
   .region .rdeck {
     font-family: "Source Serif 4", serif;
@@ -795,12 +964,12 @@
   }
   details.appx > summary::-webkit-details-marker { display: none; }
   details.appx > summary::after {
-    content: "[+] expand";
+    content: "[+] 展开";
     color: var(--accent);
     font-size: 10px;
     letter-spacing: 0.18em;
   }
-  details.appx[open] > summary::after { content: "[–] collapse"; }
+  details.appx[open] > summary::after { content: "[–] 收起"; }
   details.appx .appx-body { padding: 8px 0 16px; }
   details.appx .appx-body table { font-size: 12px; width: 100%; border-collapse: collapse; }
   details.appx .appx-body th {
@@ -844,16 +1013,64 @@
   footer.colophon .mid { font-family: "Source Serif 4", serif; letter-spacing: 0.02em; text-transform: none; font-style: italic; font-size: 13px; color: var(--ink-2); }
   footer.colophon .r { text-align: right; }
 
+  /* ------------- broadsheet typography · 断行 / 断句 -------------
+     规则源：rules/typography.md（读者版排版契约）。
+     作用面：所有"阅读面"段落（story / region / box / silence /
+     alloc deck / aside / rail list / divergence summary & body）。
+     **不再使用 text-align: justify** —— CJK 正文中插入英文 / 数字 token 后，浏览器
+     的 justify 算法会把英文词距与中英边界拉得过宽，产生"海鸥式"稀疏词距，破坏阅读
+     连贯感。读者样张实测（2026-04-21 焦点解读段）确认此问题，改为左对齐（ragged
+     right），仅保留 hyphens / orphan / widow / 禁则规则，头版感由段首字号 +
+     字体本身承担。
+  */
+  .story p,
+  .region p,
+  .box p,
+  .alloc .i-deck,
+  .silence p,
+  aside.aside p,
+  .rail ol li,
+  .div-event .d-summary,
+  .div-event .d-body p {
+    text-align: left;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: break-word;
+    hanging-punctuation: first allow-end last;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 6 3 2;
+    orphans: 2;
+    widows: 2;
+  }
+  .story {
+    orphans: 3;
+    widows: 3;
+  }
+  :lang(en) {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    word-break: normal;
+  }
+
   /* responsive */
   @media (max-width: 1100px) {
-    .splash-body { grid-template-columns: 1fr; }
+    .splash-hero { grid-template-columns: 1fr; row-gap: 20px; }
+    .splash-hero > .hero-left,
+    .splash-hero > .hero-right { grid-column: 1 / -1; }
     .ticker { grid-template-columns: repeat(3, 1fr); }
     .ticker .cell:nth-child(3n) { border-right: none; }
     .regions { grid-template-columns: repeat(2, 1fr); }
     .regions .region:nth-child(2n) { border-right: none; }
     .with-aside { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: 1fr; gap: 20px; }
+    .audit-side {
+      border-left: none;
+      border-top: 1px solid var(--hair);
+      padding-left: 0;
+      padding-top: 16px;
+    }
     .alloc { grid-template-columns: 1fr; }
-    .splash-lede { column-count: 1; }
     .story { column-count: 2; }
     .div-event .d-body { grid-template-columns: 1fr; }
     .div-event .d-body::before { display: none; }
@@ -876,6 +1093,9 @@
     .section-head h2 { font-size: 19px; }
     .article { grid-template-columns: 1fr; gap: 6px; }
     .article .artnum { font-size: 28px; }
+    .audit-review h3 { font-size: 20px; }
+    .audit-review .audit-lead { font-size: 14.5px; }
+    .audit-card-value { font-size: 20px; }
     .alloc { grid-template-columns: 1fr; }
   }
 
@@ -924,537 +1144,410 @@
     details.appx { break-inside: avoid; }
     details.appx[open] > summary::after { display: none; }
     .prices tbody tr:hover { background: transparent; }
+    /* 打印保留两端对齐与 orphan/widow；关闭 hanging-punctuation（部分打印引擎不兼容） */
+    .story p,
+    .region p,
+    .box p,
+    .alloc .i-deck,
+    .silence p,
+    aside.aside p,
+    .rail ol li,
+    .div-event .d-summary,
+    .div-event .d-body p {
+      hanging-punctuation: none;
+    }
+    .article, .box, .silence, .div-event, .region { break-inside: avoid; }
+    h1, h2, h3, h4 { break-after: avoid; }
   }
 </style>
 </head>
 <body>
 <div class="sheet">
 
+<!-- ============================================================
+     MASTHEAD
+     规则：左上 卷号 + 收盘时间；中央 报头；右上 版次 + 地理
+============================================================ -->
 <div class="masthead">
   <div class="masthead-left">
-    <span class="row"><span class="k">VOL.</span>MMXXVI · №&nbsp;110</span>
-    <span class="row"><span class="k">CLOSE</span>2026-04-20 · 周一 · post-close edition</span>
+    <span class="row"><span class="k">卷</span>六 · №&nbsp;003</span>
+    <span class="row"><span class="k">收盘</span>2026-04-22 · 10:00 CST</span>
   </div>
   <div class="nameplate">
-    <h1 class="title">全球财经日报</h1>
-    <div class="subtitle">Global Markets Daily · Issue №&nbsp;110 · Monday</div>
+    <div class="title">全球财经日报</div>
+    <div class="subtitle">全球市场与宏观 · 日度简报</div>
   </div>
   <div class="masthead-right">
-    <span class="row">US/EU · 4/17 EOD</span>
-    <span class="row">Asia · 4/20 收盘</span>
-    <span class="row">Brent / 金银 · 4/20 close</span>
+    <span class="row">星期三 · 盘中版 · 修订 v2</span>
+    <span class="row">北京 / 纽约 / 法兰克福 / 东京</span>
   </div>
 </div>
-
 <div class="folio">
-  <span>ALL MARKETS · EYES ON 4/21 WARSH · 4/22 CEASEFIRE EXPIRY · 4/28 BOJ</span>
+  <span>跨市场综合 · 全资产收盘</span>
   <span class="dash"></span>
-  <span>RUNTIME ≈ 12 MIN · FRONT ≈ 1 MIN</span>
+  <span>2026 年第 17 周 · 每日一期</span>
 </div>
 
+<!-- ============================================================
+     TICKER STRIP
+     规则：6 个代表性资产；涨用 .up（红），跌用 .down（绿）
+============================================================ -->
 <div class="ticker">
-  <div class="cell">
-    <span class="sym">S&amp;P 500</span>
-    <span class="val">7,126.06</span>
-    <span class="chg up">+1.20% · 历史新高</span>
-  </div>
-  <div class="cell">
-    <span class="sym">BRENT</span>
-    <span class="val">95.42</span>
-    <span class="chg up">+5.58% · 吸收 Hormuz 反弹</span>
-  </div>
-  <div class="cell">
-    <span class="sym">VIX</span>
-    <span class="val">17.48</span>
-    <span class="chg flat">与金价同向定 contained</span>
-  </div>
-  <div class="cell">
-    <span class="sym">10Y UST</span>
-    <span class="val">4.2460%</span>
-    <span class="chg down">−6.30bp · 2Y 回 3.75% 下</span>
-  </div>
-  <div class="cell">
-    <span class="sym">USD/JPY</span>
-    <span class="val">158.93</span>
-    <span class="chg down">−0.16% · 日内波幅 &lt;30 pips</span>
-  </div>
-  <div class="cell">
-    <span class="sym">GOLD · SILVER</span>
-    <span class="val">≈4,784 · &lt;80</span>
-    <span class="chg down">−1.02% / −1% · 未 reflation</span>
-  </div>
+  <div class="cell"><span class="sym">S&amp;P 500</span><span class="val">7,064.01</span><span class="chg down">▼ 0.63% · +1.39% 周</span></div>
+  <div class="cell"><span class="sym">2Y UST</span><span class="val">3.7200%</span><span class="chg up">▲ 1.00 bp · −6.00 bp 周</span></div>
+  <div class="cell"><span class="sym">Brent</span><span class="val">92.86</span><span class="chg down">▼ 5.71% · −2.18% 周</span></div>
+  <div class="cell"><span class="sym">黄金</span><span class="val">4,772.00</span><span class="chg up">▲ 1.57% · −0.58% 周</span></div>
+  <div class="cell"><span class="sym">DXY</span><span class="val">98.38</span><span class="chg down">▼ 0.03% · +0.33% 周</span></div>
+  <div class="cell"><span class="sym">VIX</span><span class="val">19.50</span><span class="chg up">▲ 3.34% · +6.21% 周</span></div>
 </div>
 
-<section class="splash">
-  <div class="splash-head">
-    <div class="kicker">Lead · 事件 vs 结构定价的不对称</div>
-    <h1 class="hed">Brent +5.58% 吸收 Hormuz 反弹；金价 −1% + VIX 17.48 共同定 contained</h1>
-    <p class="deck">三资产方向分离（Brent 上 / 金价下 / VIX 平）定义了"事件吸收"口径 — Hormuz 被市场定价为 contained 单事件，而非系统性 reflation 或跨资产 tail。同日 Hassett IEEPA 公开化 + UAE 美元求助 + Bessent Fed 受油价约束三件结构事件尚未外溢至 DXY / term premium / gold 的多资产定价。<strong>Invalidation</strong>：4/22 停火到期日前 (i) Gulf ≥2 国跟进 UAE 金融求助，或 (ii) 48h 内 Brent 连续 2 日站上 $100 且金价同步 reflation → "单资产吸收"失效。</p>
-    <div class="byline">
-      <span>EDITION · <b>Monday post-close</b></span>
-      <span>WINDOW · <b>US/EU 4/17 EOD + Asia 4/20 15:06 CST</b></span>
-      <span>RUNTIME · 12&nbsp;MIN</span>
+<!-- ============================================================
+     SPLASH / OPENER
+     规则：
+       ① .splash-hero：上部 12 栏 grid —— 左 8 栏 hero-left（kicker + hed + deck + 证伪），
+          右 4 栏 hero-right（今日速览 rail，独立 slab 样式）
+       ② .byline：横向 meta 条，跨整行置于 hero 之下 —— 数据 / 版次
+============================================================ -->
+<div class="splash">
+  <div class="splash-hero">
+    <div class="hero-left">
+      <div class="kicker">焦点 · 美债曲线压缩 48 小时冲线窗</div>
+      <h1 class="hed">双紧并存压到 5 基点差 · 同钟确认前非定论</h1>
+      <p class="deck">4/22 Asia 早盘 Brent 单日 -5.71% 与 4/21 US close 2 年期美债 +6 个基点站上 3.75% 在异步时钟上并列，曲线 10-2Y 压至 50 个基点距硬阈值 45 个基点仅 5 个基点之差；真正被证伪的不是"Fed 锁死"本身，而是"油价必须与利率同向才能支撑双紧并存叙事"的必要条件——4/23 US close 三线同判（10-2Y 利差 / Brent / 2 年期）是唯一硬判定节点。</p>
+      <p class="splash-inval" style="font-size:12.5px; color:var(--ink-soft); margin:8px 0 0; padding:6px 10px; border-left:3px solid var(--accent); background:rgba(139,26,18,0.04);"><b>证伪条件：</b>4 月 23 日 US close 10-2Y 利差回弹至 ≥55 基点，或 2 年期美债跌破 3.75% → 双紧并存候选路径被否定，曲线反转为牛陡</p>
     </div>
-  </div>
-
-  <div class="splash-body">
-    <div class="splash-lede">
-      <p>4/17 晚 Brent −9.07% 把 risk-on 抛向美股（S&amp;P +1.20% 至 7,126.06 新高）；亚洲 4/20 开盘，<strong>A 股 +0.76%（上证 4,082.13）/ 港股 +0.83%（恒指 26,376.98）/ 日经 +1.58%</strong> 同步接棒。商品端 Brent 反弹 +5.58% 至 $95.42 吸收 Hormuz 重开与 Touska 扣船风险，<strong>但黄金同日 −1.02% 至约 $4,784</strong> 表明市场把 Hormuz 定为 contained 事件而非系统性 reflation 触发。</p>
-      <p>与价格的平静相对应的是三件结构性事件落地：(i) Hassett 在白宫新闻简报中把 IEEPA "conflict-state usable + Section 122 15% / 150 天"公开化，结构性扩权通道从私下法律理论升级为公开行政声明；(ii) UAE 向美联储申请美元互换额度，首次把海湾美元流动性压力推入 dollar plumbing 层级；(iii) 财长 Bessent IMF 场合公开承认 Fed 暂缓降息受油价约束。三件事同日落定 Fed 反应函数"油价 + 政治 + 行政权"三重锁。</p>
-      <p><strong>但 VIX 17.48 + 金价 −1% + 股市普涨</strong>显示市场仅把 Brent 作为事件吸收渠道，结构性多资产扩散（DXY 结构位、UST term premium、EUR 前端、5Y CDS）尚未启动。同日中国官媒对四个对外议题全部缺席却在"十五五首季图景 + 新质生产力"上高密度协同 — 沉默有方向，A/H 同向上涨提供了"对内支撑"的盘面佐证。</p>
-    </div>
-    <aside class="splash-rail rail">
-      <div class="rail-kicker">三个观察窗</div>
-      <h3>本周 48 小时必看</h3>
+    <aside class="hero-right rail">
+      <span class="rail-kicker">今日速览</span>
+      <h3>三线同判 · 48 小时冲线</h3>
       <ol>
-        <li><b>4/21 Warsh 听证 Tillis 首 30 分钟</b>若 Tillis 撤回 + Warsh 鸽派过 → 2Y jump 10-25bp，bull steepening 前提反转。</li>
-        <li><b>4/22 停火到期日</b>Iran next-tier 三触发器之一（海军交火 / 袭击海湾目标 / IRGC 对美舰行动）。</li>
-        <li><b>4/28 BoJ 会议 + Ueda 记者会</b>"财政 + 外汇双线，货币静默"基准 vs OCBC "25bp base case"跨境分歧。</li>
+        <li><b>能源侧：Brent 首跌</b>Brent 单日 -5.71%、WTI 首日跌破 $90；伊朗停火延期"直至另行通知"、霍尔木兹封锁保留、Touska 扣船持续，地缘基本面并未退却。</li>
+        <li><b>利率侧：2 年期订正</b>2 年期订正口径 3.79% +6 个基点站上 3.75%，10 年期 4.29% +4.2 个基点，曲线 10-2Y 压至 50 个基点距 45 个基点硬阈值仅 5 个基点之差。</li>
+        <li><b>行政权叙事鼓胀、硬验证缺席</b>WSJ Fed 翻新借口 + Powell 视频声明 + SCOTUS 推翻 IEEPA $166B 退税；MOVE 指数 / SOFR-OIS / 期限溢价 / 通胀保护债券 / 5 年期 CDS 五项硬验证缺席，暂列次级叙事。</li>
       </ol>
     </aside>
   </div>
-</section>
+  <div class="byline">
+    <span><b>数据</b>&nbsp;截止 2026-04-22 10:00 CST · US/EU · 4/21 close ｜ Asia · 4/22 早盘</span>
+    <span><b>版次</b>&nbsp;卷六 · №003 · 修订版 v2 · 星期三 · 盘中版</span>
+    <span><b>跨钟提醒</b>&nbsp;本期"同日"论断混拼了 4/22 Asia AM 价格与 4/21 US close 价格，所有"油价退、利率不退"硬对撞需 4/22 US close 同步校准</span>
+  </div>
+</div>
 
-<!-- ==================== §I 市场总览 ==================== -->
-<section class="section" id="s1">
+<!-- ============================================================
+     §I 市场总览
+     规则：prices 表；grouphead 分组；.up/.down 着色；.num 数字等宽
+============================================================ -->
+<section class="section">
   <div class="section-head">
     <div class="num">I</div>
-    <h2>市场总览<em>Global price board · 2026-04-17 EOD (US/EU) / 04-20 close (Asia)</em></h2>
-    <div class="meta">post-close<br>跨收盘窗</div>
+    <h2>市场总览<em>跨资产快照 · 2026-04-22 收盘口径</em></h2>
+    <div class="meta">22 行 · 5 组 · Tushare / yfinance / stooq / FRED 兜底链</div>
   </div>
 
   <table class="prices">
     <thead>
       <tr>
-        <th>资产</th>
-        <th class="r">收盘</th>
-        <th class="r">日</th>
-        <th class="r">周</th>
-        <th>备注</th>
+        <th style="width: 24%">资产 Instrument</th>
+        <th class="r" style="width: 14%">收盘 Close</th>
+        <th class="r" style="width: 13%">日 Δ</th>
+        <th class="r" style="width: 13%">周 Δ</th>
+        <th style="width: 36%">备注 Notes</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="grouphead"><td colspan="5">Equities · US</td></tr>
-      <tr>
-        <td class="name">S&amp;P 500</td>
-        <td class="num">7,126.06</td>
-        <td class="num up">+1.20%</td>
-        <td class="num up">+0.92%</td>
-        <td class="note">历史新高；Brent −9% + Hormuz 重开 risk-on <span class="chip t1">核心</span></td>
-      </tr>
-      <tr>
-        <td class="name">纳斯达克</td>
-        <td class="num">—</td>
-        <td class="num up">+1.52%</td>
-        <td class="num">—</td>
-        <td class="note">—</td>
-      </tr>
-      <tr>
-        <td class="name">道琼斯</td>
-        <td class="num">—</td>
-        <td class="num up">+1.79%</td>
-        <td class="num">—</td>
-        <td class="note">道指 &gt; 纳指 +27bp ＝ <b>cyclical-over-growth 轮动</b>（对 CTA trend-follow 口径有小冲突）</td>
-      </tr>
-
-      <tr class="grouphead"><td colspan="5">Equities · Asia</td></tr>
-      <tr>
-        <td class="name">上证综指</td>
-        <td class="num">4,082.13</td>
-        <td class="num up">+0.76%</td>
-        <td class="num">—</td>
-        <td class="note">3,421 涨 / 1,890 跌 / 90 涨停；沪深成交 2.58 万亿（+1,532 亿） <span class="chip t1">核心</span></td>
-      </tr>
-      <tr>
-        <td class="name">深证成指</td>
-        <td class="num">14,966.75</td>
-        <td class="num up">+0.55%</td>
-        <td class="num">—</td>
-        <td class="note">商业航天 / 光纤 / 液冷服务器 / AI 应用 / 稀有金属 / 光伏 / 特高压板块主题活跃</td>
-      </tr>
-      <tr>
-        <td class="name">创业板指</td>
-        <td class="num">3,677.58</td>
-        <td class="num down">−0.02%</td>
-        <td class="num">—</td>
-        <td class="note">大小盘对冲格局，非普遍 style rotation</td>
-      </tr>
-      <tr>
-        <td class="name">CSI 300 <span class="chip" style="font-size:9px; background:#f3e4c4">估</span></td>
-        <td class="num">≈4,761</td>
-        <td class="num up">+0.70%（估）</td>
-        <td class="num">—</td>
-        <td class="note">据上证 / 深证加权估算</td>
-      </tr>
-      <tr>
-        <td class="name">恒生指数</td>
-        <td class="num">26,376.98</td>
-        <td class="num up">+0.83%</td>
-        <td class="num up">+2.73%</td>
-        <td class="note">+216.65 点；区间 26,094.64 – 26,411.56；<b>HK-A 同向，南向延续支撑</b></td>
-      </tr>
-      <tr>
-        <td class="name">日经 225</td>
-        <td class="num">36,456.58</td>
-        <td class="num up">+1.58%</td>
-        <td class="num">—</td>
-        <td class="note">Ueda 软化 + Brent rebound 的 carry 支撑被动退潮</td>
-      </tr>
-
-      <tr class="grouphead"><td colspan="5">Equities · Europe</td></tr>
-      <tr>
-        <td class="name">DAX</td>
-        <td class="num">24,702.04</td>
-        <td class="num up">+0.29%</td>
-        <td class="num">—</td>
-        <td class="note">ECB 4/30 前核心交易：三央行口径 + GDP 下修 + Taylor 85bp 背离四路共振</td>
-      </tr>
-
-      <tr class="grouphead"><td colspan="5">Rates &amp; FX</td></tr>
-      <tr>
-        <td class="name">10Y UST</td>
-        <td class="num">4.2460%</td>
-        <td class="num down">−6.30bp</td>
-        <td class="num">—</td>
-        <td class="note">2Y 回 3.75% 下方；<b>10-2Y spread 下限 ~49.6bp</b>（距 45bp gate 4.6bp）<span class="chip t1">核心</span></td>
-      </tr>
-      <tr>
-        <td class="name">10Y 中债</td>
-        <td class="num">1.76%</td>
-        <td class="num down">−1.89bp</td>
-        <td class="num">—</td>
-        <td class="note">中美 10Y 利差 <b>≈249bp</b> 极宽（按 4/17 UST 口径）</td>
-      </tr>
-      <tr>
-        <td class="name">USD/JPY</td>
-        <td class="num">≈159.04</td>
-        <td class="num flat">≈持平</td>
-        <td class="num">—</td>
-        <td class="note">BoJ 加息弱化 + 油价未大幅再涨；日内波幅监控 &lt;30 pips = MoF 干预预演</td>
-      </tr>
-      <tr>
-        <td class="name">USD/CNH</td>
-        <td class="num">6.8204</td>
-        <td class="num down">−0.06%</td>
-        <td class="num">—</td>
-        <td class="note">零波动 ＝ PBOC 收汇率端</td>
-      </tr>
-      <tr>
-        <td class="name">DXY <span class="chip" style="font-size:9px; background:#e8dfc9">4/17 EOD</span></td>
-        <td class="num">—</td>
-        <td class="num up">+0.21%</td>
-        <td class="num">—</td>
-        <td class="note">Brent −9% 日 DXY 反向涨 ＝ <b>美元恐慌溢价 tape 显性化</b>（4/17 口径）</td>
-      </tr>
-      <tr>
-        <td class="name">VIX <span class="chip" style="font-size:9px; background:#e8dfc9">4/17 EOD</span></td>
-        <td class="num">17.48</td>
-        <td class="num flat">—</td>
-        <td class="num">—</td>
-        <td class="note">与金价 −1% 共同定 contained；v2 "equity vol 错杀"已重构 <span class="chip t1">核心</span></td>
-      </tr>
-      <tr>
-        <td class="name">gold/S&amp;P <span class="chip" style="font-size:9px; background:#e8dfc9">4/17 EOD</span></td>
-        <td class="num">0.682</td>
-        <td class="num flat">—</td>
-        <td class="num">—</td>
-        <td class="note">距 0.665 gate 仅 1.7pct；金价 4/20 下行后需 4/21 回测</td>
-      </tr>
-
-      <tr class="grouphead"><td colspan="5">Commodities</td></tr>
-      <tr>
-        <td class="name">Brent 原油</td>
-        <td class="num">95.42</td>
-        <td class="num up">+5.58%</td>
-        <td class="num up">+0.39%</td>
-        <td class="note">单日回补 4/17 −9.07% 约 2/3；Hormuz 反弹事件吸收 <span class="chip t1">核心</span></td>
-      </tr>
-      <tr>
-        <td class="name">WTI 原油 <span class="chip" style="font-size:9px; background:#f3e4c4">估</span></td>
-        <td class="num">≈90.5</td>
-        <td class="num up">+7.9%（估）</td>
-        <td class="num">—</td>
-        <td class="note">Brent-WTI spread ≈ <b>4.9 美元</b>（较 4/17 的 6.53 收窄 25%）；war-risk premium 被吸收</td>
-      </tr>
-      <tr>
-        <td class="name">黄金</td>
-        <td class="num">≈4,784</td>
-        <td class="num down">−1.02%</td>
-        <td class="num">—</td>
-        <td class="note">与 Brent 方向分离；<b>市场定 Hormuz 为 contained，非 reflation</b></td>
-      </tr>
-      <tr>
-        <td class="name">白银</td>
-        <td class="num">&lt;80</td>
-        <td class="num down">≈−1%</td>
-        <td class="num">—</td>
-        <td class="note">金银同步回落；金银比走阔至 60+</td>
-      </tr>
-      <tr>
-        <td class="name">铜 <span class="chip" style="font-size:9px; background:#e8dfc9">4/17 EOD</span></td>
-        <td class="num">—</td>
-        <td class="num up">+0.61%</td>
-        <td class="num up">+3.97%</td>
-        <td class="note">copper/Brent 因 Brent 反弹回落至 <b>≈ 0.063</b>（较 4/17 的 0.0675 收窄，退向中枢）</td>
-      </tr>
+      <tr class="grouphead"><td colspan="5">— 大中华区股指与汇率</td></tr>
+      <tr><td class="name">沪深 300</td><td class="num">4,800.70</td><td class="num up">+0.69%</td><td class="num up">+2.46%</td><td class="note">4/22 收盘（CST 15:00 后）· 连 4 日对内支撑延续</td></tr>
+      <tr><td class="name">上证综指</td><td class="num">4,106.44</td><td class="num up">+0.52%</td><td class="num up">+1.97%</td><td class="note">4/22 收盘（CST 15:00 后）· 4/21 成交 2.43 万亿 · 4/22 盘后量能待核</td></tr>
+      <tr><td class="name">深证成指</td><td class="num">15,182.82</td><td class="num up">+1.34%</td><td class="num up">+4.72%</td><td class="note">4/22 收盘（CST 15:00 后）· 4/21 机构净卖 5.01 亿 · 4/22 盘后流向待核</td></tr>
+      <tr><td class="name">恒生指数</td><td class="num">26,171.77</td><td class="num down">−1.19%</td><td class="num up">+0.87%</td><td class="note"><b>4/22 港股盘中 · 截至 HKT 15:26（非收盘）</b>· 南下资金方向 HKT 16:00 收盘后确认</td></tr>
+      <tr><td class="name">离岸 USD/CNH</td><td class="num">6.8221</td><td class="num down">−0.08%</td><td class="num flat">—</td><td class="note">非中间价口径</td></tr>
+      <tr><td class="name">10 年期中债</td><td class="num">1.7510%</td><td class="num down">−1.17 bp</td><td class="num flat">—</td><td class="note">收益率 · 日/周涨跌 bp</td></tr>
+      <tr class="grouphead"><td colspan="5">— 美国股指</td></tr>
+      <tr><td class="name">S&amp;P 500</td><td class="num">7,064.01</td><td class="num down">−0.63%</td><td class="num up">+1.39%</td><td class="note">11 板块全部为负，能源 +1.16% 逆势</td></tr>
+      <tr><td class="name">道琼斯工业</td><td class="num">49,149.38</td><td class="num down">−0.59%</td><td class="num up">+1.26%</td><td class="note">系统性避险</td></tr>
+      <tr><td class="name">纳斯达克综合</td><td class="num">24,259.96</td><td class="num down">−0.59%</td><td class="num up">+2.63%</td><td class="note">大型科技股同步回撤</td></tr>
+      <tr class="grouphead"><td colspan="5">— 欧洲股指</td></tr>
+      <tr><td class="name">DAX</td><td class="num">24,270.87</td><td class="num down">−0.60%</td><td class="num up">+0.94%</td><td class="note">EUR/USD 独立承压背景</td></tr>
+      <tr><td class="name">CAC 40</td><td class="num">8,235.72</td><td class="num down">−1.14%</td><td class="num down">−1.11%</td><td class="note">法国 6B EUR 财政紧缩议题发酵</td></tr>
+      <tr><td class="name">FTSE 100</td><td class="num">10,498.10</td><td class="num down">−1.05%</td><td class="num down">−1.05%</td><td class="note">能源回吐拖累</td></tr>
+      <tr class="grouphead"><td colspan="5">— 日本股指与汇率</td></tr>
+      <tr><td class="name">日经 225</td><td class="num">59,405.63</td><td class="num up">+0.10%</td><td class="num up">+2.19%</td><td class="note">早盘一度 59,653 破历史高值，广度极窄</td></tr>
+      <tr><td class="name">USD/JPY</td><td class="num">158.84</td><td class="num down">−0.20%</td><td class="num down">−0.23%</td><td class="note">盘中 159.00 · 日银 4/27-28 会议临近</td></tr>
+      <tr class="grouphead"><td colspan="5">— 外汇</td></tr>
+      <tr><td class="name">EUR/USD</td><td class="num">1.1744</td><td class="num down">−0.34%</td><td class="num down">−0.47%</td><td class="note">独立承压远超 DXY</td></tr>
+      <tr><td class="name">DXY</td><td class="num">98.38</td><td class="num down">−0.03%</td><td class="num up">+0.33%</td><td class="note">距 98.80 硬阈值 0.42 指数点</td></tr>
+      <tr class="grouphead"><td colspan="5">— 能源 · 贵金属 · 工业金属</td></tr>
+      <tr><td class="name">WTI 原油</td><td class="num">89.46</td><td class="num down">−2.90%</td><td class="num down">−2.00%</td><td class="note">首日跌破 $90</td></tr>
+      <tr><td class="name">Brent 原油</td><td class="num">92.86</td><td class="num down">−5.71%</td><td class="num down">−2.18%</td><td class="note">单日跌幅 60 日第 95 百分位</td></tr>
+      <tr><td class="name">黄金</td><td class="num">4,772.00</td><td class="num up">+1.57%</td><td class="num down">−0.58%</td><td class="note">实物避险带抬升</td></tr>
+      <tr><td class="name">白银</td><td class="num">77.88</td><td class="num up">+1.92%</td><td class="num down">−2.03%</td><td class="note">贵金属齐涨</td></tr>
+      <tr><td class="name">铜</td><td class="num">6.0420</td><td class="num up">+0.67%</td><td class="num down">−0.49%</td><td class="note">铜/Brent 比值 0.0651 距脱钩 −7.05%</td></tr>
+      <tr class="grouphead"><td colspan="5">— 美债与波动率</td></tr>
+      <tr><td class="name">10 年期美债</td><td class="num">4.2920%</td><td class="num up">+4.20 bp</td><td class="num up">+3.60 bp</td><td class="note">收益率 · 日/周涨跌 bp</td></tr>
+      <tr><td class="name">2 年期美债</td><td class="num">3.7200%</td><td class="num up">+1.00 bp</td><td class="num down">−6.00 bp</td><td class="note">FRED 口径 4/20 · 订正口径 3.79% 待 4/22 US close 闭环</td></tr>
+      <tr><td class="name">VIX</td><td class="num">19.50</td><td class="num up">+3.34%</td><td class="num up">+6.21%</td><td class="note">未破 20 结构阈</td></tr>
     </tbody>
   </table>
-
-  <div class="box warn" style="margin-top:18px">
-    <div class="box-kicker">盘面四条异常</div>
-    <p>① <b>Brent +5.58% vs 金价 −1.02% 同日方向分离</b> · 市场对 Hormuz 的定价 = 事件（单资产）而非 reflation（多资产）· ② <b>A 股 / HK / 日经同向 +0.5–1.6%</b>，全球股市 risk-on 同步 · ③ <b>VIX 17.48 与金价 −1% 方向一致</b>，双资产 contained 定价口径自洽 · ④ <b>Brent-WTI spread ≈ 4.9 美元</b>，较 4/17 的 6.53 收窄 25%，war-risk premium 正在被吸收。</p>
-  </div>
 </section>
 
-<!-- ==================== §II 核心驱动事件 ==================== -->
-<section class="section" id="s2">
+<!-- ============================================================
+     §II 核心驱动事件
+     规则：3-5 个 article 块；前 2 条带 .redline.flagged；其余普通 article
+           每篇 article 含 artnum（①②③）+ artkicker（chip + 分类）+ arthed + story
+           可在中段插入 pullquote
+============================================================ -->
+<section class="section">
   <div class="section-head">
     <div class="num">II</div>
-    <h2>核心驱动事件<em>5 items · 实物升级已触发 · Fed 反应函数三重锁 · 实物-货币平行</em></h2>
-    <div class="meta">Cluster<br>US / MENA / CN / JP</div>
+    <h2>核心驱动事件<em>真正撼动当日盘面的事件</em></h2>
+    <div class="meta">5 篇头条 · 前 2 条重点事件</div>
   </div>
 
-  <article class="article redline flagged">
-    <div class="artnum">1</div>
-    <div>
-      <div class="artkicker"><span class="chip cus">US</span><span class="chip cuk">EN-UK</span><span class="chip fr">FR</span> 伊朗 · 关键 · 实物升级已触发</div>
-      <h3 class="arthed">Touska 扣船 + Hormuz 重新严控 + UAE 申美元互换</h3>
-      <p class="artdeck">Brent +5.58% 吸收 Hormuz 反弹，金价 −1.02%——市场把事件定为 contained 而非 reflation。</p>
-      <div class="story cols-2">
-        <p>美军在阿曼湾扣押伊朗货船 Touska，CENTCOM 公告累计 <strong>25 艘强制转向</strong>；周末伊朗短暂重新严控 Hormuz 通行，同时美方两艘军舰通过海峡作为军事姿态。</p>
-        <p>Trump 在白宫新闻简报中威胁"摧毁伊朗电厂和桥梁"，<strong>法国媒体已将此定性为"战争罪警告"</strong>，而美国主流媒体淡化为谈判筹码 — 这一对同一威胁的 framing 分裂是本期 NATO 协调面的外溢风险。</p>
-        <p>同日 UAE 向美联储申请美元互换额度，把海湾美元流动性压力首次推入 <strong>dollar plumbing 层级</strong>。Brent 4/20 +5.58% 至 $95.42 吸收事件反弹但黄金 −1.02%，"单资产吸收 + 结构性通道隔离"是本期最关键的定价信号。</p>
+    <article class="article redline flagged">
+      <div class="artnum">①</div>
+      <div>
+        <div class="artkicker"><span class="chip cus">美</span><span class="chip t1">核心</span> · 跨资产裁决 · <span class="chip unv">需跨源核验</span></div>
+        <h3 class="arthed">Brent 单日 −5.71% 与 2 年期 +6 个基点异步时钟反向</h3>
+        <p class="artdeck">油价退、利率不退的"硬对撞"混拼了两个收盘时点；真正的单日判定要等 4/22 US close 三线同判。</p>
+        <div class="story cols-2">
+          <p class="no-indent">4/22 Asia 早盘 Brent $92.86 单日 −5.71%、WTI $89.46 首日跌破 $90；同时期 4/21 US close 2 年期美债订正口径 3.79% +6 个基点站上 3.75%，10 年期 4.292% +4.2 个基点，曲线 10-2Y 压至 50.2 个基点距 45 个基点硬阈值仅 5.2 个基点。</p>
+          <p>关键节点：特朗普 4/21 晚停火延期"直至另行通知"，伊朗 10 点方案被拒，Vance 访 Islamabad，霍尔木兹封锁保留，Touska 扣船持续——地缘基本面并未退却，油价回吐系"停火延期 = 谈判长期化 = 近期无供给实质性威胁"的二阶解读（叙事定调从战争风险换挡为谈判疲劳）。</p>
+          <p class="subhed smallcaps">对市场的影响</p>
+          <p class="no-indent">硬对撞的强度需 4/22 US close 同步校准：若 Brent 回补 $95+ 且 2 年期维持 3.79% → 双紧得证；若 Brent 继续 &lt;$90 且 2 年期 ≥3.75% → 主路径降级；若 Brent 回补 $95+ 且 2 年期跌破 3.75% → 曲线方向反转。</p>
+          <p style="font-size:11.5px; color:var(--muted); font-style:italic; margin-top:8px; text-indent:0;">引用来源：美·WSJ / 美·Reuters / 美·Capital Street FX / Tavily · yfinance</p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <article class="article redline flagged">
-    <div class="artnum">2</div>
-    <div>
-      <div class="artkicker"><span class="chip cus">US</span> 美国 · 关键 · Fed 反应函数三重锁</div>
-      <h3 class="arthed">Warsh 4/21 听证 · Tillis 阻挠 + Bessent IMF 承认 Fed 受油价约束 + Hassett IEEPA 公开化</h3>
-      <p class="artdeck">油价（Bessent）+ 政治（Tillis）+ 行政权工具（Hassett IEEPA）三重锁定。duration 定价中心从 2Y 向 5Y-10Y belly 迁移。</p>
-      <div class="story cols-2">
-        <p>4/21 Warsh 出席参议院银行委员会听证，WSJ 把 Tillis 定性为 <strong>"immovable object"</strong>，Powell 调查继续作为提名推进瓶颈。</p>
-        <p>财长 Bessent 在 IMF 场合公开承认 Fed 暂缓降息受油价约束 — 这直接削弱"Trump 先硬后软，headline 打 6-7 折"在货币政策施压维度的有效性。</p>
-        <p>同日白宫国家经济委员会主任 Hassett 在白宫新闻简报中提出 IEEPA "conflict-state usable + Section 122 <strong>15% 关税上限 + 150 天窗口</strong>"，把结构性扩权通道从私下法律理论升级为公开行政声明。</p>
-        <p>三件事同日落定，Fed 反应函数被"油价 + 政治阻挠 + 行政权工具"三重锁死 — 国债 duration trade 从 2Y 向 5Y-10Y belly 迁移是自洽选择，10Y UST 4.2460% 偏低位不是纯 dovish fedspeak 的结果，长端 term premium 在 2026 年下半年有补涨空间。</p>
+    <article class="article redline flagged">
+      <div class="artnum">②</div>
+      <div>
+        <div class="artkicker"><span class="chip cus">美</span><span class="chip t1">核心</span> · Fed 独立性 · <span class="chip cmt">社论</span></div>
+        <h3 class="arthed">WSJ Fed 总部翻新借口 + SCOTUS 推翻 IEEPA $166B 退税</h3>
+        <p class="artdeck">Fed 独立性第 3 重锁在叙事层激活，但 5 大硬验证数据均缺席，当前仅能标为"次级叙事"而非前端定价主驱动。</p>
+        <div class="story cols-2">
+          <p class="no-indent">WSJ 4/22 抛 Fed 总部翻新调查，Powell 以"非常规视频声明"回应，对沃什听证会形成借口包围；同日 SCOTUS 推翻特朗普援引 IEEPA 加征关税，$166B 退税硬约束首次落地。</p>
+          <p>5 大硬验证数据（MOVE 指数、SOFR-OIS 利差、10 年期 ACM 期限溢价贡献占比、通胀保护债券盈亏平衡通胀率、5 年期主权 CDS）均未在本期材料中独立重算，当前仅能标为"次级叙事"而非前端定价主驱动。</p>
+          <p class="subhed smallcaps">跨语种叙事定调</p>
+          <p class="no-indent">法媒集群（Le Monde "chahutée" / Le Figaro "embarrassante"）激进派属化；日媒毎日"操り人形否定"中性；美媒 Reuters 事实 / Bloomberg "新框架"鹰派接盘 / WSJ 子叙事并存。DXY 98.38 距 98.80 硬阈值 0.42 指数点缓冲仍在。</p>
+          <p style="font-size:11.5px; color:var(--muted); font-style:italic; margin-top:8px; text-indent:0;">引用来源：美·WSJ / 美·Bloomberg / 美·Reuters / 法·Le Monde / 法·Le Figaro / 日·毎日</p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <article class="article">
-    <div class="artnum">3</div>
-    <div>
-      <div class="artkicker"><span class="chip cuk">EN-UK</span><span class="chip cus">US</span> 能源 · 关键 · 单资产吸收</div>
-      <h3 class="arthed">Brent +5.58% 吸收 Hormuz 反弹 vs 金价 −1.02%</h3>
-      <p class="artdeck">三资产方向分离——Brent 供给端 reprice，金价 real-rate 主导，VIX 未外溢——是"事件定价 vs 系统性 reflation"的证据三元组。</p>
-      <div class="story cols-2">
-        <p>4/17 Brent −9.07% 落在 2016 年以来约 <strong>0.5 百分位</strong>左尾极值、不作 regime 证据；4/20 单日 +5.58% 反弹至 $95.42，回补约 2/3 跌幅——Hormuz 反开与 Touska 事件的 reprice 主要由 Brent 单资产承担。</p>
-        <p>金价同日 −1.02% 至约 $4,784、白银跌破 $80、VIX 17.48 未动，是"事件定价"而非"系统性 reflation"的证据三元组：(i) Brent 上涨 = 供给端风险 reprice；(ii) 金价下跌 = real-rate 主导，市场未把油价 pass-through 为通胀预期；(iii) equity vol 未触动 = 未外溢至 cross-asset risk budget。</p>
-        <p>Brent-WTI spread 从 4/17 的 6.53 收至 ≈ 4.9 美元，war-risk premium 正被吸收。copper/Brent 因 Brent 反弹回落至 ≈ 0.063，退离 90 百分位边缘。</p>
-        <p>若 Gulf ≥2 国（沙特 / 卡塔尔 / 科威特）跟进 UAE swap，或 Brent 突破 $100 + 金价同步 reflation，则"单资产吸收"假设证伪。</p>
+    <article class="article">
+      <div class="artnum">③</div>
+      <div>
+        <div class="artkicker"><span class="chip jp">日</span><span class="chip cn">中</span><span class="chip t2">结构</span> · 对称叙事激活</div>
+        <h3 class="arthed">日本武器出口"禁输→原则可" + 人民网国际"危险图谋"同日对抗</h3>
+        <p class="artdeck">跨语种对称性首次同日激活，中国官媒议题权重表从连续谱退化为二元开关的雏形显化。</p>
+        <div class="story cols-2">
+          <p class="no-indent">4/22 日本時事通信："武器出口原则从'禁输'转为'原则可'，政府问われる厳格運用"定性；同日中国人民网国际："日本解禁杀伤性武器出口背后的危险图谋"直接对抗叙事。跨语种叙事同日对称激活（日语制度性警示 + 中文对抗性定性并行）属叙事结构性变化。</p>
+          <p>配合中国三级官媒对海湾 / 人民币国际化 / 中国央行-海湾工具议题连续 5 日沉默（新华社+人民网+环球网+CGTN 四源联合），中国官媒议题权重表首次显化为三层结构：对抗议题开放（日本武器）/ 超然议题开放（伊朗工具性引用）/ 工具议题封口（海湾-人民币）。</p>
+          <p class="subhed smallcaps">观察边界</p>
+          <p class="no-indent">此为媒体议程层观察，不直接并入市场通道定价；破静默首日定性条目数 ≥3 视为二元相变确认，&lt;3 则相变证伪退回连续谱。</p>
+          <p style="font-size:11.5px; color:var(--muted); font-style:italic; margin-top:8px; text-indent:0;">引用来源：日·時事通信 / 中·人民网国际</p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <article class="article">
-    <div class="artnum">4</div>
-    <div>
-      <div class="artkicker"><span class="chip cn">CN Tier&nbsp;3</span> 中国 · 关键 · silence-optionality</div>
-      <h3 class="arthed">LPR 连续 11 月按兵不动 + 官媒对四个对外议题三重沉默</h3>
-      <p class="artdeck">沉默本身是有方向的信号。同日 10Y 中债 −1.89bp + CNH 零波动 + 中美利差 248.4bp 极宽，量化印证 PBOC 非对称工具空间。</p>
-      <div class="story cols-2">
-        <p>4 月 LPR 连续 11 月按兵（1Y 3.10% / 5Y 3.60% 不变），证券时报定性为 <strong>"观察期合理，下半年才是降息窗口"</strong>。</p>
-        <p>同日新华 / 人民日报海外版高密度发布"十五五首季图景 + 中国服务智慧出圈 + CATL 2 万亿 + 机器人半马破人类男子世界纪录"等本土叙事，对 Touska 扣船 / UAE 申美元互换 / Brent 崩盘-反弹 / BoJ 预期四个对外议题 <strong>完全缺席</strong>。A 股 +0.76% / 港股 +0.83% 同向上涨——商业航天 / 光纤 / 液冷服务器 / AI 应用 / 稀有金属 / 光伏 / 特高压板块主题活跃——是"对内支撑"在盘面的真实印证。</p>
-        <p>沉默本身是有方向的信号 — 北京不为停火进程背书，也不暴露对海湾金融依赖的焦虑，保留"用汇率中间价 + 利率工具 + 宏观叙事"多工具应对美方"第三把锁（IEEPA）"的空间。</p>
-        <p>同日 10Y 中债 −1.89bp + CNH 零波动（−0.06%）+ 中美 10Y 利差 248.4bp 极宽，是 PBOC <strong>非对称工具空间</strong>（放利差端，收汇率端）的量化印证。</p>
+    <article class="article">
+      <div class="artnum">④</div>
+      <div>
+        <div class="artkicker"><span class="chip fr">法</span><span class="chip t2">结构</span> · 欧洲三件套</div>
+        <h3 class="arthed">法国 6B EUR 财政节省 + IEA "能源史最大危机" + Challenges 2022 通胀情景</h3>
+        <p class="artdeck">欧洲版"央行被锁"叙事雏形显化，但跨欧洲结构性重定价证据尚不足。</p>
+        <div class="story cols-2">
+          <p class="no-indent">4/22 Le Monde 报道 2026 年法国预算拟节省 6B EUR；IEA 定性当前为"能源史最大危机"；Challenges 发 "2022 通胀回归情景"特稿。"财政紧缩 + 能源危机 + 通胀回归"三件套构成欧洲版央行被锁叙事雏形。</p>
+          <p>4/21 EU close DAX −0.60% / CAC 40 −1.14% / FTSE 100 −1.05% 全线偏弱，EUR/USD 1.1744 −0.34% 独立承压幅度远超 DXY −0.03%。</p>
+          <p class="subhed smallcaps">结构性乘数限制</p>
+          <p class="no-indent">但天然气 / 电力 / 欧洲信用曲线数据不在本期材料，欧洲结构性重定价尚不宜直接写成。ECB 按兵不动框架持续强化，但 OIS 隐含加息下修与 5 年期 CDS 需 4/23 配合验证。</p>
+          <p style="font-size:11.5px; color:var(--muted); font-style:italic; margin-top:8px; text-indent:0;">引用来源：法·Le Monde / 法·Challenges / 国际·IEA</p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <article class="article">
-    <div class="artnum">5</div>
-    <div>
-      <div class="artkicker"><span class="chip jp">JP</span> 日本 · 重要 · 财政+外汇双线</div>
-      <h3 class="arthed">BoJ 4/27-28 会议 · Ueda 自我软化 + 片山财相 FY26 国债 &lt;30T</h3>
-      <p class="artdeck">基准从"信用重建（25bp 加息）"切换到"财政+外汇双线，货币静默"。</p>
-      <div class="story cols-2">
-        <p>BoJ 4/17 Ueda 在记者会上主动软化加息指引，本土加息概率从 <strong>55% 回落至 19%</strong>。</p>
-        <p>同日片山财相宣布 FY26 国债发行 &lt;30 万亿日元，财政端紧缩与货币端静默形成 <strong>"财政+外汇双线"新基准</strong>，取代前期市场押注的"信用重建"路径。</p>
-        <p>USD/JPY 158.93 未破 160 的归因主要不是 MoF 干预 — 而是 BoJ 加息弱化 + 油价崩盘减进口通胀，使 JPY 多头 bid 被动退潮；日内波幅 &lt;30 pips 仅能作为 MoF 干预卖权的预演监控。</p>
-        <p>4/28 会议的基准已从"是否加息 25bp"切换到 <strong>"Ueda 是否在记者会中吹风 6 月再评估 + 片山是否再降 FY26 发债上限"</strong>。</p>
+    <article class="article">
+      <div class="artnum">⑤</div>
+      <div>
+        <div class="artkicker"><span class="chip jp">日</span><span class="chip t2">结构</span> · 正反馈脆弱性 · <span class="chip unv">需跨源核验</span></div>
+        <h3 class="arthed">日经 225 盘中 59,653 破历史高值 · 广度极窄脆弱性显化</h3>
+        <p class="artdeck">两只权重股贡献 +550 点，东证 Prime 涨跌比 0.207 属过去 5 年极值窄区，但 VIX &lt;20 下脆弱性不可量化证伪。</p>
+        <div class="story cols-2">
+          <p class="no-indent">4/22 Asia 早盘日经 225 盘中 59,653 +0.51% 破过往历史高值 59,518；SBG + アドテスト 两只合计贡献 +550 点（指数权重 14-15%），TOPIX 同日 −0.60% 背离，东证 Prime 上涨 263 下跌 1,270（比值 0.207）。</p>
+          <p>美股正反馈脆弱性（CTA / ETF 集中度）在日本版出现镜像。USD/JPY Asia 盘中一度 159.00（VTMarkets）与 4/21 close 158.84 日线 −0.20% 存在口径差。</p>
+          <p class="subhed smallcaps">证据门槛</p>
+          <p class="no-indent">日银 4/27-28 会议"静默 + 财政 + 外汇双线"基准继续延续。但做市商对冲暴露 / 期权持仓集中度数据不在本期材料，脆弱性判断在 VIX &lt;20 区间实质不可量化证伪。</p>
+          <p style="font-size:11.5px; color:var(--muted); font-style:italic; margin-top:8px; text-indent:0;">引用来源：日·日経 / VTMarkets</p>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
 </section>
 
-<!-- ==================== §III 宏观叙事与结构性信号 ==================== -->
-<section class="section" id="s3">
+<!-- ============================================================
+     §III 宏观叙事与结构性信号
+     规则：
+       - Core thesis 永远展开（.box.red）
+       - 三个结构性信号 + 右侧"事件节奏"aside（.with-aside 布局）
+       - Corrective scan 非空则 .box.warn
+       - Cross-cluster divergence 非空则 div-event × N + 官媒沉默 .silence
+============================================================ -->
+<section class="section">
   <div class="section-head">
     <div class="num">III</div>
-    <h2>宏观叙事与结构性信号<em>Core thesis · 3 structural signals · Corrective scan · Cross-media · 官媒沉默</em></h2>
-    <div class="meta">Thesis &amp; Signals<br>2026-04-20</div>
+    <h2>宏观叙事与结构性信号<em>可证伪缺口 · 反向信号 · 跨媒体视角差异</em></h2>
+    <div class="meta">核心矛盾 · 核心叙事 · 三结构性信号 · 事件节奏 · 跨媒体分歧 · 官媒沉默</div>
+  </div>
+
+  <div class="box red" style="border-left-width:6px;">
+    <div class="box-kicker">核心矛盾</div>
+    <h3>双紧并存压到 5 基点差 · 同钟确认前非定论</h3>
+    <p><b>机制 A · 口径订正</b>：10 年期 - 2 年期利差 = 4.292% − 3.79% = 50.2 基点，距 45 基点硬阈值 5.2 基点，而非宏观本体笔误的"46 基点距 1 基点"；按市场总览官方表 2Y = 3.72% 则为 57.2 基点，跨口径漂移约 7 基点待 4/22 US close FRED 刷新闭环。</p>
+    <p><b>机制 B · 时钟错配</b>：油价 −5.71% 为 4/22 Asia AM 新数据、2 年期 +6 个基点为 4/21 US close 旧数据；Brent 与 2 年期的异向不是同钟跨资产裁决，也可能是 Asia 油价先跌、美债利率仍沿前一交易日收盘的异步拼接。</p>
+    <p><b>机制 C · 驱动未定</b>：Fed 独立性鼓胀（沃什 + WSJ Fed 总部翻新 + SCOTUS IEEPA）叙事层上升但未回填硬验证栈（MOVE 指数 / SOFR-OIS / 期限溢价 / 通胀保护债券盈亏平衡率 / 5 年期 CDS 五项缺席），当前只能标为次级叙事；缺失的解释变量可能是期限溢价、前端融资、头寸平仓或盈利风险中任意一条，不必先验归因给行政权。</p>
+    <p><b>机制 D · 相变假说</b>：中国官媒议题权重表从连续谱（沉默深度 0-100%）退化为二元开关（完全开放 / 完全封口），未来任一议题破静默将以"全量定性首日条目"形式出现——对判定速度 +1 档但首日过度反应风险同步抬升；属媒体议程层观察，不并入市场主通道定价。</p>
+    <p style="font-size:13px; color:var(--ink-soft); border-top:1px dashed var(--hair); padding-top:8px; margin-top:10px;"><b>证伪条件：</b>4 月 23 日 US close 10-2Y 利差回弹至 ≥55 基点，或 2 年期美债跌破 3.75% → 双紧并存候选路径被否定，曲线反转为牛陡</p>
   </div>
 
   <div class="box red">
-    <div class="box-kicker">核心叙事 · 事件定价 vs 结构定价的不对称</div>
-    <h3>三资产方向分离定义"事件吸收"口径：Brent 上 / 金价下 / VIX 平</h3>
-    <p>4/20 的决定性信号是<strong>三资产方向分离</strong>：Brent +5.58% 吸收 Hormuz 事件反弹，金价 −1.02% 表明未转通胀预期，VIX 17.48 未动显示未外溢至 equity vol 层——三者共同定义了"事件吸收"的口径：Hormuz 被市场定价为 contained 单事件，而非系统性 reflation 或跨资产 tail。</p>
-    <p><strong>全球股市同向 risk-on</strong>（US 4/17 +1.20% / A 股 4/20 +0.76% / HK +0.83% / 日经 +1.58% / DAX +0.29%）确认这一口径。</p>
-    <p>但<strong>结构性风险的多资产扩散尚未启动</strong>：Hassett IEEPA 公开化 + UAE 美元求助 + Bessent Fed 受油价约束三件事尚未在 DXY 结构位、UST term premium、EUR 前端、5Y CDS 等结构性定价靶上显性化。"结构性通道被 1 资产隔离"是底层事实——定价机制是<strong>结构性风险未启动定价</strong>，而非错杀。</p>
+    <div class="box-kicker">核心叙事</div>
+    <h3>Fed 反应函数被"油价 + 政治 + 行政权工具"三重锁死 · 叙事通道上调、硬验证通道待激活</h3>
+    <p>本期叙事通道权重从 40% 上调至 50%（WSJ Fed 总部翻新借口 + Powell 非常规视频声明 + SCOTUS 推翻 IEEPA $166B 退税三件套在 48 小时内串联激活），但硬验证通道（MOVE 指数、SOFR-OIS 利差、10 年期 ACM 期限溢价贡献占比、通胀保护债券盈亏平衡通胀率、5 年期主权 CDS）本期材料中独立重算均缺席，两通道呈不同步状态。</p>
+    <p>相较"主 driver 降为 satellite narrative"的单向降级写法，本期采用<b>"放大器通道上调 + 定价驱动通道待激活"</b>双通道不同步的更稳妥表述：narrative 密度确有上升，但 transmission chain 到前端利率的硬证据尚未完整成立，证据门槛不应因叙事压强而系统性降低。</p>
   </div>
 
-  <div class="story cols-2" style="margin-top:22px">
-    <h3 class="subhed smallcaps">① Fed 反应函数三重锁 · duration 迁移 belly</h3>
-    <p class="no-indent">Bessent IMF 公开承认 Fed 受油价约束（货币维度锁）+ Tillis 阻挠 Warsh 提名（政治维度锁）+ Hassett IEEPA 公开化（行政权维度锁）三件事同日落定。10Y UST 4.2460% −6.30bp 不是纯 dovish fedspeak 定价，长端 term premium 在 2026 年下半年有补涨空间。duration trade 从 2Y 向 <strong>5Y-10Y belly 迁移</strong>是自洽选择。</p>
-    <p>硬证伪：2Y 连续 2 日站上 3.85% 或 10-2Y spread 连续 3 日 &lt;45bp（当前下限 49.6bp，<strong>距 gate 仅 4.6bp</strong>）。</p>
-
-    <h3 class="subhed smallcaps">② CN "对内支撑 / 对外超然"双轨 + PBOC 非对称工具空间</h3>
-    <p class="no-indent">官媒对 Touska / UAE / Brent / BoJ 四事件全部缺席，但在"十五五首季图景 + 新质生产力 + CATL 2 万亿 + 机器人半马"本土叙事上高密度协同。同日 10Y 中债 −1.89bp + CNH 零波动 + 中美利差 248.4bp 极宽。</p>
-    <p><strong>silence-as-signal</strong> 锚定美方第三把锁（IEEPA）的发育节点。4/22-28 如果官媒在四个沉默议题中任一出现<strong>专题定性稿</strong>（非转述），即代表北京对美方 IEEPA 通道形成公开立场。</p>
-    <p>硬证伪：4/23-30 若 PBOC / 商务部 / 外管局任一出 PBOC-Gulf 流动性工具（AED-CNY swap / SAR-CNY clearing），即证实"B 不背书 + C 等反击窗口"两种路径之一；两周无工具无专题则降为"A 型观望"。</p>
-
-    <h3 class="subhed smallcaps">③ Trump 行政权工具箱再弹性化 · 独立定价轴</h3>
-    <p class="no-indent">Hassett IEEPA "conflict-state + Section 122 15% / 150 天"的动机嵌套三层：表层 = 对伊极限施压的合理化、中层 = Powell 任期 5 月扩权铺垫、深层 = <strong>绕过最高法院的长期通道</strong>。即使最高法院撤销现有关税，行政方仍可用"战时条款 + 15% 关税上限 + 150 天窗口"重新装配。</p>
-    <p>定价靶 = DXY 结构性支撑 + UST 10Y 以上期限溢价抬升 + EUR 前端利率受益。硬证伪双层：<strong>短层</strong> = Warsh 听证后 5 交易日 DXY 站稳 98.80 以下且 5Y CDS 不抬升 → "第一周未启动定价"（持观察至 5/27）；<strong>长层</strong> = 30 日 10Y UST term premium 不走阔且 FT / Bloomberg 未出 IEEPA 专题 → 真 falsification。</p>
-  </div>
-
-  <div class="box warn" style="margin-top:22px">
-    <div class="box-kicker">反向信号 · Corrective Scan · 四项</div>
-    <p><strong>· Brent 4/17 −9.07% + 4/20 +5.58% 的双日波幅不得作单独 regime 证据。</strong> 日频 −9 +5 可能对冲至中性周信号，应采用 3 日移动均值或双日确认（如 Brent 连续 2 日站上 $97 + copper/Brent 回落 &gt;3%）。</p>
-    <p><strong>· Tillis "immovable object" framing 可能在 4/21 当场崩塌。</strong> 若 Tillis 退让 + Warsh 鸽派过，表面 Fed 独立性修复（DXY 下、UST 下），实际打破"前端 bull steepening"前提，前端利率上行 + 风险资产 mark-to-model 重估。</p>
-    <p><strong>· 金价 4/20 −1.02% 对 gold/S&amp;P 0.665 bull steepening 条件 3 的边际挤压。</strong> 4/17 EOD 比值 0.682 与 gate 仅 1.7pct 距离；若 S&amp;P 4/21 再涨 1% + 金价再跌 1%，gate 可能当周击破，H-20260419-05 "bull steepening 3/3"降为"2/3"。</p>
-    <p><strong>· A 股 / 港股同向小涨 + 创业板 −0.02%</strong> = 大小盘对冲格局，非普遍 style rotation；"A 股 dispersion 领先"结构需中证 500 − CSI 300 日 spread 连续 3 日 &gt;0.8% 确认，本期未达门槛。道指 +1.79% &gt; 纳指 +1.52% 的 cyclical-over-growth 轮动与 CTA 口径的小冲突保持观察。</p>
-  </div>
-
-  <h3 class="subhed smallcaps" style="margin-top:26px; padding-top:8px; border-top:1.5px solid var(--rule)">跨媒体视角差异 · 三件核心事件</h3>
-
-  <div class="div-event">
-    <div class="dk">E1 · 同一事实被四向分裂 framing</div>
-    <h4>Touska 扣船 + Trump 摧毁电厂桥梁威胁</h4>
-    <div class="d-body">
-      <p><strong>EN-US · Reuters / ISW（客观）</strong>淡化为谈判策略。</p>
-      <p><strong>EN-UK · FT（平衡）</strong>突出谈判僵局。</p>
-      <p><strong>JP · Nikkei（战术回避）</strong>聚焦能源调达，不触 war crime 定性。</p>
-      <p><strong>FR · Le Dauphiné（批判 Trump）</strong>明示"战争罪警告"。</p>
-      <p><strong>CN Tier 3（缺席）</strong>新华 / 人民日报海外版零转述。</p>
-    </div>
-    <div class="d-summary">US ↔ FR framing 分裂 = <strong>NATO 协调面的外溢风险</strong>；EU 盟友内部对 "IEEPA conflict-state" 的合法性将出现裂缝。</div>
-  </div>
-
-  <div class="div-event">
-    <div class="dk">E3 · 同一提名被三条 rail 报道</div>
-    <h4>Warsh 4/21 听证 · Tillis 阻挠</h4>
-    <div class="d-body">
-      <p><strong>EN-US · WSJ（政治向）</strong>Tillis "immovable object"。</p>
-      <p><strong>EN-UK · FT（央行独立性）</strong>引 Bessent "现实认知"。</p>
-      <p><strong>JP · Nikkei（功能型）</strong>Warsh 作 JGB 曲线 trigger。</p>
-      <p><strong>FR · Les Echos（中立）</strong>技术性议程报道。</p>
-      <p><strong>CN Tier 3 零转述</strong>= <strong>北京不 price in Tillis tail</strong>。</p>
-    </div>
-    <div class="d-summary">北京对 Tillis tail 的 silence 是 silence-as-signal 的第三个印证。</div>
-  </div>
-
-  <div class="div-event">
-    <div class="dk">E5 · 跨境分歧是 USD/JPY 逼近 160 的 driver</div>
-    <h4>BoJ 4/28 会议 · Ueda 软化 vs OCBC 25bp</h4>
-    <div class="d-body">
-      <p><strong>EN-UK · OCBC（偏 hawkish）</strong>"信用危机 + 25bp base case"。</p>
-      <p><strong>JP 本土 · TradingKey（分裂）</strong>Ueda 软化后概率 <strong>55→19%</strong>。</p>
-    </div>
-    <div class="d-summary">跨境分歧（海外看加息 vs 本土看软化）是 USD/JPY 逼近 160 的核心 driver；4/28 会议前交易窗不对称。</div>
-  </div>
-
-  <div class="silence" style="margin-top:26px">
-    <div class="flag">※</div>
+  <div class="with-aside">
     <div>
-      <div class="sk">官媒沉默 · 议程设置现象（观察，不直接驱动资产判断）</div>
-      <p>新华 / 人民日报海外版在 <strong>Touska 扣船 / UAE 申美元互换 / Brent 崩盘-反弹 / BoJ 本土加息分裂</strong>四个对外议题上连续沉默（4/20 单日观察），同期在"十五五首季图景 + 新质生产力 + CATL 2 万亿 + 机器人半马"本土叙事上高密度协同发声。A 股 / HK 同向 +0.76% / +0.83% 对"对内支撑"提供了<strong>盘面佐证</strong>——这一结构从"观察现象"上升为"有价格印证的双轨"。仍需叠加"4/22-28 是否出专题定性稿（非转述）" + "4/23-30 是否出 PBOC-Gulf 流动性工具"两条观察窗方能认定为结构性立场。</p>
+      <h3 style="font-size:18px; margin:22px 0 10px; border-bottom:1.5px solid var(--rule); padding-bottom:6px;">三个结构性信号</h3>
+      <div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">① 美债曲线 48 小时硬判定窗</div>
+      <p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">10-2Y 50.2 基点距 45 基点硬阈值 5.2 基点；两日压缩斜率（71 → 50.2 基点）是 2022 年 6 月 Fed 首次 75 个基点前夕的 3 倍、2025 年 Q1 牛陡期的 3.5 倍；但 MOVE 指数 / SOFR-OIS / 做市商对冲暴露 / 10 年期 ACM 期限溢价均未在本期材料中独立重算，判定置信度封顶中位。</p>
+      <div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">② 能源定性换挡但基本面未退</div>
+      <p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">Brent −5.71% 单日跌幅落 60 交易日第 95 百分位，铜/Brent 比值 0.0651 距 0.070 脱钩阈值 −7.05%（上期 −12.1%，单日机械收窄 5.05 个百分点，为分母技术性上移非铜端主动走强）；霍尔木兹封锁保留 + 伊朗 10 点方案被拒 + Vance 访 Islamabad 三线保留。</p>
+      <div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">③ 亚洲议题权重表二元化首次显化</div>
+      <p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">中国三级官媒对海湾 / 人民币工具议题第 5 日沉默（四源联合）+ 同日破日本议题沉默；跨语种对称定性首次同日激活（日语制度性警示 × 中文对抗性定性并行）；中国央行-海湾工具物理启动窗口 4/23-30 明日硬观察。</p>
+    </div>
+
+    <aside class="aside">
+      <div class="aside-kicker">事件节奏</div>
+      <h4>未来五日硬观察窗</h4>
+      <dl>
+        <div><dt>4/22 US close · 硬判定</dt><dd>2 年期美债是否维持 ≥3.75% + 10-2Y 是否压破 45 基点 + Brent 是否连续 &lt;$90（双紧并存 3 线 1 日判定）</dd></div>
+        <div><dt>4/23 Asia + US 双 session</dt><dd>Brent 连续 2 日 &lt;$90 证伪窗；FRED 2Y 数据闭环；中国央行 / 商务部 / 外管局任一出海湾流动性工具观察起点</dd></div>
+        <div><dt>4/24-25 · 首日相变计数</dt><dd>若中国官媒破海湾议题沉默首日定性条目数 ≥3 → 二元相变确认；&lt;3 → 相变证伪退回连续谱</dd></div>
+        <div><dt>4/27 · Fed 独立性乘数窗</dt><dd>DXY 突破 98.80 + 5 年期 CDS 抬升同日触发 → 行政权叙事升回主驱动</dd></div>
+        <div><dt>4/27-28 · 日银会议</dt><dd>"静默 + 财政 + 外汇双线"基准；会后 5 日内 USD/JPY 破 160 或日经跌破 59,000 连 2 日 + 东证 Prime 涨跌比恢复 &gt;0.5 为反向验证</dd></div>
+      </dl>
+      <p style="font-size:11px; color:var(--muted); font-style:italic; border-top:1px solid var(--hair); padding-top:6px; margin-top:8px;">所有判定节点均以相应时区的 close 口径为准；跨时区拼接的单日对撞不算同钟裁决。</p>
+    </aside>
+  </div>
+
+
+  <h3 style="font-size:18px; margin:28px 0 8px; border-bottom:1.5px solid var(--rule); padding-bottom:6px;">跨媒体视角差异
+    <span style="font-family:'Source Serif 4',serif; font-size:12px; letter-spacing:0; text-transform:none; color:var(--muted); font-weight:500; margin-left:10px; font-style:italic;">双事件并列 · 集群派属化</span>
+  </h3>
+
+  <div class="div-event">
+    <div class="dk">事件一 · Fed 独立性叙事</div>
+    <h4>沃什听证会与 Fed 独立性叙事</h4>
+    <div class="d-body">
+      <p><span class="chip cus">美</span><b>Reuters / Bloomberg</b>：事实报道 + "新框架"鹰派接盘定位；WSJ Fed 总部翻新子叙事作为借口包围。</p>
+      <p><span class="chip fr">法</span><b>Le Monde / Le Figaro</b>："chahutée / embarrassante"激进派属化；Le Grand Continent "racketteur"为欧洲侧学术反攻定性。</p>
+      <p><span class="chip jp">日</span><b>毎日</b>："操り人形否定"中性报道，不派属。</p>
+      <p><span class="chip cn">中</span><b>官媒</b>：Fed 独立性议题当期缄默（对比：同日人民网国际对日本武器议题首次破沉默）。</p>
+    </div>
+    <div class="d-summary"><strong>分歧：</strong>法媒与美媒相反方向派属化，美媒鹰派接盘/法媒激进反攻；日媒中性、中媒缄默。同一事件四种立场全部激活但未收敛，属叙事压强上行但价格传导未同步。</div>
+  </div>
+
+  <div class="div-event">
+    <div class="dk">事件二 · 日本武器出口</div>
+    <h4>日本武器出口"禁输→原则可"</h4>
+    <div class="d-body">
+      <p><span class="chip jp">日</span><b>時事通信</b>："政府問われる厳格運用"制度性警示定性。</p>
+      <p><span class="chip cn">中</span><b>人民网国际</b>："日本解禁杀伤性武器出口背后的危险图谋"对抗性定性。</p>
+      <p><span class="chip cus">美</span><b>西方集群</b>：当期零覆盖（单日缺席，结构性判定需 3 日窗口观察，当前不宜升为"结构性去优先级化"）。</p>
+    </div>
+    <div class="d-summary"><strong>分歧：</strong>日中对称首次同日激活（制度性警示 × 对抗性定性并行）；西方集群缺席可能是议程优先级差异，需 3 日窗口观察方可升为结构性判定。</div>
+  </div>
+
+  <div class="silence">
+    <div class="flag">⚑</div>
+    <div>
+      <div class="sk">官媒沉默</div>
+      <p>中国三级官媒对海湾 / 人民币国际化 / 中国央行-海湾工具议题连续 5 日（0419-0422）联合沉默，覆盖新华社、人民网、环球网、CGTN 四源；同日人民网国际首次破日本议题沉默，<strong>二元分叉结构首次显化为开放（对抗议题）/ 封口（工具议题）二层模型</strong>。三项门槛（样本量 ≥3 家媒体 / 48 小时窗口 / 对照组）全过，作为媒体议程层观察有效，但市场定价通道置信度封顶中位，不上首屏硬阈值、不写入核心矛盾主句。4/23-30 中国央行 / 商务部 / 外管局任一出海湾流动性工具为明日起硬观察窗口；若破静默首日定性条目数 ≥3 视为二元相变确认，若 &lt;3 则相变证伪退回连续谱。</p>
     </div>
   </div>
 </section>
 
-<!-- ==================== §IV 区域分化分析 ==================== -->
-<section class="section" id="s4">
+<!-- ============================================================
+     §IV 区域市场分化
+     规则：美 + 中 + 欧 + 日四块标配（缺席则标注"当日无重大变动"）；
+           每块 region-head（名称 + delta）+ rdeck（斜体一句话）+ 2-3 段
+============================================================ -->
+<section class="section">
   <div class="section-head">
     <div class="num">IV</div>
-    <h2>区域分化分析<em>Regional cards · US / CN / EU / JP</em></h2>
-    <div class="meta">4 cards<br>post-close</div>
+    <h2>区域市场分化<em>四大板块 · 四种叙事</em></h2>
+    <div class="meta">美 · 中 · 欧 · 日 · 全球 · 五块标配</div>
   </div>
 
   <div class="regions">
     <div class="region">
       <div class="region-head">
-        <span class="rname">美国</span>
-        <span class="rdelta up">S&amp;P ▲ +1.20% · 7,126.06</span>
+        <span class="rname">美股</span>
+        <span class="rdelta down">S&amp;P ▼ 0.63%</span>
       </div>
-      <div class="rdeck">历史新高；三条结构性风险同日公开化，价格零反应</div>
-      <p>定价 gap：三条结构性风险同日公开化（Iran 实物升级 + IEEPA 扩权 + UAE 美元求助）+ 价格零反应。被动 / CTA / ETF 正反馈继续推高指数但 <strong>caveat</strong>：道指 +1.79% &gt; 纳指 +1.52% 的 cyclical-over-growth 轮动与"CTA trend-follow 机械买入"口径有小冲突。</p>
-      <p>10Y UST 4.2460% −6.30bp 偏低位<strong>不是纯 dovish fedspeak 定价</strong>，term premium 2026 下半年有补涨空间。<strong>4/21 Warsh 听证</strong>是短周期最敏感节点。</p>
+      <div class="rdeck">系统性避险 · 避险非主动减仓</div>
+      <p>4/21 US close 三大指数同幅避险（S&amp;P 7,064 −0.63% / 道琼斯 49,149 −0.59% / 纳斯达克 24,259 −0.59%）系统性而非板块轮动；Finviz 11 板块全部为负但能源 +1.16% 逆势（PBF Energy +7.79% / LBRT +6.66% 下游裂解反弹与 Brent 崩盘反向分化）。</p>
+      <p>Gold $4,772 +1.57% + Silver $77.88 +1.92% 齐涨，VIX 19.50 +3.34% 未破 20 结构阈；个股极端分化（CAR +17.27% / NVTS +16.14% / TSCO −11.69% / VSEC −13.66%），<strong>系统性市场避险与微观个股定价同日叠加——避险为被动对冲而非主动减仓</strong>。</p>
     </div>
-
     <div class="region">
       <div class="region-head">
         <span class="rname">中国</span>
-        <span class="rdelta up">A/H ▲ 上证 +0.76% · 恒指 +0.83%</span>
+        <span class="rdelta up">沪深 300 ▲ +0.69%</span>
       </div>
-      <div class="rdeck">A/H 同向温和上行 + 板块主题扣合"新质生产力" + PBOC 非对称工具空间已启动</div>
-      <p>4/20 真实收盘：<strong>上证 4,082.13 +0.76% · 深证 14,966.75 +0.55% · 创业板 3,677.58 −0.02% · 恒指 26,376.98 +0.83%</strong>。沪深成交 2.58 万亿（+1,532 亿）· 3,421 涨 / 1,890 跌 / 90 涨停。板块主题：<strong>商业航天、光纤、液冷服务器、AI 应用、稀有金属、光伏、特高压、消费电子</strong>活跃——与"新质生产力"官媒叙事高度扣合。</p>
-      <p>官媒 Tier 3 对四个对外议题缺席 + 本土叙事高密度协同 = "对内支撑 / 对外超然"双轨<b>在盘面真实出现</b>。PBOC <strong>非对称工具空间</strong>（放利差端 ≈ 249bp 极宽，收汇率端 CNH 零波动）已启动。HK +0.83% 同向确认南向支撑在场。</p>
+      <div class="rdeck">对内支撑连 4 日 · 三层议题权重显化</div>
+      <p>A 股 CSI 300 4,800.70 +0.69% 连 4 日"对内支撑"延续（4/22 收盘 · CST 15:00 后），上证 4,106.44 +0.52% / 深证 15,182.82 +1.34% 全线走强；恒指 26,171.77 −1.19% 转跌分化（<b>港股盘中 · HKT 15:26 截面 · 非收盘值</b>，HKT 16:00 收盘后另行核对）；4/21 成交 2.43 万亿 / 机构净卖 5.01 亿（4/22 盘后数据待晚间更新）；离岸 USD/CNH 6.8221 −0.08%，10 年期中债 1.7510% −1.17bp（4/21 口径）。</p>
+      <p>Q1 基本面：浙江 GDP +6.0%、深圳外贸 +33.6%（含关税抢跑基数，Q2 payback 风险）。官媒三级议题权重表二元化首次显化，中国央行 4/21 7 天逆回购 50 亿作为非海湾小额工具保留操作弹性。</p>
     </div>
-
     <div class="region">
       <div class="region-head">
         <span class="rname">欧洲</span>
-        <span class="rdelta up">DAX ▲ +0.29% · 24,702.04</span>
+        <span class="rdelta down">DAX ▼ 0.60%</span>
       </div>
-      <div class="rdeck">三央行 dovish + 德国 GDP 下修 + Taylor 85bp 背离四路共振</div>
-      <p>ECB 4/30 前核心交易：三央行口径（Lagarde / Bailey / Schnabel 同场 dovish）+ 德国 GDP 下修 <strong>1.3 → 0.6%</strong> + Taylor rule 85bp 背离四路共振，OIS 2 次加息定价继续下修。</p>
-      <p>EUR 前端受益 + DXY 结构性 put 成分上升。法 - 德 10Y spread 走阔 &gt;10bp 与 FR 主流媒体 48h 内 3 篇头版把 Trump "摧毁电厂桥梁"定性 <strong>war crime</strong> 双触发 = NATO 政策性切割定价启动。</p>
+      <div class="rdeck">三件套推升 · 但跨欧洲重定价证据不足</div>
+      <p>4/21 EU close DAX 24,270 −0.60% / CAC 40 8,235 −1.14% / FTSE 100 10,498 −1.05% 全线偏弱；EUR/USD 1.1744 −0.34% 独立承压幅度远超 DXY −0.03%（若 DXY 走强由 EUR 侧噪声贡献，不能解读为"特朗普扩权结构性乘数"直接确认）。</p>
+      <p>法国 2026 预算拟节省 6B EUR、IEA 定性"能源史最大危机"、Challenges "2022 通胀回归情景"三件套推升欧洲财政空间压力；ECB 按兵不动 + OIS 隐含加息 ≤1 次框架持续强化，但 5 年期 CDS / 欧洲信用曲线 / 天然气-电力曲线数据缺席，不宜直接升为跨欧洲结构性重定价。</p>
     </div>
-
     <div class="region">
       <div class="region-head">
         <span class="rname">日本</span>
-        <span class="rdelta up">日经 ▲ +1.58% · 36,456.58</span>
+        <span class="rdelta up">日经 ▲ +0.51%（盘中）</span>
       </div>
-      <div class="rdeck">"财政+外汇双线，货币静默"取代"信用重建"</div>
-      <p>基准从"信用重建（25bp 加息）"切换到"财政+外汇双线，货币静默"。USD/JPY ≈ 159 未破 160，主因 <strong>BoJ 加息弱化 + 油价未大幅再涨</strong>压制 JPY 空头 momentum，次因 MoF 干预卖权（日内波幅 &lt;30 pips = 干预预演）。</p>
-      <p>右尾风险：4/28 BoJ 意外加息 15bp → JPY carry 拆解，USD/JPY 急跌至 155，10Y UST 上破 4.30%。</p>
+      <div class="rdeck">史高破位 · 广度极窄脆弱性待验证</div>
+      <p>4/22 Asia 早盘日经 225 盘中 59,653 +0.51% 破过往历史高值 59,518；SBG + アドテスト 两只合计 +550 点（权重 14-15%）推动，TOPIX 同日 −0.60% 反向背离，东证 Prime 涨跌比 0.207 属过去 5 年极值窄区。</p>
+      <p>USD/JPY Asia 盘中 159.00（VTMarkets）vs 4/21 close 158.84 日线 −0.20% 存在口径差。日银 4/21 金融稳定报告复合压力抗压情景，4/27-28 会议"静默 + 财政 + 外汇双线"基准继续延续；日本 3 月对中东输出 −45% 为滞后数据未被日经定价。</p>
+    </div>
+    <div class="region">
+      <div class="region-head">
+        <span class="rname">全球资金</span>
+        <span class="rdelta flat">黄金 ▲ +1.57%</span>
+      </div>
+      <div class="rdeck">实物避险带抬升 · 硬验证封顶中位</div>
+      <p>黄金 $4,772 +1.57% + 白银 $77.88 +1.92% 齐涨抬升实物避险带；Gold/S&amp;P 比值 0.6755 距 0.665 硬阈值正侧 +1.58 个百分点，实物避险带完整确认仍需跨日观察。</p>
+      <p>跨资产：DXY 98.38 距 98.80 硬阈值 0.42 指数点缓冲仍在；VIX 19.50 未破 20 结构阈，做市商对冲暴露数据缺失下，避险程度判断封顶中位。</p>
     </div>
   </div>
 </section>
 
-<!-- ==================== §V 核心矛盾 ==================== -->
-<section class="section" id="s5">
+<!-- ============================================================
+     §V 尾部风险
+     规则：tail 表；影响列 imp-h/imp-mh/imp-m/imp-l 按强弱着色；mon 列等宽
+============================================================ -->
+<section class="section">
   <div class="section-head">
     <div class="num">V</div>
-    <h2>核心矛盾<em>Core tension · Invalidation</em></h2>
-    <div class="meta">One tension<br>One invalidation</div>
-  </div>
-
-  <div class="box red">
-    <div class="box-kicker">核心矛盾</div>
-    <h3>事件吸收 vs 结构隔离 — 多资产扩散尚未启动</h3>
-    <p>今日表象是全球股市 risk-on 同步（US +1.20% / A 股 +0.76% / HK +0.83% / 日经 +1.58%）+ Brent +5.58% 事件反弹；<strong>深层是三资产方向分离（Brent 上 / 金价下 / VIX 平）定义的"事件吸收"口径</strong>，与 Hormuz 实物升级 + IEEPA 公开化 + UAE 美元求助的真实结构强度不对称：结构性通道被 Brent 单资产隔离，尚未外溢至 DXY / UST term premium / 5Y CDS / gold 的多资产扩散。</p>
-    <p>CN Tier 3 三重沉默 + A/H 同向上涨 = 盘面已给"对内支撑"投票，但"对外超然"未通过 PBOC 工具或专题稿 externalize。</p>
-  </div>
-
-  <div class="box warn">
-    <div class="box-kicker">Invalidation · 硬证伪（三层）</div>
-    <p><strong>(i)</strong> 4/22 停火到期日前 Gulf ≥2 国（沙特 / 卡塔尔 / 科威特）金融防御跟进 UAE → 结构性外溢已启动。</p>
-    <p><strong>(ii)</strong> 48h 内 Brent 连续 2 日站上 $100 且金价同步 reflation → "单资产吸收"失效。</p>
-    <p><strong>(iii)</strong> Warsh 4/21 听证后 5 交易日 DXY 站稳 98.80 以下且 5Y CDS 不抬升 → "结构性扩权通道未启动定价"确认。</p>
-  </div>
-</section>
-
-<!-- ==================== §VI 尾部风险表 ==================== -->
-<section class="section" id="s6">
-  <div class="section-head">
-    <div class="num">VI</div>
-    <h2>尾部风险表<em>Tail risks · 左尾 3 · 结构 1 · 右尾 1</em></h2>
-    <div class="meta">5 rows</div>
+    <h2>尾部风险<em>触发条件 · 影响评估 · 跟踪要点</em></h2>
+    <div class="meta">7 条尾部风险 · 4/22-5/6 观察窗</div>
   </div>
 
   <table class="tail">
@@ -1462,270 +1555,212 @@
       <tr>
         <th>风险</th>
         <th>触发路径</th>
-        <th class="r">影响</th>
+        <th>影响</th>
         <th>监控指标</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="risk">左尾 1 · Tillis 4/21 当场退让 → 前端利率重定价</td>
-        <td>Tillis 撤回 + Warsh 鸽派过 → 2Y jump 10-25bp（ceiling 击穿 15-25bp）· H-05 bull steepening 前提反转</td>
-        <td class="imp imp-h">极高</td>
-        <td class="mon">2Y UST ≥3.85% · VIX 跳空 · DXY · FF Futures Dec-26 · Warsh 听证当日收盘</td>
+        <td class="risk">双紧并存路径 2/3 确认</td>
+        <td>4/22 US close 若 2 年期美债连续 1 日站上 3.75%，则 H-20260420-02 证伪进入 2/3 确认；若 4/22+4/23+4/24 三日连续站上，则牛陡方向路径全证伪</td>
+        <td class="imp imp-h">高</td>
+        <td class="mon">2Y UST · 10-2Y · Brent · 次日至 3 日</td>
       </tr>
       <tr>
-        <td class="risk">左尾 2 · Iran next-tier 实物升级</td>
-        <td>4/22 停火到期后：(i) 海军交火（伊朗艇对美舰开火或反之）(ii) 袭击海湾炼厂 / 港口 (iii) IRGC 对美舰行动</td>
-        <td class="imp imp-h">极高</td>
-        <td class="mon">Brent 连续 2 日站上 $97 + copper/Brent 回落 &gt;3% · tanker AIS · war-risk premium</td>
-      </tr>
-      <tr>
-        <td class="risk">左尾 3 · 海湾美元流动性扩散</td>
-        <td>Saudi / Qatar / Kuwait ≥1 国 4 周内跟进 UAE 申美元互换</td>
-        <td class="imp imp-mh">高</td>
-        <td class="mon">gold/S&amp;P 连续 8 日 &lt;0.665（4/17 口径 0.682，距 gate 1.7pct）· GCC CDS · Bloomberg "Gulf dollar plumbing"专题</td>
-      </tr>
-      <tr>
-        <td class="risk">结构尾 · IEEPA 扩权 structural multiplier 定价</td>
-        <td>2026 下半年按季度节奏：DXY 站稳 98.80 + 5Y CDS +2bp + FT / Bloomberg IEEPA 专题</td>
+        <td class="risk">Fed 独立性结构性乘数启动</td>
+        <td>4/27 前 DXY 破 98.80 + 5 年期 CDS 抬升同日触发 → Fed 独立性结构性乘数启动，行政权叙事从次级叙事升回主驱动</td>
         <td class="imp imp-mh">中高</td>
-        <td class="mon">DXY · 5Y CDS · UST 10Y term premium · IEEPA 主流媒体专题密度</td>
+        <td class="mon">DXY · 5Y CDS · 5 日内</td>
       </tr>
       <tr>
-        <td class="risk">右尾 · BoJ 4/28 意外加息 15bp</td>
-        <td>JPY carry 拆解 · USD/JPY 急跌 155 · 10Y UST 上破 4.30%</td>
+        <td class="risk">中国工具议题相变确认</td>
+        <td>4/23-30 中国央行 / 商务部 / 外管局任一出海湾流动性工具 → T-20260420-03 工具议题相变确认；若破静默首日定性条目数 &lt;3 则相变证伪</td>
         <td class="imp imp-m">中</td>
-        <td class="mon">USD/JPY · 10Y UST · TONA OIS · BoJ 声明</td>
+        <td class="mon">官方公告 · 首日条目数 · 8 日内</td>
+      </tr>
+      <tr>
+        <td class="risk">日银会议后外汇双线反向验证</td>
+        <td>4/27-28 日银会议后 5 日内 USD/JPY 破 160 或日经跌破 59,000 连 2 日 + 东证 Prime 涨跌比恢复 &gt;0.5 → 静默+外汇双线基准反向验证</td>
+        <td class="imp imp-m">中</td>
+        <td class="mon">USD/JPY · 日经 · Prime 涨跌比 · 2 周内</td>
+      </tr>
+      <tr>
+        <td class="risk">谈判长期化叙事短证伪</td>
+        <td>4/23 伊朗-美方侧公开确认"可谈"10 点方案任一核心条款（制裁解除 / 霍尔木兹重开）→ 谈判长期化叙事短证伪触发</td>
+        <td class="imp imp-m">中</td>
+        <td class="mon">伊朗 / 美方官方公告 · 3 日内</td>
+      </tr>
+      <tr>
+        <td class="risk">油价退利率不退不对称框架</td>
+        <td>Brent 持续 &lt;$90 连续 2 日 + 2 年期继续维持 ≥3.75%（异向持久化）→ "油价退、利率不退"不对称定价新框架</td>
+        <td class="imp imp-m">中</td>
+        <td class="mon">Brent · 2Y UST · 5 日内</td>
+      </tr>
+      <tr>
+        <td class="risk">日经正反馈脆弱性硬显化</td>
+        <td>日经 59,653 + SBG / アドテスト 集中度下若 VIX 突破 20 或做市商对冲暴露翻负，正反馈脆弱性首次硬显化</td>
+        <td class="imp imp-l">低中</td>
+        <td class="mon">VIX · 做市商 gamma · 2 周内</td>
       </tr>
     </tbody>
   </table>
 </section>
 
-<!-- ==================== §VII 资产配置思路 ==================== -->
-<section class="section" id="s7">
+<!-- ============================================================
+     §VI 资产配置思路
+     规则：alloc 2-col grid；每 item 有编号（i-n）+ 标题（i-t）+ 描述（i-deck）
+           末尾可接 .box 风险提示
+============================================================ -->
+<section class="section">
   <div class="section-head">
-    <div class="num">VII</div>
-    <h2>资产配置思路<em>Watchlist · 公开可执行观测点 · Advanced 条件性仓位折叠</em></h2>
-    <div class="meta">W1-W5<br>+ Advanced</div>
+    <div class="num">VI</div>
+    <h2>资产配置思路<em>落地头寸 · 仓位与止损</em></h2>
+    <div class="meta">8 条公开可执行观测点 · 4 条条件性头寸</div>
   </div>
 
+  <h3 style="font-size:15px; margin:6px 0 12px; font-family:'Inter',sans-serif; letter-spacing:0.08em; color:var(--ink-soft);">公开可执行观测点</h3>
   <div class="alloc">
     <div class="item">
-      <div class="ihed">
-        <span class="i-n">W1</span>
-        <span class="i-t">利率 · 4/21 Warsh 听证 Tillis 首 30 分钟</span>
-      </div>
-      <p class="i-deck">若 Tillis 撤回或委员会投票推进，2Y 可能 <strong>jump 10-20bp 反向</strong>；若 Tillis 持硬 + Warsh 鸽派过，前端 bid 强化。长端 <strong>10-2Y spread 突破 45bp 下方</strong>是 bull steepening 机制已坍塌的 curve-level 证据。</p>
+      <div class="ihed"><span class="i-n">W1 / 利率</span><span class="i-t">10-2Y 利差 48 小时冲线</span></div>
+      <p class="i-deck">4/23 US close 10-2Y 利差是否压破 45 基点硬阈值（当前 50.2 基点距 5.2 基点）。</p>
     </div>
     <div class="item">
-      <div class="ihed">
-        <span class="i-n">W2</span>
-        <span class="i-t">波动率 · VIX 15 / 22 / 28 + 25D SPX put skew 6 vol pt</span>
-      </div>
-      <p class="i-deck">VIX 日均跌破 15 同时 25D put skew &lt;6 vol pt → <strong>tail 已被 skew 吸收</strong>，本期"波动率错杀"证伪。VIX 站上 22 为第一层触发，28 为 tail 定价级跃迁。</p>
+      <div class="ihed"><span class="i-n">W2 / 能源</span><span class="i-t">Brent 连续 2 日跌破 $90</span></div>
+      <p class="i-deck">4/23 Asia + US 双 session Brent 是否连续 2 日 &lt;$90（第 1 日 WTI 已破，Brent 92.86 距 $2.86）。</p>
     </div>
     <div class="item">
-      <div class="ihed">
-        <span class="i-n">W3</span>
-        <span class="i-t">商品 · copper/Brent 0.063 / 0.0675 / 0.070 / 0.072 + Brent-WTI spread 4.5 / 6.0 / 7.0 + gold/S&amp;P 0.665</span>
-      </div>
-      <p class="i-deck">Brent 反弹至 $95.42 后 copper/Brent 回落至 ≈ 0.063，从"90 百分位边缘"退向中枢；站回 <strong>0.070 = first-alert</strong>，站上 <strong>0.072 = 止盈上限</strong>。Brent-WTI spread 从 6.53 收至 ≈ 4.9，war-risk premium 正被吸收。gold/S&amp;P 0.682 距 0.665 gate 1.7pct，4/21 需回测。</p>
+      <div class="ihed"><span class="i-n">W3 / 利率</span><span class="i-t">2 年期美债硬二元</span></div>
+      <p class="i-deck">4/23 US close 2 年期美债是否维持 ≥3.75%（当前订正口径 3.79%，FRED 刷新待闭环）。</p>
     </div>
     <div class="item">
-      <div class="ihed">
-        <span class="i-n">W4</span>
-        <span class="i-t">FX · USD/JPY 158/160/161 + USD/CNH 6.80/6.85/6.90 + DXY 98.30/98.80/99.0</span>
-      </div>
-      <p class="i-deck">USD/JPY 破 161 = <strong>MoF 口头干预 buffer 失效</strong>。USD/CNH 单日偏离 &gt;0.25% = PBOC 容忍上限击破。DXY 站稳 98.80 = IEEPA structural multiplier 定价启动的短期证据。</p>
+      <div class="ihed"><span class="i-n">W4 / 外汇</span><span class="i-t">DXY 与 EUR/USD 背离拆解</span></div>
+      <p class="i-deck">4/23 DXY 是否突破 98.80 + EUR/USD 是否进一步独立走弱（需剥离 EUR 噪声）。</p>
     </div>
     <div class="item">
-      <div class="ihed">
-        <span class="i-n">W5</span>
-        <span class="i-t">中美 · 10Y 利差 240 / 249 / 255bp</span>
-      </div>
-      <p class="i-deck">利差 &gt;255bp = 非对称工具空间<strong>仍放利差端</strong>；&lt;240bp = PBOC 收利差端政策切换。</p>
+      <div class="ihed"><span class="i-n">W5 / 避险</span><span class="i-t">实物避险带完整确认</span></div>
+      <p class="i-deck">Gold/S&amp;P 比值 0.6755 距 0.665 硬阈值正侧 1.58 个百分点，是否继续逼近。</p>
+    </div>
+    <div class="item">
+      <div class="ihed"><span class="i-n">W6 / 中国</span><span class="i-t">官媒破静默首日条目数</span></div>
+      <p class="i-deck">4/23-30 中国央行 / 商务部 / 外管局是否出海湾流动性工具（中国官媒沉默破局首日条目数是否 ≥3）。</p>
+    </div>
+    <div class="item">
+      <div class="ihed"><span class="i-n">W7 / 日本</span><span class="i-t">日经广度恢复观察</span></div>
+      <p class="i-deck">日经 Prime 涨跌比 0.207 是否恢复 &gt;0.5 + SBG / アドテスト 贡献集中度是否下行。</p>
+    </div>
+    <div class="item">
+      <div class="ihed"><span class="i-n">W8 / 外汇</span><span class="i-t">USD/JPY 160 干预硬阈值</span></div>
+      <p class="i-deck">4/27-28 日银会议前 USD/JPY 是否触及 160 干预硬阈值。</p>
     </div>
   </div>
 
-  <details class="appx" style="margin-top:22px">
-    <summary>Advanced · 条件性 / 风险结构头寸（A1–A4 + R1 + Iran next-tier）</summary>
+  <details class="appx" style="margin-top:22px;">
+    <summary><span>条件性 / 风险结构头寸（点击展开）</span></summary>
     <div class="appx-body">
       <div class="alloc">
         <div class="item">
-          <div class="ihed">
-            <span class="i-n">A1</span>
-            <span class="i-t">Long 2Y UST / 前端 receive · 80%</span>
-          </div>
-          <p class="i-deck">从 0419 条件 60% 上调。止损四条：(1) 2Y 连续 2 日站上 3.85% (2) Brent 5 日均线站稳 $90 (3) Tillis 4/21 当场退让 → 当日平仓 30%，保留 50% 核底 (4) <strong>10-2Y spread 连续 3 日 &lt;45bp</strong>（curve-level gate，当前下限 49.6bp）。</p>
+          <div class="ihed"><span class="i-n">A1 / 波动率结构</span><span class="i-t">MOVE 指数与期限溢价联合判定</span></div>
+          <p class="i-deck">若 MOVE 指数 &gt;120 + 10 年期 ACM 期限溢价贡献占比 ≥70%，Fed 独立性空窗溢价定性可从次级叙事升回主驱动；若 MOVE ≤120 或期限溢价贡献 &lt;30%，驱动判定转向单纯期限溢价上移或头寸平仓。</p>
         </div>
         <div class="item">
-          <div class="ihed">
-            <span class="i-n">A2</span>
-            <span class="i-t">多铜 / 空 Brent（risk-matched）· 40%</span>
-          </div>
-          <p class="i-deck">Brent 反弹后 copper/Brent 从 0.0675 回落至 ≈ 0.063，ratio 的"90 百分位边缘"证据退向中枢；短期扩张动能减弱。分层：copper/Brent 站上 0.070 加仓 20%（重回 first-alert）+ 站上 0.072 减 30%（上限止盈）。Thesis-review gate：Brent-WTI spread &lt;4.5 美元连续 5 日 → 跨视角重估。</p>
+          <div class="ihed"><span class="i-n">A2 / 信用</span><span class="i-t">信用利差传导链检验</span></div>
+          <p class="i-deck">投资级 / 高收益信用利差（CDX IG/HY、iTraxx、OAS）若未扩张，说明双紧并存尚未进入微观信用阶段，结构性乘数传导链存疑。</p>
         </div>
         <div class="item">
-          <div class="ihed">
-            <span class="i-n">A3a</span>
-            <span class="i-t">VIX base case · 2M VIX 20/32 call spread · 20%</span>
-          </div>
-          <p class="i-deck">A3 thesis 已从"real-asset 齐强 + equity vol 错杀 的 divergence 修复"重置为"Iran next-tier 升级对冲"单腿。最大 payoff 12pt × notional，有上限盖帽。共享止损：VIX 站上 22 了结 A3a 1/3 · S&amp;P 回撤 5% 全平。</p>
+          <div class="ihed"><span class="i-n">A3 / 通胀</span><span class="i-t">实际利率与盈亏平衡分解</span></div>
+          <p class="i-deck">通胀保护债券盈亏平衡通胀率 / 实际利率 / TIPS 三组变量缺失时，无法区分"通胀再定价"与"政治风险 + 实际利率错位"，当前分歧的真正核心待硬验证栈回填。</p>
         </div>
         <div class="item">
-          <div class="ihed">
-            <span class="i-n">A3b</span>
-            <span class="i-t">VIX tail case · 2M VIX 28 裸多 call · 5%</span>
-          </div>
-          <p class="i-deck"><strong>无上限 payoff</strong>，仅保 Iran next-tier 升级极端情景，可叠加 1M 35 call wing。共享止损：VIX 日均跌破 15 同时 25D put skew &lt;6 vol pt → 组合减半。两结构 payoff 几何学不同不可合并。</p>
+          <div class="ihed"><span class="i-n">A4 / 实物能源</span><span class="i-t">航运 / 保险费 / 运费硬数据</span></div>
+          <p class="i-deck">航运 / 油轮保险费 / 运费三项实物风险通道数据补齐前，无法独立区分 Brent 回吐是纸面原油头寸回撤还是实物风险真缓和。</p>
         </div>
-        <div class="item">
-          <div class="ihed">
-            <span class="i-n">A4</span>
-            <span class="i-t">多白银 / 空黄金 risk-matched · 15%</span>
-          </div>
-          <p class="i-deck">金银同日双双下跌（金 −1.02% / 银 ≈ −1%）、金银比小幅走阔至 60+，"金银比周内 −2.3 ratio points"动能暂缓。止损保留：金银比连续 2 日收盘站上 62（双日确认）OR 白银单日跌幅 &gt;5%。</p>
-        </div>
-        <div class="item">
-          <div class="ihed">
-            <span class="i-n">A5</span>
-            <span class="i-t">多 10Y TIPS / 通胀保值 · 10%（新建）</span>
-          </div>
-          <p class="i-deck">金价 −1.02% + Brent +5.58% 后 breakeven 未显著走阔，通胀预期被压制。若 Gulf ≥2 国跟进 UAE swap，breakeven 反弹空间显著。资金来源：R1 释放。</p>
-        </div>
-        <div class="item">
-          <div class="ihed">
-            <span class="i-n">R1</span>
-            <span class="i-t">JPY carry unwind hedge · 从 ACT 降 WATCH</span>
-          </div>
-          <p class="i-deck">释放资金流向 A5 多 TIPS（10%）。依据：USD/JPY ≈ 159.04 温和 + BoJ 本土加息概率 55% → 19%，carry 拆解前提松动。</p>
-        </div>
-      </div>
-
-      <div class="box warn" style="margin-top:16px">
-        <div class="box-kicker">Iran next-tier 三情景触发器</div>
-        <p>任一触发 → A3b 激活 + 尾部风险左尾 2 路径：</p>
-        <p>(i) <strong>海军交火</strong>（伊朗艇对美舰开火或反之）· (ii) <strong>袭击海湾目标</strong>（沙特 / UAE 炼厂或港口被攻击）· (iii) <strong>IRGC 直接对美舰行动</strong>（扣留、拦截、威胁击沉）。</p>
       </div>
     </div>
   </details>
-</section>
 
-<!-- ==================== §VIII 关键指标监控清单 ==================== -->
-<section class="section" id="s8">
-  <div class="section-head">
-    <div class="num">VIII</div>
-    <h2>关键指标监控清单<em>Monitoring list · 9 buckets</em></h2>
-    <div class="meta">utility<br>board</div>
-  </div>
-
-  <div class="story cols-2">
-    <h3 class="subhed smallcaps">利率</h3>
-    <p class="no-indent">2Y UST <code>3.75 / 3.80 / 3.85</code> · 10-2Y spread <code>45 / 55 bp</code> · 10Y 中债 <code>1.75 / 1.78%</code>。</p>
-
-    <h3 class="subhed smallcaps">波动率</h3>
-    <p class="no-indent">VIX <code>15 / 22 / 28</code> · 25D SPX put skew <code>6 vol pt</code> · MOVE（数据缺失，恢复后补）。</p>
-
-    <h3 class="subhed smallcaps">商品</h3>
-    <p class="no-indent">copper/Brent <code>0.063 / 0.0675 / 0.070 / 0.072</code> · 金银比 <code>60 / 62</code> · gold/S&amp;P <code>0.665</code> · Brent-WTI spread <code>4.5 / 6.0 / 7.0 美元</code>。</p>
-
-    <h3 class="subhed smallcaps">FX</h3>
-    <p class="no-indent">USD/JPY <code>158 / 160 / 161</code> · USD/CNH <code>6.80 / 6.85 / 6.90</code> · DXY <code>98.30 / 98.80 / 99.0</code>。</p>
-
-    <h3 class="subhed smallcaps">中美</h3>
-    <p class="no-indent">10Y 利差 <code>240 / 249 / 255 bp</code>（4/17 UST 口径）。</p>
-
-    <h3 class="subhed smallcaps">欧元区</h3>
-    <p class="no-indent">法 - 德 10Y spread <code>55 / 65 bp</code> · ECB OIS 4/30 隐含加息 <code>≤1 次</code>。</p>
-
-    <h3 class="subhed smallcaps">事件</h3>
-    <p class="no-indent">Iran next-tier 三触发器（海军交火 / 袭击海湾目标 / IRGC 对美舰行动）· <strong>Tillis 4/21 听证走向</strong> · BoJ 4/27-28 Ueda 记者会 · ECB 4/30 双口径窗。</p>
-
-    <h3 class="subhed smallcaps">A 股结构</h3>
-    <p class="no-indent">中证 500 − CSI 300 日 spread <code>0.8%</code>（升级 A 股板块论断的阈值）· 商业航天 / 光纤 / 液冷 / AI 应用板块主题持续性 · 南向资金 4/21-25 流入密度。</p>
-
-    <h3 class="subhed smallcaps">三资产事件定价校准</h3>
-    <p class="no-indent">Brent / Gold / VIX 方向分离是否持续（连续 3 日同向 contained 则确认"单资产吸收"；任两资产同向 reflation 则"多资产扩散"启动）。</p>
-
-    <h3 class="subhed smallcaps">官媒口径</h3>
-    <p class="no-indent">4/22-28 CN Tier 3 是否在 Touska / UAE / Brent / BoJ 四沉默议题中出<strong>专题定性稿</strong> · 4/23-30 PBOC / 商务部 / 外管局是否出 PBOC-Gulf 流动性工具（AED-CNY swap / SAR-CNY clearing）· 新华"人民币国际化 + Gulf"专题密度。</p>
+  <div class="box" style="margin-top:22px;">
+    <div class="box-kicker">风险提示</div>
+    <p style="margin:0;">本报告仅为研究性质的市场跟踪记录，不构成投资建议，亦不代表机构或第三方立场。所有观测点、硬阈值与条件性头寸均需结合个人风险承受能力独立判断；报告中的"双紧并存"、"行政权叙事"等判定在硬验证数据补齐前置信度封顶中位。跨时区数据拼接的单日对撞不等同于同钟裁决，阅读时请保持时钟分辨率。</p>
   </div>
 </section>
 
-<!-- ==================== 附录 ==================== -->
-<section class="section" id="appx">
+<!-- ============================================================
+     附录：默认全部折叠（details.appx）
+============================================================ -->
+<section class="section" style="margin-top:48px;">
   <div class="section-head">
-    <div class="num">A</div>
-    <h2>附录<em>A · 新闻引用 25 条 ｜ B · 内部分析师版索引 ｜ C · 置信度约定</em></h2>
-    <div class="meta">reference</div>
+    <div class="num">⁂</div>
+    <h2>附录<em>引用来源与内部索引</em></h2>
+    <div class="meta">点击展开</div>
   </div>
 
   <details class="appx">
-    <summary>附录 A · 新闻引用 · 25 N-IDs</summary>
+    <summary><span>附录 A · 新闻引用</span></summary>
     <div class="appx-body">
       <table>
-        <thead>
-          <tr><th>N-ID</th><th>集群</th><th>源</th><th>主旨</th><th>置信度</th></tr>
-        </thead>
+        <thead><tr><th>N-ID</th><th>集群</th><th>源</th><th>主旨</th><th>置信度</th></tr></thead>
         <tbody>
-          <tr><td class="nid">N-0420-01</td><td>美</td><td>Reuters / ISW</td><td>Touska 扣船 + 伊朗拒绝 4/20 谈判</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-02</td><td>美</td><td>Reuters</td><td>Bessent IMF 公开承认 Fed 暂缓降息</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-03</td><td>美</td><td>Bloomberg</td><td>Warsh 听证为 UST 下一催化剂</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-04</td><td>美</td><td>WSJ</td><td>Tillis 阻挠 Fed 提名 "immovable object"</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-05</td><td>美</td><td>WSJ</td><td>UAE 申请美联储美元互换（独家）</td><td><span class="chip wire">wire</span><span class="chip single">single</span></td></tr>
-          <tr><td class="nid">N-0420-06</td><td>美</td><td>Reuters</td><td>S&amp;P 新高 + 财报季高峰</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-07</td><td>美</td><td>AOL / Bloomberg</td><td>Hassett IEEPA conflict-state + Section 122</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-08</td><td>英</td><td>Reuters</td><td>Brent 4/17 −9.07% + 4/20 反弹 +5.58%</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-09</td><td>英</td><td>FT</td><td>伊朗谈判僵局 + 美舰过 Hormuz</td><td><span class="chip pw">paywall-summary</span></td></tr>
-          <tr><td class="nid">N-0420-10</td><td>英</td><td>Reuters / Neuberger / OCBC</td><td>ECB 无紧迫性加息</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-11</td><td>英</td><td>KPMG</td><td>德国 GDP 下调 1.3 → 0.6%</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-12</td><td>中</td><td>证券时报</td><td>LPR 连续 11 月不变</td><td><span class="chip official">official</span></td></tr>
-          <tr><td class="nid">N-0420-13</td><td>中</td><td>新浪财经 / 东方财富</td><td>4/20 A 股收盘：上证 4082.13 +0.76%，深证 14966.75 +0.55%，创业板 3677.58 −0.02%，沪深成交 2.58 万亿</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-14</td><td>中 Tier 3</td><td>新华网</td><td>十五五首季图景</td><td><span class="chip official">official</span></td></tr>
-          <tr><td class="nid">N-0420-15</td><td>中 Tier 3</td><td>人民日报海外版</td><td>中国服务智慧出圈</td><td><span class="chip official">official</span></td></tr>
-          <tr><td class="nid">N-0420-16</td><td>中</td><td>新华社渥太华</td><td>Carney 加美关系质变</td><td><span class="chip official">official</span></td></tr>
-          <tr><td class="nid">N-0420-17</td><td>中</td><td>证券时报</td><td>CATL 市值 2 万亿 + 机器人半马</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-18</td><td>港</td><td>MarketScreener / 新浪</td><td>4/20 恒指 26,376.98 +0.83%（+216.65），区间 26,094.64 – 26,411.56</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-19</td><td>日</td><td>Nikkei 山下晃</td><td>"ポスト・イラン 中国再エネ"</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-20</td><td>日</td><td>Nikkei 高橋徹</td><td>"安い石油的终结"</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-21</td><td>日</td><td>TMGM / TradingKey</td><td>USD/JPY 近 160，BoJ 概率 55 → 19%</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-22</td><td>日</td><td>MoF</td><td>片山财相 FY26 国债 &lt;30T</td><td><span class="chip official">official</span></td></tr>
-          <tr><td class="nid">N-0420-23</td><td>法</td><td>Les Echos</td><td>本周议程 4/21 Warsh</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-24</td><td>法</td><td>Le Dauphiné 系列</td><td>Hormuz 严控 + Trump 摧毁电厂桥梁威胁</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-25</td><td>法</td><td>Atlantico</td><td>伊朗战争 vs 气候战略教训</td><td><span class="chip cmt">commentary</span></td></tr>
-          <tr><td class="nid">N-0420-26</td><td>金属</td><td>Yahoo / Kitco / Goodreturns</td><td>4/20 金价 ≈ $4,784 −1.02%，银价 &lt;$80 −1%</td><td><span class="chip wire">wire</span></td></tr>
-          <tr><td class="nid">N-0420-27</td><td>能源</td><td>Trading Economics / Yahoo</td><td>Brent 4/20 $95.42 +5.58% 吸收 Hormuz 反弹</td><td><span class="chip wire">wire</span></td></tr>
+          <tr><td class="nid">N-0422-03</td><td>美·WSJ</td><td>Wall Street Journal</td><td>Fed 总部翻新调查为 Powell 争议增添借口</td><td>社论</td></tr>
+          <tr><td class="nid">N-0422-10</td><td>美·Reuters</td><td>Reuters</td><td>SCOTUS 推翻 IEEPA 关税，要求 $166B 退税</td><td>官方</td></tr>
+          <tr><td class="nid">N-0422-29</td><td>美·Capital Street FX</td><td>Capital Street FX</td><td>2 年期美债推至 3.79%，市场与 Fed 鸽派路径分歧</td><td>通讯社</td></tr>
+          <tr><td class="nid">N-0422-31</td><td>美·yfinance</td><td>Yahoo Finance · Brent / WTI</td><td>Brent 单日 −5.71% 至 $92.86，WTI −2.90% 至 $89.46 首日跌破 $90</td><td>官方</td></tr>
+          <tr><td class="nid">N-0422-16</td><td>美·Reuters</td><td>Reuters</td><td>特朗普停火延期"直至另行通知"、伊朗 10 点方案被拒</td><td>通讯社</td></tr>
+          <tr><td class="nid">N-0422-19</td><td>美·Reuters</td><td>Reuters</td><td>Vance 访 Islamabad，霍尔木兹封锁保留</td><td>通讯社</td></tr>
+          <tr><td class="nid">N-0422-28</td><td>国际·Tavily</td><td>Tavily · Touska 扣船</td><td>Touska 号扣船事件持续发酵</td><td>需跨源核验</td></tr>
+          <tr><td class="nid">N-0422-18</td><td>日·時事通信</td><td>Jiji Press</td><td>武器出口"禁输→原则可"，政府严格运用受考验</td><td>官方</td></tr>
+          <tr><td class="nid">N-0422-21</td><td>日·日経</td><td>Nikkei</td><td>日经 225 盘中 59,653 破历史高值，TOPIX 反向背离</td><td>通讯社</td></tr>
+          <tr><td class="nid">N-0422-22</td><td>日·毎日</td><td>Mainichi</td><td>"操り人形否定"中性报道，Powell 听证会平衡派属</td><td>通讯社</td></tr>
+          <tr><td class="nid">GD-0422-02</td><td>中·人民网国际</td><td>人民网国际</td><td>日本解禁杀伤性武器出口背后的危险图谋</td><td>官方</td></tr>
+          <tr><td class="nid">GD-0422-06</td><td>法·Le Monde</td><td>Le Monde</td><td>2026 预算 · 政府目标节省 60 亿欧元</td><td>社论</td></tr>
+          <tr><td class="nid">N-0422-23</td><td>国际·IEA</td><td>IEA</td><td>"能源史上最大的危机"</td><td>官方</td></tr>
+          <tr><td class="nid">GD-0422-07</td><td>法·Challenges</td><td>Challenges</td><td>2022 通胀回归情景特稿</td><td>社论</td></tr>
+          <tr><td class="nid">GD-0422-11</td><td>中·人民网</td><td>People's Daily</td><td>CGTN 等四源联合海湾 / 人民币议题沉默第 5 日</td><td>官方</td></tr>
+          <tr><td class="nid">SILENCE-CN-01</td><td>中·三级官媒</td><td>新华社 / 人民网 / 环球网 / CGTN</td><td>海湾 / 人民币国际化 / 中国央行-海湾工具议题 5 日联合沉默</td><td>受阻</td></tr>
         </tbody>
       </table>
-      <p style="font-size:11.5px; color:var(--muted); margin-top:10px">新闻原文见 <code>archive/2026-04-20/news_raw.md</code> · 分类表见 <code>news_classified.md</code> · 叙事矩阵见 <code>narrative_matrix.md</code>。</p>
     </div>
   </details>
 
   <details class="appx">
-    <summary>附录 B · 内部分析师版索引</summary>
+    <summary><span>附录 B · 跨语种引用</span></summary>
+    <div class="appx-body">
+      <table>
+        <thead><tr><th>集群</th><th>源</th><th>中译主旨</th></tr></thead>
+        <tbody>
+          <tr><td>美·WSJ</td><td><em>Fed Renovation Inquiry Adds Pretext to Powell Dispute</em></td><td>Fed 总部翻新调查为 Powell 争议增添借口</td></tr>
+          <tr><td>美·Reuters</td><td><em>SCOTUS Strikes Down IEEPA Tariffs, Orders $166B Refund</em></td><td>最高法院推翻 IEEPA 关税，要求 $166B 退税</td></tr>
+          <tr><td>美·Capital Street FX</td><td><em>2Y UST Pushes to 3.79%, Market Disagrees Fed Dovish</em></td><td>2 年期美债推至 3.79%，市场与 Fed 鸽派路径分歧</td></tr>
+          <tr><td>日·時事通信</td><td><em>武器輸出「禁輸→原則可」政府問われる厳格運用</em></td><td>武器出口"禁输→原则可"，政府严格运用受考验</td></tr>
+          <tr><td>中·人民网国际</td><td>日本解禁杀伤性武器出口背后的危险图谋</td><td>日本解禁杀伤性武器出口背后的危险图谋</td></tr>
+          <tr><td>法·Le Monde</td><td><em>Budget 2026 · Le Gouvernement Cible 6 Md€ d'Économies</em></td><td>2026 预算 · 政府目标节省 60 亿欧元</td></tr>
+          <tr><td>国际·IEA</td><td><em>"The Biggest Energy Crisis in History"</em></td><td>"能源史上最大的危机"</td></tr>
+          <tr><td>法·Challenges</td><td><em>Le Scénario d'un Retour de l'Inflation 2022</em></td><td>2022 通胀回归情景特稿</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="appx">
+    <summary><span>附录 C · 内部版索引</span></summary>
     <div class="appx-body">
       <ul>
-        <li><code>archive/2026-04-20/internal.md</code> — 完整 F/A/J 分层 + T/H tracker + 三方权重分配（分析师用）</li>
-        <li><code>archive/2026-04-20/synthesis_draft.md</code> — 本体综合 v2（Phase 5 修订过程）</li>
-        <li><code>archive/2026-04-20/agent_{macro,quant,narrative}.md</code> — Phase 2 三方独立分析</li>
-        <li><code>archive/2026-04-20/review_{macro,quant,narrative}.md</code> — Phase 3 交叉互评</li>
-        <li><code>archive/2026-04-20/confirm_{macro,quant,narrative}.md</code> — Phase 5 三方确认轮</li>
+        <li><code>archive/2026-04-22/internal.md</code> — 本期完整内部版 · 含三方分析、交叉互评、编辑复核、确认汇总</li>
+        <li><code>archive/2026-04-22/synthesis_draft.md</code> — 综合草稿 v2 · 含分歧保留段</li>
+        <li><code>archive/2026-04-22/critique_codex.md</code> — 第四方独立审计底稿</li>
+        <li><code>archive/2026-04-22/thesis_snapshot.md</code> — 立论老化刷新定稿</li>
+        <li><code>archive/2026-04-22/hypothesis_snapshot.md</code> — 假设清单定稿</li>
       </ul>
     </div>
   </details>
-
-  <details class="appx">
-    <summary>附录 C · 置信度约定</summary>
-    <div class="appx-body">
-      <p style="font-size:12.5px"><span class="chip official">official</span>官方机构发布 · <span class="chip wire">wire</span>主流通讯社直接报道 · <span class="chip pw">paywall-summary</span>付费墙源二次摘要 · <span class="chip cmt">commentary</span>社论 / Op-Ed / 分析师观点 · <span class="chip single">single</span>仅一方报道未交叉 · <span class="chip blocked">blocked</span>访问失败但证据留档。凡使用 single-source 或 needs cross-check 数据，均在正文就近标注，未交叉前不直接驱动资产判断。</p>
-    </div>
-  </details>
 </section>
 
+<!-- ============================================================
+     COLOPHON
+============================================================ -->
 <footer class="colophon">
-  <div>© 2026 Global Markets Daily · Issue №&nbsp;110</div>
-  <div class="mid">Measure the signal by what it cannot be; invalidate by date.</div>
-  <div class="r">Content master · <code>reports/2026/04/2026-04-20.md</code></div>
+  <div>全球财经日报 · 创刊于公元二〇二六年</div>
+  <div class="mid">— 数据截止 2026-04-22 10:00 CST —</div>
+  <div class="r">本期终 · №&nbsp;003</div>
 </footer>
 
 </div>
