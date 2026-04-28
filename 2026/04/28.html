@@ -1945,5 +1945,509 @@
 </footer>
 
 </div>
+
+<!-- ============================================================
+     F-Key Interactive Layer · 默认静态 / 按 F 启用高级模式
+     - 折叠/展开 section（点 section-head）
+     - 表头点击排序（数字优先，回退中文 localeCompare）
+     - 每表反应式控件：搜索 + 分组/方向 chips + 周Δ 滑块（OJS 风格 vanilla 版）
+     - 尾部风险行点击展开 → 触发链路 + 监控指标结构化拆解
+     - 配色墨黑中性，避开 红=涨 语义
+============================================================ -->
+<style>
+  /* HUD · 静态 = 描边墨黑 / 高级 = 实心墨黑 */
+  .fkey-hud {
+    position: fixed; top: 14px; right: 14px; z-index: 9999;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 7px 11px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    user-select: none; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .fkey-hud kbd {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--ink); color: var(--paper);
+    padding: 1px 6px; margin-right: 8px;
+    border-radius: 2px;
+  }
+  .fkey-hud .state { font-weight: 600; }
+  body.interactive .fkey-hud {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  body.interactive .fkey-hud kbd {
+    background: var(--paper); color: var(--ink);
+  }
+
+  /* section collapse */
+  body.interactive .section .section-head {
+    cursor: pointer; border-radius: 2px;
+    transition: background 0.12s;
+  }
+  body.interactive .section .section-head:hover { background: var(--paper-2); }
+  body.interactive .section .section-head h2::after {
+    content: "▾"; margin-left: 10px; font-size: 13px;
+    color: var(--ink-soft); display: inline-block;
+    transition: transform 0.15s;
+  }
+  body.interactive .section.collapsed .section-head h2::after {
+    transform: rotate(-90deg);
+  }
+  body.interactive .section.collapsed > :not(.section-head) { display: none; }
+
+  /* table headers sortable */
+  body.interactive table.prices thead th,
+  body.interactive table.tail thead th {
+    cursor: pointer; user-select: none;
+  }
+  body.interactive table.prices thead th:hover,
+  body.interactive table.tail thead th:hover { color: var(--ink); }
+  body.interactive table.prices thead th.sorted,
+  body.interactive table.tail thead th.sorted { color: var(--ink); }
+  body.interactive table.prices thead th.sorted::after,
+  body.interactive table.tail thead th.sorted::after {
+    content: " ↑"; font-size: 10px;
+  }
+  body.interactive table.prices thead th.sorted.desc::after,
+  body.interactive table.tail thead th.sorted.desc::after {
+    content: " ↓";
+  }
+
+  /* reactive control bar (OJS-style filter strip) */
+  .fkey-controls {
+    display: none;
+    gap: 18px; flex-wrap: wrap; align-items: center;
+    padding: 10px 14px;
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    border-radius: 2px;
+    margin: 6px 0 14px;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px;
+  }
+  body.interactive .fkey-controls { display: flex; }
+  .fkey-control { display: flex; align-items: center; gap: 8px; }
+  .fkey-label {
+    color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 10px;
+  }
+  .fkey-search {
+    font-family: inherit; font-size: 12px;
+    padding: 5px 10px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    border-radius: 2px;
+    min-width: 160px;
+  }
+  .fkey-search:focus { outline: none; border-color: var(--ink); }
+  .fkey-chips { display: flex; }
+  .fkey-chips button {
+    font-family: inherit; font-size: 11px;
+    padding: 4px 10px; line-height: 1.4;
+    border: 1px solid var(--hair);
+    background: var(--paper);
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .fkey-chips button + button { border-left: none; }
+  .fkey-chips button:first-child { border-radius: 2px 0 0 2px; }
+  .fkey-chips button:last-child { border-radius: 0 2px 2px 0; }
+  .fkey-chips button:hover { background: var(--paper-2); color: var(--ink); }
+  .fkey-chips button.active {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  .fkey-slider input[type="range"] {
+    width: 130px; accent-color: var(--ink);
+  }
+  .fkey-val {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--ink); font-size: 11px;
+    min-width: 48px; text-align: right;
+  }
+  .fkey-hint {
+    margin-left: auto;
+    font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  body.interactive tr.fkey-hidden { display: none; }
+
+  /* tail row click expand */
+  body.interactive table.tail tbody tr:not(.fkey-detail) { cursor: pointer; }
+  body.interactive table.tail tbody tr:not(.fkey-detail):hover {
+    background: var(--paper-2);
+  }
+  tr.fkey-detail { display: none; }
+  body.interactive tr.fkey-detail.open { display: table-row; }
+  body.interactive tr.fkey-detail.open td {
+    background: #ece4d0;
+    padding: 16px 18px 18px;
+    font-size: 13px; line-height: 1.7;
+    border-top: none;
+  }
+  .fkey-detail-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+  }
+  .fkey-detail-grid .fkey-h {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .fkey-detail-grid ol, .fkey-detail-grid ul {
+    margin: 0; padding-left: 1.4em;
+  }
+  .fkey-detail-grid ol > li { margin-bottom: 8px; }
+  .fkey-detail-stage {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .fkey-detail-grid ul.fkey-mon li {
+    list-style: square; margin-bottom: 4px; color: var(--ink-2);
+  }
+</style>
+
+<div class="fkey-hud" id="fkeyHud" title="按 F 启用 / 关闭 高级模式">
+  <kbd>F</kbd><span class="state">静态</span>
+</div>
+
+<script>
+(function () {
+  const body = document.body;
+  const hud = document.getElementById('fkeyHud');
+  const stateLabel = hud.querySelector('.state');
+  let active = false;
+
+  function setActive(on) {
+    active = on;
+    body.classList.toggle('interactive', on);
+    stateLabel.textContent = on ? '高级' : '静态';
+  }
+
+  document.addEventListener('keydown', function (e) {
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      setActive(!active);
+    }
+  });
+  hud.addEventListener('click', () => setActive(!active));
+
+  /* section collapse */
+  document.querySelectorAll('section.section').forEach(sec => {
+    const head = sec.querySelector('.section-head');
+    if (!head) return;
+    head.addEventListener('click', () => {
+      if (!active) return;
+      sec.classList.toggle('collapsed');
+    });
+  });
+
+  /* numeric parser: ▲/▼/bp/%/comma/—/+ */
+  function parseNum(text) {
+    const t = (text || '').trim();
+    if (t === '—' || t === '') return NaN;
+    const cleaned = t.replace(/[▲▼,\s%+]/g, '').replace(/bp/gi, '').replace(/[^\-\d.]/g, '');
+    const n = parseFloat(cleaned);
+    if (isNaN(n)) return NaN;
+    if (t.includes('▼') || /^-/.test(t)) return -Math.abs(n);
+    return n;
+  }
+
+  function sortGroupedTable(tbody, colIdx, desc) {
+    const groups = [];
+    let cur = null;
+    Array.from(tbody.children).forEach(tr => {
+      if (tr.classList && tr.classList.contains('grouphead')) {
+        cur = { head: tr, rows: [] };
+        groups.push(cur);
+      } else if (tr.classList && tr.classList.contains('fkey-detail')) {
+        // detail rows are wiped on sort; user can re-click to expand
+      } else if (cur) {
+        cur.rows.push(tr);
+      } else {
+        if (!groups.length) groups.push({ head: null, rows: [] });
+        groups[0].rows.push(tr);
+      }
+    });
+    groups.forEach(g => {
+      g.rows.sort((a, b) => {
+        const ta = a.cells[colIdx] ? a.cells[colIdx].textContent : '';
+        const tb = b.cells[colIdx] ? b.cells[colIdx].textContent : '';
+        const na = parseNum(ta), nb = parseNum(tb);
+        let cmp;
+        if (!isNaN(na) && !isNaN(nb)) cmp = na - nb;
+        else cmp = ta.trim().localeCompare(tb.trim(), 'zh-CN');
+        return desc ? -cmp : cmp;
+      });
+    });
+    tbody.innerHTML = '';
+    groups.forEach(g => {
+      if (g.head) tbody.appendChild(g.head);
+      g.rows.forEach(r => tbody.appendChild(r));
+    });
+  }
+
+  function attachSortHandlers(tbl, tbody) {
+    const ths = tbl.querySelectorAll('thead th');
+    ths.forEach((th, idx) => {
+      th.addEventListener('click', () => {
+        if (!active) return;
+        const wasSorted = th.classList.contains('sorted');
+        const wasDesc = th.classList.contains('desc');
+        ths.forEach(t => t.classList.remove('sorted', 'desc'));
+        th.classList.add('sorted');
+        const desc = wasSorted && !wasDesc;
+        if (desc) th.classList.add('desc');
+        sortGroupedTable(tbody, idx, desc);
+      });
+    });
+  }
+
+  function bindChips(bar, filters, applyFn) {
+    bar.querySelectorAll('.fkey-chips').forEach(grp => {
+      const key = grp.dataset.key;
+      grp.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          grp.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filters[key] = btn.dataset.val;
+          applyFn();
+        });
+      });
+    });
+  }
+
+  /* === .prices reactive controls === */
+  document.querySelectorAll('table.prices').forEach(tbl => {
+    const tbody = tbl.querySelector('tbody');
+    if (!tbody) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'fkey-controls';
+    bar.innerHTML = `
+      <div class="fkey-control">
+        <input type="text" class="fkey-search" placeholder="搜索资产 / 备注…">
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">分组</span>
+        <div class="fkey-chips" data-key="group">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="股指">股指</button>
+          <button data-val="汇率">汇率</button>
+          <button data-val="利率">利率</button>
+          <button data-val="商品">商品</button>
+        </div>
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">日Δ 方向</span>
+        <div class="fkey-chips" data-key="dir">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="up">▲</button>
+          <button data-val="down">▼</button>
+        </div>
+      </div>
+      <div class="fkey-control fkey-slider">
+        <span class="fkey-label">|周Δ| ≥</span>
+        <input type="range" min="0" max="8" step="0.5" value="0">
+        <span class="fkey-val">0.0</span>
+      </div>
+    `;
+    tbl.parentNode.insertBefore(bar, tbl);
+
+    const search = bar.querySelector('.fkey-search');
+    const slider = bar.querySelector('input[type="range"]');
+    const sliderVal = bar.querySelector('.fkey-val');
+    const filters = { search: '', group: 'all', dir: 'all', delta: 0 };
+
+    /* tag each row with its group label (parsed from preceding grouphead) */
+    let curGroup = '';
+    Array.from(tbody.children).forEach(tr => {
+      if (tr.classList.contains('grouphead')) {
+        const t = tr.textContent;
+        if (t.includes('股指')) curGroup = '股指';
+        else if (t.includes('汇率')) curGroup = '汇率';
+        else if (t.includes('利率')) curGroup = '利率';
+        else if (t.includes('商品')) curGroup = '商品';
+        else curGroup = '';
+        tr.dataset.group = curGroup;
+      } else {
+        tr.dataset.group = curGroup;
+      }
+    });
+
+    function applyFilters() {
+      const groupCounts = {};
+      Array.from(tbody.children).forEach(tr => {
+        if (tr.classList.contains('grouphead')) return;
+        const g = tr.dataset.group;
+        const text = tr.textContent.toLowerCase();
+        const dayCell = tr.cells[2] ? tr.cells[2].textContent : '';
+        const weekCell = tr.cells[3] ? tr.cells[3].textContent : '';
+        const weekN = parseNum(weekCell);
+
+        let pass = true;
+        if (filters.search && text.indexOf(filters.search) === -1) pass = false;
+        if (filters.group !== 'all' && g !== filters.group) pass = false;
+        if (filters.dir === 'up' && !dayCell.includes('▲')) pass = false;
+        if (filters.dir === 'down' && !dayCell.includes('▼')) pass = false;
+        if (filters.delta > 0) {
+          if (isNaN(weekN) || Math.abs(weekN) < filters.delta) pass = false;
+        }
+
+        tr.classList.toggle('fkey-hidden', !pass);
+        if (pass) groupCounts[g] = (groupCounts[g] || 0) + 1;
+      });
+      /* hide groupheads whose group is empty under current filters */
+      Array.from(tbody.children).forEach(tr => {
+        if (!tr.classList.contains('grouphead')) return;
+        const g = tr.dataset.group;
+        tr.classList.toggle('fkey-hidden', !groupCounts[g]);
+      });
+    }
+
+    search.addEventListener('input', () => {
+      filters.search = search.value.trim().toLowerCase();
+      applyFilters();
+    });
+    slider.addEventListener('input', () => {
+      filters.delta = parseFloat(slider.value);
+      sliderVal.textContent = filters.delta.toFixed(1);
+      applyFilters();
+    });
+    bindChips(bar, filters, applyFilters);
+    attachSortHandlers(tbl, tbody);
+  });
+
+  /* === .tail reactive controls + row expand === */
+  document.querySelectorAll('table.tail').forEach(tbl => {
+    const tbody = tbl.querySelector('tbody');
+    if (!tbody) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'fkey-controls';
+    bar.innerHTML = `
+      <div class="fkey-control">
+        <input type="text" class="fkey-search" placeholder="搜索风险条目…">
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">影响级别</span>
+        <div class="fkey-chips" data-key="impact">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="imp-h">高</button>
+          <button data-val="imp-mh">中高</button>
+          <button data-val="imp-m">中</button>
+          <button data-val="imp-l">低中</button>
+        </div>
+      </div>
+      <span class="fkey-hint">点击行 → 展开链路与监控指标拆解</span>
+    `;
+    tbl.parentNode.insertBefore(bar, tbl);
+
+    const search = bar.querySelector('.fkey-search');
+    const filters = { search: '', impact: 'all' };
+
+    function applyFilters() {
+      Array.from(tbody.children).forEach(tr => {
+        if (tr.classList.contains('fkey-detail')) {
+          const src = tr.previousElementSibling;
+          if (src && src.classList.contains('fkey-hidden')) tr.classList.remove('open');
+          return;
+        }
+        const text = tr.textContent.toLowerCase();
+        const impCell = tr.querySelector('.imp');
+        const impClass = impCell
+          ? Array.from(impCell.classList).find(c => c.startsWith('imp-'))
+          : '';
+        let pass = true;
+        if (filters.search && text.indexOf(filters.search) === -1) pass = false;
+        if (filters.impact !== 'all' && impClass !== filters.impact) pass = false;
+        tr.classList.toggle('fkey-hidden', !pass);
+      });
+    }
+
+    search.addEventListener('input', () => {
+      filters.search = search.value.trim().toLowerCase();
+      applyFilters();
+    });
+    bindChips(bar, filters, applyFilters);
+    attachSortHandlers(tbl, tbody);
+
+    /* row click → expand structured breakdown */
+    Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
+      if (tr.classList.contains('fkey-detail')) return;
+      if (!tr.cells || tr.cells.length < 4) return;
+      tr.addEventListener('click', () => {
+        if (!active) return;
+        const next = tr.nextElementSibling;
+        if (next && next.classList.contains('fkey-detail')) {
+          next.classList.toggle('open');
+          return;
+        }
+        const detail = buildTailDetail(tr);
+        tr.parentNode.insertBefore(detail, tr.nextSibling);
+        requestAnimationFrame(() => detail.classList.add('open'));
+      });
+    });
+  });
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"]/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+    ));
+  }
+
+  function buildTailDetail(srcTr) {
+    const cells = srcTr.cells;
+    const trigger = (cells[1] && cells[1].textContent || '').trim();
+    const monitor = (cells[3] && cells[3].textContent || '').trim();
+
+    /* split trigger by → into stages, each stage by " + " into parallel triggers */
+    const stages = trigger.split(/→/).map(s => s.trim()).filter(Boolean);
+    const stageHtml = stages.map((stage, i) => {
+      const parts = stage.split(/\s\+\s/).map(p => p.trim()).filter(Boolean);
+      const inner = parts.length > 1
+        ? '<ul style="margin:4px 0 0;padding-left:1.2em;">'
+            + parts.map(p => `<li>${escapeHtml(p)}</li>`).join('') + '</ul>'
+        : `<div>${escapeHtml(parts[0] || stage)}</div>`;
+      return `<li><div class="fkey-detail-stage">阶段 ${i + 1}</div>${inner}</li>`;
+    }).join('');
+
+    const monItems = monitor.split(/[；;]/).map(s => s.trim()).filter(Boolean);
+    const monHtml = monItems.map(m => `<li>${escapeHtml(m)}</li>`).join('');
+
+    const tr = document.createElement('tr');
+    tr.className = 'fkey-detail';
+    tr.innerHTML = `<td colspan="${cells.length}">
+      <div class="fkey-detail-grid">
+        <div>
+          <div class="fkey-h">触发链路 · 拆解</div>
+          <ol>${stageHtml}</ol>
+        </div>
+        <div>
+          <div class="fkey-h">监控指标</div>
+          <ul class="fkey-mon">${monHtml}</ul>
+        </div>
+      </div>
+    </td>`;
+    return tr;
+  }
+})();
+</script>
+
 </body>
 </html>
