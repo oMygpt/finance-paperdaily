@@ -1,370 +1,2407 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>全球财经日报 · 2026-04-29</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全球财经日报 · 2026 年 04 月 29 日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#1a1a1a; --ink-soft:#555; --paper:#fafaf7; --hair:#d8d4c8;
-    --accent:#8b1a12; --up:#b22222; --down:#0e6b3a;
+  :root {
+    --paper:        #f6f1e7;
+    --paper-2:      #efe8d9;
+    --ink:          #141311;
+    --ink-2:        #2a2621;
+    --ink-soft:     #4a433a;
+    --muted:        #7a6f60;
+    --rule:         #1a1815;
+    --hair:         #c9bea8;
+    --hair-2:       #ddd3bd;
+    --accent:       #8b1a12;       /* ink red */
+    --accent-soft:  #f0d9cf;
+    --up:           #8b1a12;       /* red = up (A-share convention) */
+    --down:         #1f5a34;
+    --flat:         #7a6f60;
+    --warn:         #8a5a1c;
+    --warn-soft:    #f3e4c4;
+    --chip:         #e8dfc9;
   }
-  *{box-sizing:border-box}
-  body{
-    font-family:"Songti SC","Noto Serif SC",Georgia,serif;
-    background:var(--paper); color:var(--ink); line-height:1.65;
-    max-width:1080px; margin:0 auto; padding:36px 24px; font-size:15px;
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", "Source Han Serif SC", "Songti SC", Georgia, serif;
+    font-size: 15px;
+    line-height: 1.55;
+    font-feature-settings: "kern", "liga", "onum", "pnum", "palt";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    text-spacing-trim: space-first;
   }
-  .masthead{
-    border-top:3px double var(--ink); border-bottom:3px double var(--ink);
-    padding:18px 0 14px; margin-bottom:18px; text-align:center;
+  .mono, code, .num {
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font-feature-settings: "tnum", "zero";
   }
-  .masthead h1{font-size:38px; margin:0 0 4px; letter-spacing:.05em; font-weight:900}
-  .masthead .sub{font-size:13px; color:var(--ink-soft); letter-spacing:.04em}
-  .folio{
-    display:flex; justify-content:space-between; font-size:12.5px;
-    color:var(--ink-soft); border-bottom:1px solid var(--hair); padding-bottom:8px; margin-bottom:18px;
+  .ui { font-family: "Inter", -apple-system, system-ui, sans-serif; }
+
+  /* ------------- page chrome ------------- */
+  .sheet {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 32px 40px 80px;
+    background: var(--paper);
+    background-image:
+      radial-gradient(rgba(30,25,20,0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
   }
-  h2{
-    font-size:21px; border-bottom:2px solid var(--ink); padding-bottom:4px;
-    margin:32px 0 16px; font-weight:800;
+
+  /* masthead */
+  .masthead {
+    border-top: 3px double var(--rule);
+    border-bottom: 3px double var(--rule);
+    padding: 14px 0 12px;
+    margin-bottom: 4px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 24px;
   }
-  h2 em{font-style:normal; font-weight:400; font-size:13px; color:var(--ink-soft); margin-left:8px}
-  h3{font-size:16px; margin:22px 0 10px; font-weight:800}
-  h4{font-size:15px; margin:16px 0 8px; font-weight:700}
-  p{margin:8px 0; text-align:justify; text-justify:inter-ideograph}
-  .splash{
-    border:1px solid var(--hair); padding:18px 22px; background:#fff;
-    margin:0 0 20px; border-left:5px solid var(--accent);
+  .masthead-left, .masthead-right {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.5;
   }
-  .splash .kicker{
-    font-size:11.5px; letter-spacing:.18em; color:var(--accent);
-    text-transform:uppercase; margin-bottom:6px; font-weight:700;
+  .masthead-right { text-align: right; }
+  .masthead-left .row, .masthead-right .row { display: block; }
+  .masthead-left .k { color: var(--muted); margin-right: 6px; }
+  .nameplate {
+    text-align: center;
+    padding: 0 8px;
   }
-  .splash .hed{font-size:24px; margin:6px 0 10px; line-height:1.35; font-weight:900}
-  .splash .deck{font-size:14.5px; color:var(--ink-soft)}
-  .splash .inval{
-    font-size:13px; margin-top:12px; padding:8px 12px;
-    background:rgba(139,26,18,0.05); border-left:3px solid var(--accent);
+  .nameplate .title {
+    font-family: "Source Serif 4", "Source Han Serif SC", serif;
+    font-weight: 800;
+    font-size: 58px;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-variation-settings: "opsz" 60;
+    margin: 0;
   }
-  .glance{margin:14px 0 0; padding:12px 18px; background:#f3efe2; border-radius:3px}
-  .glance ol{margin:0; padding-left:22px}
-  .glance li{margin:6px 0}
-  table{
-    width:100%; border-collapse:collapse; margin:10px 0 18px;
-    font-size:13.5px; font-feature-settings:"tnum";
+  .nameplate .subtitle {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 10px;
   }
-  th,td{padding:6px 10px; border-bottom:1px solid var(--hair); text-align:left}
-  th{background:#efeadb; font-weight:700; font-size:12.5px}
-  td.num{text-align:right; font-variant-numeric:tabular-nums}
-  td.up{color:var(--up); font-weight:700; text-align:right}
-  td.down{color:var(--down); font-weight:700; text-align:right}
-  .grouphead td{background:#f6f1de; font-weight:700; font-size:13px; border-top:2px solid var(--ink)}
-  article.event{
-    border-left:3px solid var(--hair); padding:10px 16px; margin:14px 0;
-    background:#fff;
+  .folio {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 0 0;
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
   }
-  article.event.flag{border-left-color:var(--accent)}
-  article.event h3{margin:0 0 6px; font-size:15.5px}
-  article.event .src{font-size:12px; color:var(--ink-soft); margin-top:6px}
-  .box{border:1px solid var(--hair); padding:14px 18px; margin:14px 0; background:#fff}
-  .box.red{border-left:5px solid var(--accent); background:#fff8f6}
-  .box.warn{border-left:5px solid #c08a1a; background:#fff8e8}
-  .box .bk{font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:6px}
-  .silence{
-    display:flex; gap:14px; padding:12px 16px; background:#f3efe2;
-    border-left:3px solid #6b6b6b; margin:14px 0;
+  .folio .dash { height: 1px; background: var(--rule); }
+
+  /* ticker strip */
+  .ticker {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 0;
+    margin: 10px 0 28px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    overflow: hidden;
   }
-  .silence .flag{font-size:22px; color:var(--ink-soft)}
-  .silence .sk{font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#6b6b6b; font-weight:700; margin-bottom:4px}
-  .regions{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0}
-  .regions .reg{border:1px solid var(--hair); padding:14px; background:#fff}
-  .regions .reg h4{margin:0 0 6px; font-size:14px; color:var(--accent)}
-  .regions .reg p{font-size:13.5px; margin:0}
-  .alloc{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0}
-  .alloc .item{border:1px solid var(--hair); padding:12px 14px; background:#fff}
-  .alloc .item .ihed{font-weight:700; margin-bottom:4px; color:var(--accent); font-size:13.5px}
-  .alloc .item p{font-size:13.5px; margin:0}
-  details.appx{
-    border:1px solid var(--hair); padding:6px 14px; margin:10px 0;
-    background:#fff;
+  .ticker .cell {
+    padding: 2px 14px;
+    border-right: 1px solid var(--hair);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
   }
-  details.appx summary{
-    cursor:pointer; font-weight:700; font-size:13.5px; padding:6px 0;
+  .ticker .cell:last-child { border-right: none; }
+  .ticker .sym, .ticker .val, .ticker .chg {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  details.appx[open] summary::after{content:" [收起]"; color:var(--ink-soft); font-weight:400}
-  details.appx:not([open]) summary::after{content:" [展开]"; color:var(--ink-soft); font-weight:400}
-  details.appx ul{padding-left:18px; font-size:13px}
-  details.appx li{margin:4px 0}
-  .footer{
-    margin-top:36px; padding-top:14px; border-top:1px solid var(--hair);
-    font-size:12px; color:var(--ink-soft); text-align:center; font-style:italic;
+  .ticker .sym {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
-  .div-event{padding:10px 14px; border:1px solid var(--hair); margin:10px 0; background:#fff; font-size:13.5px}
-  .div-event h4{margin:0 0 6px; color:var(--accent); font-size:14px}
-  .div-event ul{margin:6px 0 0; padding-left:18px}
-  .div-event li{margin:3px 0}
-  .imp{font-weight:700; padding:2px 8px; border-radius:2px; font-size:12px; display:inline-block}
-  .imp-h{background:#8b1a12; color:#fff}
-  .imp-mh{background:#c98010; color:#fff}
-  .imp-m{background:#caa75a; color:#fff}
+  .ticker .val {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    font-weight: 600;
+    font-feature-settings: "tnum";
+    color: var(--ink);
+  }
+  .ticker .chg {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-feature-settings: "tnum";
+  }
+
+  /* ------------- opening splash · hero 8:4 grid + full-width byline meta ------------- */
+  .splash {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .splash-hero {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 36px;
+    align-items: start;
+    margin-bottom: 18px;
+  }
+  .splash-hero > .hero-left  { grid-column: span 8; min-width: 0; }
+  .splash-hero > .hero-right { grid-column: span 4; min-width: 0; }
+  .splash .kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .splash h1.hed {
+    font-family: "Source Serif 4", serif;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    font-variation-settings: "opsz" 60;
+    text-wrap: balance;
+  }
+  .splash .deck {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.42;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    max-width: 78ch;
+    text-wrap: pretty;
+  }
+  .splash .byline {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 6px 0 0;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .splash .byline b { color: var(--ink); font-weight: 600; }
+
+  /* right-column brief · independent slab (accent left bar, no card frame) */
+  .hero-right {
+    border: none;
+    background: transparent;
+    border-left: 4px solid var(--accent);
+    padding: 0 0 4px 18px;
+    align-self: start;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .rail-kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 800;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .rail h3 {
+    font-family: "Source Serif 4", serif;
+    font-size: 20px;
+    margin: 0 0 12px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--rule);
+  }
+  .rail ol {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: rail;
+  }
+  .rail ol li {
+    counter-increment: rail;
+    position: relative;
+    padding: 0 0 0 30px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .rail ol li:last-child { margin-bottom: 0; }
+  .rail ol li::before {
+    content: counter(rail, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 2px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .rail ol li b { color: var(--ink); font-weight: 700; display: block; margin-bottom: 3px; font-size: 13.5px; }
+
+  /* ------------- section header ------------- */
+  .section {
+    border-top: 3px double var(--rule);
+    padding-top: 18px;
+    margin-top: 40px;
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .section-head .num {
+    font-family: "Source Serif 4", serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--accent);
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.02em;
+  }
+  .section-head h2 {
+    font-family: "Source Serif 4", serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .section-head h2 em {
+    display: block;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .section-head .meta {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ------------- table of prices ------------- */
+  .prices {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .prices thead th {
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 6px 10px 4px;
+    border-bottom: 1.5px solid var(--rule);
+    border-top: 1.5px solid var(--rule);
+  }
+  .prices thead th.r { text-align: right; }
+  .prices tbody td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: baseline;
+  }
+  .prices tbody tr:hover { background: rgba(139, 26, 18, 0.04); }
+  .prices td.name { font-weight: 600; color: var(--ink); }
+  .prices td.num { font-family: "JetBrains Mono", monospace; text-align: right; font-feature-settings: "tnum"; font-size: 12.5px; }
+  .prices td.note { color: var(--muted); font-size: 12.5px; font-style: italic; }
+  .prices td.note b { color: var(--ink); font-style: normal; }
+  .up { color: var(--up); font-weight: 600; }
+  .down { color: var(--down); font-weight: 600; }
+  .flat { color: var(--flat); }
+  .prices tbody tr.group-lead td { border-top: 1.5px solid var(--rule); }
+  .prices .grouphead td {
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 10px 4px;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  /* ------------- multi-column story ------------- */
+  .story {
+    column-count: 3;
+    column-gap: 26px;
+    column-rule: 1px solid var(--hair);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 8px;
+  }
+  .story.cols-2 { column-count: 2; }
+  .story p { margin: 0 0 10px; text-indent: 1.2em; }
+  .story p.no-indent, .story > h3 + p, .story > .subhed + p { text-indent: 0; }
+  .story strong { color: var(--ink); font-weight: 600; }
+  .story .subhed {
+    font-family: "Source Serif 4", serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin: 14px 0 4px;
+    text-transform: none;
+    break-after: avoid;
+  }
+  .story .subhed.smallcaps {
+    font-family: "Inter", sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 14px 0 6px;
+  }
+
+  /* article slot (big numbered) */
+  .article {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .article:first-of-type { border-top: none; padding-top: 0; }
+  .article .artnum {
+    font-family: "Source Serif 4", serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--accent);
+    font-variation-settings: "opsz" 60;
+  }
+  .article h3.arthed {
+    font-family: "Source Serif 4", serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .article .artkicker {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  /* kicker → hed → deck → body 的标准报章层级 */
+  .article p.artdeck {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15.5px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 58ch;
+    text-wrap: pretty;
+    font-variation-settings: "opsz" 32;
+  }
+  .article.flagged .artnum { color: var(--accent); }
+  .article.warnline { border-left: 3px solid var(--warn); padding-left: 16px; margin-left: -16px; }
+  .article.redline { border-left: 3px solid var(--accent); padding-left: 16px; margin-left: -16px; }
+
+  /* pull quote — 上下双规矩 + ink-red 引号 */
+  .pullquote {
+    border-top: 3px double var(--rule);
+    border-bottom: 3px double var(--rule);
+    padding: 18px 0 16px;
+    margin: 22px 0 6px;
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.28;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: balance;
+    font-variation-settings: "opsz" 40;
+  }
+  .pullquote::before { content: "\201C"; color: var(--accent); font-family: "Source Serif 4", serif; font-style: normal; font-weight: 800; font-size: 48px; line-height: 0; vertical-align: -18px; margin-right: 4px; }
+  .pullquote::after  { content: "\201D"; color: var(--accent); font-family: "Source Serif 4", serif; font-style: normal; font-weight: 800; font-size: 48px; line-height: 0; vertical-align: -18px; margin-left: 2px; }
+  .src {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+  .pullquote + .src {
+    margin-top: -12px;
+  }
+
+  /* marginalia sidebar */
+  .with-aside {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 28px;
+    align-items: start;
+  }
+  aside.aside {
+    border-top: 2px solid var(--rule);
+    padding: 10px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    min-width: 0;                 /* allow aside to shrink to its 260px column */
+    overflow-wrap: anywhere;
+  }
+  aside.aside .aside-kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  aside.aside h4 { font-size: 14px; margin: 4px 0 8px; font-weight: 700; line-height: 1.2; }
+  aside.aside p { margin: 0 0 8px; }
+  aside.aside dl { margin: 6px 0 0; font-size: 11.5px; }
+  /* dt / dd stacked vertically: dt (日期/标签) on top, dd (说明) underneath · 长句 dd 不再被挤到 auto 列 */
+  aside.aside dl div { padding: 6px 0; border-top: 1px solid var(--hair); }
+  aside.aside dt { color: var(--ink-2); font-weight: 600; font-family: "Source Serif 4", serif; font-size: 12px; line-height: 1.35; margin-bottom: 2px; }
+  aside.aside dd { margin: 0; font-family: "Source Serif 4", serif; font-size: 11.5px; font-weight: 400; color: var(--muted); line-height: 1.45; }
+
+  /* callouts / boxes */
+  .box {
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    margin: 14px 0;
+    background: var(--paper-2);
+  }
+  .box.red { border-left: 4px solid var(--accent); }
+  .box.warn { border-left: 4px solid var(--warn); background: var(--warn-soft); }
+  /* .box.audit — §II 末尾的编辑复核块（由 FOURTH_PARTY_AUDIT 投影）
+     视觉上需要与 .box.red (Core tension) / .box.warn (Corrective scan) 区分：
+     用深灰左条 + 纸色背景，表示"编辑复核 / 冷眼旁观"，非"主张 / 告警"。 */
+  .box.audit {
+    border-left: 4px solid var(--ink);
+    background: var(--paper-2);
+  }
+  .box.audit .box-kicker { color: var(--ink-soft); letter-spacing: 0.18em; }
+  .audit-review {
+    padding-top: 18px;
+  }
+  .audit-review h3 {
+    font-size: 24px;
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+    margin-bottom: 12px;
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .audit-review .audit-lead {
+    font-family: "Source Serif 4", serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+    max-width: 72ch;
+    text-wrap: pretty;
+  }
+  .audit-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) 320px;
+    gap: 28px;
+    align-items: start;
+  }
+  .audit-main {
+    min-width: 0;
+  }
+  .audit-block {
+    border-top: 1px solid var(--hair);
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+  .audit-block:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .audit-kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .audit-kicker.spaced {
+    margin-top: 18px;
+  }
+  .audit-list {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .audit-list li {
+    margin: 0 0 12px;
+    padding-left: 4px;
+    font-size: 13.5px;
+    line-height: 1.58;
+    color: var(--ink-2);
+  }
+  .audit-list li:last-child {
+    margin-bottom: 0;
+  }
+  .audit-list li b {
+    color: var(--ink);
+  }
+  .audit-side {
+    border-left: 1px solid var(--hair);
+    padding-left: 20px;
+    min-width: 0;
+  }
+  .audit-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .audit-card {
+    border: 1px solid var(--hair);
+    background: rgba(255, 252, 244, 0.55);
+    padding: 12px 12px 10px;
+  }
+  .audit-card-label {
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .audit-card-value {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .audit-card-note {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .audit-side dl {
+    margin: 0;
+    font-size: 12px;
+  }
+  .audit-side dl div {
+    padding: 8px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .audit-side dt {
+    color: var(--ink);
+    font-weight: 700;
+    font-family: "Source Serif 4", serif;
+    font-size: 12.5px;
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+  .audit-side dd {
+    margin: 0;
+    font-size: 11.8px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .audit-side-note {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .audit-verdict {
+    border-top: 1.5px solid var(--rule);
+    margin-top: 18px;
+    padding-top: 12px;
+  }
+  .audit-verdict p {
+    margin: 0;
+  }
+  .audit-source {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--hair);
+    padding-top: 6px;
+    margin-top: 14px;
+  }
+  .audit-source b {
+    color: var(--ink);
+  }
+  .box .box-kicker {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .box h3 { font-size: 18px; margin: 0 0 10px; font-weight: 700; line-height: 1.2; }
+  .box p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.55; }
+  .box p:last-child { margin-bottom: 0; }
+
+  /* chips / tags */
+  .chip {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 1px 7px;
+    background: var(--chip);
+    color: var(--ink-2);
+    border-radius: 2px;
+    margin-right: 4px;
+    line-height: 1.6;
+    vertical-align: 1px;
+  }
+  .chip.cus { background: #dde6f0; color: #1f3a5a; }
+  .chip.cuk { background: #dfe6d6; color: #2d4a1d; }
+  .chip.cn  { background: #efd9c6; color: #7a2f10; }
+  .chip.jp  { background: #eadada; color: #6a2222; }
+  .chip.fr  { background: #dcd7ea; color: #2d2260; }
+  .chip.t1  { background: var(--accent); color: #fff8ef; }
+  .chip.t2  { background: var(--ink-2); color: var(--paper); }
+  /* source-confidence chips（就近置信） */
+  .chip.official { background: #d8e8d4; color: #244a1f; }
+  .chip.wire     { background: #e3e1d4; color: #4a4331; }
+  .chip.pw       { background: #efe0d0; color: #6a4512; }
+  .chip.cmt      { background: #e4dee8; color: #3d2a55; }
+  .chip.single   { background: #ecd4c9; color: #6b2418; }
+  .chip.unv      { background: #f3e4c4; color: #7a4b10; }
+  .chip.blocked  { background: #e2d0d0; color: #642020; }
+
+  /* region cards */
+  .regions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1.5px solid var(--rule);
+    border-bottom: 1.5px solid var(--rule);
+  }
+  .region {
+    padding: 16px 18px 18px;
+    border-right: 1px solid var(--hair);
+    min-width: 0;                 /* allow grid child to shrink below min-content */
+  }
+  .region:last-child { border-right: none; }
+  .region-head {
+    display: flex;
+    flex-wrap: wrap;              /* let rdelta drop to next line on narrow cards */
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 10px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .region-head .rname {
+    font-family: "Source Serif 4", serif;
+    font-size: 17px;              /* was 20px · narrower 1/5 cards need tighter title */
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    overflow-wrap: anywhere;      /* CJK title can wrap even without spaces */
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .region-head .rdelta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+  .region .rdeck {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: -4px 0 8px;
+    line-height: 1.35;
+  }
+  .region p {
+    font-size: 12.5px;
+    line-height: 1.55;
+    margin: 0 0 8px;
+    color: var(--ink-2);
+  }
+  .region p strong { color: var(--ink); }
+
+  /* tail table */
+  .tail {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .tail thead th {
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-top: 1.5px solid var(--rule);
+    border-bottom: 1.5px solid var(--rule);
+    vertical-align: bottom;
+  }
+  .tail tbody td {
+    padding: 10px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  .tail td.risk { font-weight: 600; width: 22%; }
+  .tail td.imp { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; width: 8%; white-space: nowrap;}
+  .tail .imp-h { color: var(--accent); }
+  .tail .imp-mh { color: #a04a1a; }
+  .tail .imp-m { color: var(--warn); }
+  .tail .imp-l { color: var(--down); }
+  .tail td.mon { color: var(--muted); font-size: 11.5px; font-family: "JetBrains Mono", monospace; width: 24%; }
+
+  /* allocation list */
+  .alloc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .alloc .item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .alloc .item:nth-last-child(-n+2) { border-bottom: none; }
+  .alloc .ihed {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .alloc .ihed .i-n {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+  .alloc .ihed .i-t {
+    font-family: "Source Serif 4", serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .alloc .i-deck {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .alloc .i-deck strong { color: var(--ink); }
+
+  /* silence banner */
+  .silence {
+    border-top: 2px solid var(--warn);
+    border-bottom: 2px solid var(--warn);
+    background: var(--warn-soft);
+    padding: 14px 18px;
+    margin: 18px 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .silence .flag {
+    font-family: "Source Serif 4", serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--warn);
+    line-height: 1;
+  }
+  .silence .sk {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warn);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .silence p { margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+  .silence p strong { color: var(--ink); }
+
+  /* divergence events */
+  .div-event {
+    padding: 14px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .div-event .dk {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .div-event h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .div-event .d-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+    position: relative;
+  }
+  .div-event .d-body::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    bottom: 6px;
+    border-left: 1px dotted var(--hair);
+  }
+  .div-event .d-body p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--hair);
+    color: var(--ink-2);
+  }
+  .div-event .d-body p:nth-last-child(-n+2) { border-bottom: none; }
+  .div-event .d-summary {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: var(--paper-2);
+    border-left: 3px solid var(--accent);
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .div-event .d-summary strong { color: var(--ink); }
+
+  /* appendix */
+  details.appx {
+    border-top: 1px solid var(--rule);
+    padding: 10px 0 4px;
+  }
+  details.appx > summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+  }
+  details.appx > summary::-webkit-details-marker { display: none; }
+  details.appx > summary::after {
+    content: "[+] 展开";
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+  details.appx[open] > summary::after { content: "[–] 收起"; }
+  details.appx .appx-body { padding: 8px 0 16px; }
+  details.appx .appx-body table { font-size: 12px; width: 100%; border-collapse: collapse; }
+  details.appx .appx-body th {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1.5px solid var(--rule);
+    font-family: "Inter", sans-serif;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  details.appx .appx-body td { padding: 6px 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  details.appx .appx-body td.nid { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--accent); white-space: nowrap; }
+  details.appx ul { padding-left: 20px; }
+  details.appx li { font-size: 12.5px; margin: 4px 0; }
+  code {
+    background: var(--chip);
+    padding: 1px 5px;
+    font-size: 11.5px;
+    border-radius: 2px;
+    color: var(--ink-2);
+  }
+
+  /* footer */
+  footer.colophon {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 3px double var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    align-items: center;
+  }
+  footer.colophon .mid { font-family: "Source Serif 4", serif; letter-spacing: 0.02em; text-transform: none; font-style: italic; font-size: 13px; color: var(--ink-2); }
+  footer.colophon .r { text-align: right; }
+
+  /* ------------- broadsheet typography · 断行 / 断句 -------------
+     规则源：rules/typography.md（读者版排版契约）。
+     作用面：所有"阅读面"段落（story / region / box / silence /
+     alloc deck / aside / rail list / divergence summary & body）。
+     **不再使用 text-align: justify** —— CJK 正文中插入英文 / 数字 token 后，浏览器
+     的 justify 算法会把英文词距与中英边界拉得过宽，产生"海鸥式"稀疏词距，破坏阅读
+     连贯感。读者样张实测（2026-04-21 焦点解读段）确认此问题，改为左对齐（ragged
+     right），仅保留 hyphens / orphan / widow / 禁则规则，头版感由段首字号 +
+     字体本身承担。
+  */
+  .story p,
+  .region p,
+  .box p,
+  .alloc .i-deck,
+  .silence p,
+  aside.aside p,
+  .rail ol li,
+  .div-event .d-summary,
+  .div-event .d-body p {
+    text-align: left;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: break-word;
+    hanging-punctuation: first allow-end last;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 6 3 2;
+    orphans: 2;
+    widows: 2;
+  }
+  .story {
+    orphans: 3;
+    widows: 3;
+  }
+  :lang(en) {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    word-break: normal;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .splash-hero { grid-template-columns: 1fr; row-gap: 20px; }
+    .splash-hero > .hero-left,
+    .splash-hero > .hero-right { grid-column: 1 / -1; }
+    .ticker { grid-template-columns: repeat(3, 1fr); }
+    .ticker .cell:nth-child(3n) { border-right: none; }
+    .regions { grid-template-columns: repeat(2, 1fr); }
+    .regions .region:nth-child(2n) { border-right: none; }
+    .with-aside { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: 1fr; gap: 20px; }
+    .audit-side {
+      border-left: none;
+      border-top: 1px solid var(--hair);
+      padding-left: 0;
+      padding-top: 16px;
+    }
+    .alloc { grid-template-columns: 1fr; }
+    .story { column-count: 2; }
+    .div-event .d-body { grid-template-columns: 1fr; }
+    .div-event .d-body::before { display: none; }
+  }
+  @media (max-width: 680px) {
+    .sheet { padding: 20px 16px 60px; }
+    .nameplate .title { font-size: 34px; }
+    .masthead { grid-template-columns: 1fr; text-align: center; }
+    .masthead-left, .masthead-right { text-align: center; }
+    .ticker { grid-template-columns: repeat(2, 1fr); }
+    .ticker .cell:nth-child(2n) { border-right: none; }
+    .splash h1.hed { font-size: 32px; letter-spacing: -0.015em; }
+    .splash .deck { font-size: 15px; }
+    .story { column-count: 1; }
+    .regions { grid-template-columns: 1fr; border-right: none; }
+    .regions .region { border-right: none; border-bottom: 1px solid var(--hair); }
+    .section-head { grid-template-columns: auto 1fr; }
+    .section-head .meta { display: none; }
+    .section-head .num { font-size: 38px; }
+    .section-head h2 { font-size: 19px; }
+    .article { grid-template-columns: 1fr; gap: 6px; }
+    .article .artnum { font-size: 28px; }
+    .audit-review h3 { font-size: 20px; }
+    .audit-review .audit-lead { font-size: 14.5px; }
+    .audit-card-value { font-size: 20px; }
+    .alloc { grid-template-columns: 1fr; }
+  }
+
+  /* ----------- iOS / narrow-phone guardrails ----------- */
+  /* mobile_patch BEGIN v2 */
+  /* mobile_patch v2 */
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { overflow-x: hidden; overflow-wrap: break-word; }
+  /* .story.cols-2 的特异性高于 .story 的单列 @680 覆盖，这里显式补齐 */
+  @media (max-width: 680px) {
+    .story.cols-2 { column-count: 1; }
+  }
+  @media (max-width: 480px) {
+    .sheet { padding: 16px 12px 40px; }
+    .nameplate .title { font-size: 28px; }
+    .nameplate .subtitle { font-size: 9px; letter-spacing: 0.24em; }
+    .ticker .val { font-size: 13px; }
+    .ticker .chg { font-size: 9.5px; }
+    .splash h1.hed { font-size: 26px; }
+    .section-head .num { font-size: 30px; }
+    .section-head h2 { font-size: 17px; }
+    /* §II 核心驱动：article 内部宽度与负 margin 对齐到 sheet 左 padding */
+    .article { padding: 14px 0; gap: 4px; }
+    .article .artnum { font-size: 26px; }
+    .article h3.arthed { font-size: 19px; line-height: 1.2; }
+    .article .artkicker { font-size: 9.5px; letter-spacing: 0.16em; }
+    .article p.artdeck { font-size: 14px; line-height: 1.45; }
+    .article.redline, .article.warnline { margin-left: -12px; padding-left: 12px; }
+    .story p { font-size: 14.5px; line-height: 1.65; text-indent: 0; }
+    .story .subhed { font-size: 13px; }
+    .pullquote { font-size: 18px; padding: 14px 0 12px; margin: 18px 0 6px; }
+    .pullquote::before, .pullquote::after { font-size: 36px; }
+    .prices, .tail { font-size: 12px; }
+    .prices thead th, .tail thead th { padding: 5px 6px; font-size: 9px; letter-spacing: 0.12em; }
+    .prices tbody td, .tail tbody td { padding: 5px 6px; }
+    .prices td.num, .prices td.note { font-size: 11.5px; }
+    details.appx .appx-body table { font-size: 11px; }
+    details.appx .appx-body td, details.appx .appx-body th { padding: 4px 6px; }
+  }
+  /* mobile_patch END */
+
+  /* print */
+  @media print {
+    body { background: #fff; font-size: 10pt; }
+    .sheet { background: #fff; background-image: none; padding: 0; max-width: 100%; }
+    details.appx { break-inside: avoid; }
+    details.appx[open] > summary::after { display: none; }
+    .prices tbody tr:hover { background: transparent; }
+    /* 打印保留两端对齐与 orphan/widow；关闭 hanging-punctuation（部分打印引擎不兼容） */
+    .story p,
+    .region p,
+    .box p,
+    .alloc .i-deck,
+    .silence p,
+    aside.aside p,
+    .rail ol li,
+    .div-event .d-summary,
+    .div-event .d-body p {
+      hanging-punctuation: none;
+    }
+    .article, .box, .silence, .div-event, .region { break-inside: avoid; }
+    h1, h2, h3, h4 { break-after: avoid; }
+  }
 </style>
 </head>
 <body>
+<div class="sheet">
 
+<!-- ============================================================
+     MASTHEAD
+     规则：左上 卷号 + 收盘时间；中央 报头；右上 版次 + 地理
+============================================================ -->
 <div class="masthead">
-  <h1>全球财经日报</h1>
-  <div class="sub">卷六 · №&nbsp;008 · 星期三 · 盘前版 · 2026 年 04 月 29 日</div>
+  <div class="masthead-left">
+    <span class="row"><span class="k">卷</span>卷六 · №&nbsp;008</span>
+    <span class="row"><span class="k">收盘</span>2026 年 04 月 29 日 · 06:30 CST</span>
+  </div>
+  <div class="nameplate">
+    <div class="title">全球财经日报</div>
+    <div class="subtitle">全球市场与宏观 · 日度简报</div>
+  </div>
+  <div class="masthead-right">
+    <span class="row">星期三 · 盘前版</span>
+    <span class="row">北京 / 纽约 / 法兰克福 / 东京</span>
+  </div>
 </div>
-
 <div class="folio">
-  <span><b>数据截止</b>&nbsp;2026-04-29 06:30 CST · 美欧 / 商品 4/28 收盘 ｜ 亚洲 4/28 收盘 · 4/29 早盘前</span>
-  <span>北京 · 纽约 · 法兰克福 · 东京</span>
+  <span>数据截止 2026-04-29 06:30 CST</span>
+  <span class="dash"></span>
+  <span>六章 · 三附录</span>
 </div>
 
-<section class="splash">
-  <div class="kicker">焦点 · 长端利率与波动率反向同序</div>
-  <div class="hed">长端 57.4bp 与 VIX 17.83 反向同序裂口</div>
-  <p class="deck">今日盘前的全球宏观面同时承受两股反向力量：长端利率三轴硬化（美国 10Y-2Y 利差 57.4bp、英国 10 年期国债收益率重回 5%、德国 2027 预算 €200B 国防优先），与跨资产风险定价反向（VIX 周跌 8.56%、美元指数 98.60 在 98.80 阈下方第三日、金价/标普比值 0.6458 跌破 0.665 阈值）同步发生。日银中川顺子在 6 月任期到期前最后一次议息会上意外加入加息阵营、欧洲央行 4 月 30 日议息开窗即裁、欧元区银行 Q1 信贷标准明显紧缩 + 1 年期通胀预期跳升至 4%，三股力量推动反应函数提速候选成形；与此同时液化天然气船首次穿越霍尔木兹海峡、布伦特原油盘中破 $110 后收 $104.02 单日跌 3.89%，对伊朗风险溢价永久化叙事给出首条结构性反向证据。</p>
-  <div class="inval"><b>证伪条件：</b>5 个交易日内 10 年-2 年美债利差回落至 55bp 下方 且 VIX 单日上涨 ≥3 个点 → 长端独立扩散 + 风险定价反向"新机制"被否</div>
-  <div class="glance">
-    <ol>
-      <li>美国 10Y-2Y 利差 57.4bp 跨过 ≥55bp 第二阈，长端主动扩升级为美/英/德三轴同时序硬化</li>
-      <li>日银 6-3 鹰派持有，中川顺子卸任前最后一次议息票位转向加息至 1.0%</li>
-      <li>布伦特盘中破 $110 收 $104.02 单日 -3.89%，液化天然气船首次自冲突起穿越霍尔木兹海峡</li>
-    </ol>
+<!-- ============================================================
+     TICKER STRIP
+     规则：6 个代表性资产；涨用 .up（红），跌用 .down（绿）
+============================================================ -->
+<div class="ticker">
+  <div class="cell"><span class="sym">S&amp;P 500</span><span class="val">7,138.80</span><span class="chg down">▼ 0.49% · 1.06% w</span></div>
+  <div class="cell"><span class="sym">纳斯达克</span><span class="val">24,663.80</span><span class="chg down">▼ 0.90% · 1.66% w</span></div>
+  <div class="cell"><span class="sym">10Y UST</span><span class="val">4.3540%</span><span class="chg up">▲ 1.80bp · 6.20bp w</span></div>
+  <div class="cell"><span class="sym">Brent</span><span class="val">104.02</span><span class="chg down">▼ 3.89% · 5.63% w</span></div>
+  <div class="cell"><span class="sym">DXY</span><span class="val">98.60</span><span class="chg up">▲ 0.12% · 0.19% w</span></div>
+  <div class="cell"><span class="sym">USD/JPY</span><span class="val">159.57</span><span class="chg down">▼ 0.00% · 0.46% w</span></div>
+  <!-- 每 cell 示例：
+       <div class="cell"><span class="sym">S&amp;P 500</span><span class="val">7,126.06</span><span class="chg up">▲ 1.20% · +4.54% w</span></div>
+  -->
+</div>
+
+<!-- ============================================================
+     SPLASH / OPENER
+     规则：
+       ① .splash-hero：上部 12 栏 grid —— 左 8 栏 hero-left（kicker + hed + deck + 证伪），
+          右 4 栏 hero-right（今日速览 rail，独立 slab 样式）
+       ② .byline：横向 meta 条，跨整行置于 hero 之下 —— 数据 / 版次
+============================================================ -->
+<div class="splash">
+  <div class="splash-hero">
+    <div class="hero-left">
+      <div class="kicker">焦点 · 长端利率与波动率反向同序</div>
+      <h1 class="hed">长端 57.4 个基点与 VIX 17.83 反向同序裂口</h1>
+      <p class="deck">今日盘前的全球宏观面同时承受两股反向力量：长端利率三轴硬化（美国 10 年减 2 年利差 57.4 个基点跨过 ≥55 个基点第二阈、英国 10 年期国债收益率重回 5%、德国 2027 预算近 €200B 国防优先），与跨资产风险定价反向（VIX 17.83 周跌 8.56%、美元指数 98.60 在 98.80 阈下方第三日、金价/标普比值 0.6458 跌破 0.665 阈值）同步发生。日银 4/28 以 6-3 票鹰派持有 + 6 月任期到期的中川顺子意外加入加息阵营 + 经济展望将 2026 财年核心通胀预测从 1.9% 大幅上调至 2.8%、欧洲央行 4/30 议息开窗即裁、欧元区银行 Q1 信贷标准明显紧缩 + 1 年期通胀预期跳升至 4%，三股力量推动反应函数提速候选成形；与此同时液化天然气船首次穿越霍尔木兹海峡、布伦特原油盘中破 $110 后收 $104.02 单日跌 3.89%，对伊朗风险溢价永久化叙事给出首条结构性反向证据。</p>
+      <p class="splash-inval" style="font-size:12.5px; color:var(--ink-soft); margin:8px 0 0; padding:6px 10px; border-left:3px solid var(--accent); background:rgba(139,26,18,0.04);"><b>证伪条件：</b>5 个交易日内 10 年减 2 年美债利差回落至 55 个基点下方 + 同期 VIX 单日上涨 ≥3 个点 → 长端独立扩散 + 风险定价反向"新机制"被否</p>
+    </div>
+    <aside class="hero-right rail">
+      <span class="rail-kicker">今日速览</span>
+      <h3>三决议同周 + 三时点合议</h3>
+      <ol>
+        <li><b>美国 10 年-2 年利差 57.4 个基点跨过 ≥55 个基点第二阈</b>长端主动扩升级为美 / 英 / 德三轴跨大西洋同时序硬化；H-27-01 长端主动扩 W1 4 日窗第 2 日三/四锚已对（信用利差扩散度待补）</li>
+        <li><b>日银 6-3 鹰派持有 + 中川顺子意外加入加息</b>2026 财年核心通胀预测从 1.9% 上调至 2.8% + 罕见明确写中东，制度内嵌鹰派倾向硬化；USD/JPY 距 160 防线仅 43 个 pip</li>
+        <li><b>布伦特盘中破 $110 后收 $104.02 单日 -3.89%</b>液化天然气船首次自冲突起穿越霍尔木兹海峡，"战争风险永久溢价"叙事承压；首条结构性反向证据</li>
+        <li><b>欧洲央行 4/30 议息开窗即裁</b>欧元区银行 Q1 信贷紧缩 + 1 年期通胀预期跳升至 4% + 法国 4 月通胀预期 2.6%→3.0%；实体—预期—金融三层证据到位</li>
+        <li><b>跨资产风险定价反向异常</b>VIX 17.83 周 -8.56% + 美元指数 98.60 在 98.80 阈下方第 3 日 + 金价/标普 0.6458 跌破 0.665 阈值，市场把"三决议合议结果"作为基线情景定价</li>
+        <!-- 每条：<li><b>标题</b>一句话……</li> -->
+      </ol>
+    </aside>
+  </div>
+  <div class="byline">
+    <span><b>数据</b>&nbsp;截止 2026-04-29 06:30 CST（美/欧 · 04-28 收盘 ｜ 亚洲 · 04-29 早盘前）</span><span><b>版次</b>&nbsp;Issue №&nbsp;008 · 星期三 · 盘前版</span><span><b>选读</b>&nbsp;全文 12 分钟 ｜ 首屏 1 分钟</span>
+    <!-- 示例（禁止写 Phase X / Agent / 合议；必须显式跨时区时间口径）：
+         <span><b>数据</b>&nbsp;截止 06:30 CST（US/EU · M/D close ｜ Asia · M/D 早盘）</span>
+         <span><b>版次</b>&nbsp;Issue №NN · Sunday edition</span> -->
+  </div>
+</div>
+
+<!-- ============================================================
+     §I 市场总览
+     规则：prices 表；grouphead 分组；.up/.down 着色；.num 数字等宽
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">I</div>
+    <h2>市场总览<em>跨资产快照 · 2026 年 04 月 29 日 收盘口径</em></h2>
+    <div class="meta">Section I of VI<br>24 instruments · 4 blocs</div>
+  </div>
+
+  <table class="prices">
+    <thead>
+      <tr>
+        <th style="width: 24%">资产 Instrument</th>
+        <th class="r" style="width: 14%">收盘 Close</th>
+        <th class="r" style="width: 13%">日 Δ</th>
+        <th class="r" style="width: 13%">周 Δ</th>
+        <th style="width: 36%">备注 Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+            <tr class="grouphead"><td colspan="5">— 股指 · 大中华</td></tr>
+      <tr><td class="name">沪深 300</td><td class="num">4,758.21</td><td class="num down">▼ 0.27%</td><td class="num down">▼ 0.21%</td><td class="note">缩量震荡 · 节前内需叙事满负荷</td></tr>
+      <tr><td class="name">上证综指</td><td class="num">4,078.64</td><td class="num down">▼ 0.19%</td><td class="num down">▼ 0.16%</td><td class="note">指数</td></tr>
+      <tr><td class="name">深证成指</td><td class="num">14,830.46</td><td class="num down">▼ 1.10%</td><td class="num down">▼ 1.01%</td><td class="note">指数</td></tr>
+      <tr><td class="name">恒生指数</td><td class="num">25,679.78</td><td class="num down">▼ 0.95%</td><td class="num down">▼ 3.05%</td><td class="note">区域最弱 · 南下放量 · 周 -3.05%</td></tr>
+      <tr class="grouphead"><td colspan="5">— 股指 · 美国</td></tr>
+      <tr><td class="name">S&amp;P 500</td><td class="num">7,138.80</td><td class="num down">▼ 0.49%</td><td class="num up">▲ 1.06%</td><td class="note">板块分化下跌 · 能源 +1.38% / 半导体盘前杀跌</td></tr>
+      <tr><td class="name">道琼斯</td><td class="num">49,141.93</td><td class="num down">▼ 0.05%</td><td class="num down">▼ 0.02%</td><td class="note">指数</td></tr>
+      <tr><td class="name">纳斯达克</td><td class="num">24,663.80</td><td class="num down">▼ 0.90%</td><td class="num up">▲ 1.66%</td><td class="note">周 +1.66% · 半导体集体杀跌 7%-17%</td></tr>
+      <tr class="grouphead"><td colspan="5">— 股指 · 欧洲与日本</td></tr>
+      <tr><td class="name">FTSE 100</td><td class="num">10,332.79</td><td class="num up">▲ 0.11%</td><td class="num down">▼ 1.57%</td><td class="note">10Y 国债重回 5.0% · 短债偏好升</td></tr>
+      <tr><td class="name">DAX</td><td class="num">24,083.53</td><td class="num down">▼ 0.19%</td><td class="num down">▼ 1.37%</td><td class="note">周 -1.37% · 2027 预算近 €200B 国防优先</td></tr>
+      <tr><td class="name">CAC 40</td><td class="num">8,141.92</td><td class="num down">▼ 0.19%</td><td class="num down">▼ 2.27%</td><td class="note">周 -2.27% · 周内最弱 · 4 月通胀预期升 3.0%</td></tr>
+      <tr><td class="name">日经 225</td><td class="num">60,537.36</td><td class="num up">▲ 1.38%</td><td class="num up">▲ 2.91%</td><td class="note">突破 60,000 · 周 +2.91% · 估值-基本面背离</td></tr>
+      <tr class="grouphead"><td colspan="5">— 汇率 · 主要对</td></tr>
+      <tr><td class="name">USD/CNH</td><td class="num">6.8260</td><td class="num up">▲ 0.01%</td><td class="num ">—</td><td class="note">区间稳定 · 离岸 · 非中间价</td></tr>
+      <tr><td class="name">USD/JPY</td><td class="num">159.57</td><td class="num down">▼ 0.00%</td><td class="num up">▲ 0.46%</td><td class="note">距 160 防线 43 个 pip · 日银 6-3 鹰派持有</td></tr>
+      <tr><td class="name">EUR/USD</td><td class="num">1.1719</td><td class="num up">▲ 0.11%</td><td class="num down">▼ 0.55%</td><td class="note">周 -0.55% · 4/30 ECB 议息前</td></tr>
+      <tr><td class="name">美元指数 DXY</td><td class="num">98.60</td><td class="num up">▲ 0.12%</td><td class="num up">▲ 0.19%</td><td class="note">98.80 阈下方第 3 日 · 周 +0.19%</td></tr>
+      <tr class="grouphead"><td colspan="5">— 利率 · 主权曲线</td></tr>
+      <tr><td class="name">10Y 中债</td><td class="num">1.7654%</td><td class="num down">▼ 0.43bp</td><td class="num ">—</td><td class="note">中美利差扩大 · 政治局未提降准降息</td></tr>
+      <tr><td class="name">2Y UST</td><td class="num">3.7800%</td><td class="num up">▲ 0.00bp</td><td class="num up">▲ 6.00bp</td><td class="note">FRED vintage 04-27 滞后 1 日 · 4/30 复核</td></tr>
+      <tr><td class="name">10Y UST</td><td class="num">4.3540%</td><td class="num up">▲ 1.80bp</td><td class="num up">▲ 6.20bp</td><td class="note">周 +6.2 个基点 · 全曲线扩散</td></tr>
+      <tr><td class="name">VIX</td><td class="num">17.83</td><td class="num down">▼ 1.05%</td><td class="num down">▼ 8.56%</td><td class="note">周 -8.56% · 跨资产风险反向异常</td></tr>
+      <tr class="grouphead"><td colspan="5">— 商品</td></tr>
+      <tr><td class="name">WTI 原油</td><td class="num">99.47</td><td class="num up">▲ 3.22%</td><td class="num up">▲ 7.97%</td><td class="note">盘中破 $100 · 周 +7.97%</td></tr>
+      <tr><td class="name">Brent 原油</td><td class="num">104.02</td><td class="num down">▼ 3.89%</td><td class="num up">▲ 5.63%</td><td class="note">盘中触 $110 后回落 -5.5% · 风险溢价回吐候选</td></tr>
+      <tr><td class="name">黄金</td><td class="num">4,610.00</td><td class="num down">▼ 1.40%</td><td class="num down">▼ 1.88%</td><td class="note">周 -1.88% · 避险溢价回吐</td></tr>
+      <tr><td class="name">白银</td><td class="num">73.68</td><td class="num down">▼ 1.76%</td><td class="num down">▼ 3.57%</td><td class="note">跟随黄金 · 周 -3.57%</td></tr>
+      <tr><td class="name">铜</td><td class="num">5.9760</td><td class="num down">▼ 0.70%</td><td class="num down">▼ 0.42%</td><td class="note">铜/原油比 0.0574 区间中位 · 4/29 EOD W4 第 3 日终裁</td></tr>
+      <!-- 分组用：<tr class="grouphead"><td colspan="5">— Equities · Greater China</td></tr>
+           明细：<tr><td class="name">沪深 300</td><td class="num">4,728.67</td><td class="num down">−0.17%</td><td class="num up">+1.99%</td><td class="note">LPR 前观望</td></tr> -->
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================
+     §II 核心驱动事件
+     规则：3-5 个 article 块；前 2 条带 .redline.flagged；其余普通 article
+           每篇 article 含 artnum（①②③）+ artkicker（chip + 分类）+ arthed + story
+           pullquote 可选；若 §II 末尾已有编辑复核 lead，且 pullquote 仅复述同一句判断，则默认留空
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">II</div>
+    <h2>核心驱动事件<em>真正撼动当日盘面的事件</em></h2>
+    <div class="meta">5 篇头条 · 前 2 条重点事件</div>
+  </div>
+
+    <article class="article redline flagged">
+    <div class="artnum">①</div>
+    <div>
+      <div class="artkicker"><span class="chip cjp">日</span><span class="chip t1">核心源</span> · 货币政策</div>
+      <h3 class="arthed">日银 4/28 鹰派持有 + 中川意外加入加息</h3>
+      <p class="artdeck">6-3 维持利率 0.75% 不变 + 中川顺子（6 月任期到期）卸任前一票投鹰派 + 经济展望罕见明确写中东 + 2026 财年核心通胀预测从 1.9% 上调至 2.8%。</p>
+      <div class="story cols-2">
+        <p class="no-indent">日本央行 4 月 28 日以 6-3 票决定维持基准利率 0.75% 不变，但反对持有的董事增至 3 人（上次会议仅 1 人），其中 6 月任期到期的中川顺子意外加入加息阵营、提议加息至 1.0%。经济展望报告将 2026 财年核心通胀预测从 1.9% 大幅上调至 2.8%，同时下调增长至 0.5%，并罕见明确写出"必须特别关注未来中东局势对金融与外汇市场以及日本经济活动和物价的影响"。USD/JPY 盘中一度升至 158.99，距离触发干预的 160 大关仅 43 个基点。<br><br>彭博通讯把这一决议读为"鹰派持有"以阻止日元跌穿 160；中川"卸任前一票"投给鹰派立场被解读为信号意义大于经济条件，把内部裂口固化在记录上。日经平均 60,537 +1.38% 周 +2.91% 在同日突破 6 万，与 2026 财年 GDP 0.5% 的展望出现明显估值-基本面背离。AInvest 评论指出，6-7 月加息可能性升高，条件化在伊朗冲突缓解 + 外汇稳定。</p>
+        <p class="subhed smallcaps">来源</p>
+        <p class="no-indent" style="font-size:12.5px; color:var(--ink-soft);">日·日経新闻 + 日·Bloomberg + 日·MUFG Research + 日·AInvest</p>
+      </div>
+    </div>
+  </article>
+  <article class="article redline flagged">
+    <div class="artnum">②</div>
+    <div>
+      <div class="artkicker"><span class="chip cus">美</span><span class="chip cuk">英</span><span class="chip cfr">法</span><span class="chip t1">核心源</span> · 利率结构</div>
+      <h3 class="arthed">长端利率三轴跨大西洋同时序硬化</h3>
+      <p class="artdeck">美国 10-2Y 利差 57.4 个基点 + 英国 10Y Gilt 5% + 德国 2027 预算近 €200B 国防优先 = 长端主动扩升级为跨大西洋三轴。</p>
+      <div class="story cols-2">
+        <p class="no-indent">美国 10 年减 2 年国债利差 4 月 28 日扩至 57.4 个基点，跨过 ≥55 个基点第二阈，2 年期维持 3.78%、10 年期升至 4.354%（周升 6.20 个基点）。同日英国 10 年期国债收益率重回 5.0%、德国 2027 年预算草案拟发行近 €200B 新债 + 国防开支从 €82.7B 大幅上行成为支出优先项。这意味着"长端主动扩"叙事不再局限于美国单一节点，而是升级为美 / 英 / 德三轴跨大西洋同时序硬化；驱动来自全曲线（油价 + 财政 + 政治锁），而非纯粹的熊市陡峭化。<br><br>Brent 收 $104.02 ≥ $100 与利差 ≥52 个基点已对锚两个核心阈值，第三锚 2 年期 ≥3.78% 同步达成边界，第四锚（信用利差扩散度 5 日均值 ≤5 个基点）数据当前缺失，是 4 月 30 日尾盘终裁的关键约束。10Y 周升 6.2 个基点 ≈ 2Y 周升 6.0 个基点 = 平移 level shift 而非纯粹熊市陡峭化，全曲线扩散来自财政 + 油价 + 政治锁三因子。</p>
+        <p class="subhed smallcaps">来源</p>
+        <p class="no-indent" style="font-size:12.5px; color:var(--ink-soft);">美·Bloomberg + 英·Bloomberg + 法·Les Echos + 公开数据</p>
+      </div>
+    </div>
+  </article>
+  <article class="article">
+    <div class="artnum">③</div>
+    <div>
+      <div class="artkicker"><span class="chip cuk">英</span><span class="chip cfr">法</span><span class="chip t1">核心源</span> · 欧元区路径</div>
+      <h3 class="arthed">欧洲央行 4/30 议息前数据组合验证鹰派被动加速</h3>
+      <p class="artdeck">欧元区银行 Q1 信贷标准明显紧缩 + 1 年期通胀预期跳升至 4% + 法国 4 月通胀预期 2.6%→3.0% = 实体-预期-金融三层证据到位。</p>
+      <div class="story cols-2">
+        <p class="no-indent">欧元区银行 2026 年第一季度信贷标准出现明显紧缩，企业贷款和消费贷款均现净紧缩，新贷款需求疲弱；同时欧洲央行消费者预期调查显示 3 月 1 年期通胀预期由 2.5% 跳升至 4.0%（+150 个基点）。法国 4 月通胀预期由 2.6% 升至 3.0%（+40 个基点）作为实体侧落地证据。伊朗战 + 能源价格上行被普遍认为是信贷紧缩的主驱动，构成对欧洲央行的滞胀冲击。<br><br>法国 Les Echos swap 市场已 priced 3 次加息（4 月 27 日落地）。综合实体侧（信贷紧缩）+ 预期侧（消费者通胀预期）+ 金融侧（swap priced 3）三层证据同时序到位，4 月 30 日欧洲央行议息日"开窗即裁"。本周判定节点为 4/30 议息后 €STR OIS 1 年远期 priced 加息次数 ≥2.5 次 = 真欧元区曲线 priced 鹰派；≤1.5 次 = 法国单集群曲线漂移 + 主判断证伪。</p>
+        <p class="subhed smallcaps">来源</p>
+        <p class="no-indent" style="font-size:12.5px; color:var(--ink-soft);">英·Reuters + 英·Investing.com + 法·Les Echos</p>
+      </div>
+    </div>
+  </article>
+  <article class="article">
+    <div class="artnum">④</div>
+    <div>
+      <div class="artkicker"><span class="chip cus">美</span><span class="chip cfr">法</span><span class="chip cn">中</span><span class="chip t1">核心源</span> · 地缘 / 油价</div>
+      <h3 class="arthed">伊朗谈判停滞 + 布伦特反向 + 液化天然气船首过霍尔木兹</h3>
+      <p class="artdeck">Brent 盘中破 $110 后单日 -3.89% + 液化天然气船首次自冲突起通行 = 战争风险永久溢价叙事承压。</p>
+      <div class="story cols-2">
+        <p class="no-indent">美伊和平谈判缺少进展、霍尔木兹海峡航运持续受阻，纽约原油期货 4 月 28 日早间突破 $100/桶；Brent 盘中触 $110 后回落，收 $104.02 单日 -3.89%、周 +5.63%。同日一艘载有液化天然气的甲烷船自冲突起首次穿越霍尔木兹海峡，构成"实物通行恢复"的物理事实层面信号。<br><br>此事在三层叙事上互不相容：信息侧维持紧张（美国主流持续报道谈判停滞）、价格侧出现 5.5% 单日回吐（法国独家披露）、物理事实侧给出实际通行恢复（多源独家披露），叙事张力第一次出现结构性反向证据，但能否成主线需观察 5 月 3 日是否再有第二艘船成功通行。Citi 同期把布伦特价格预测上调至 $150。</p>
+        <p class="subhed smallcaps">来源</p>
+        <p class="no-indent" style="font-size:12.5px; color:var(--ink-soft);">美·AP + 法·Le Figaro + 英·Tickmill + 中·人民日报</p>
+      </div>
+    </div>
+  </article>
+  <article class="article">
+    <div class="artnum">⑤</div>
+    <div>
+      <div class="artkicker"><span class="chip cn">中</span><span class="chip t1">核心源</span> · 中国宏观</div>
+      <h3 class="arthed">中央政治局未提降准降息 + 何立峰外资接见</h3>
+      <p class="artdeck">政治局 4/28 会议未提"降准降息" + 议程主轴换轨至国内技术 + 外资开放 + 实体硬实力四主轴。</p>
+      <div class="story cols-2">
+        <p class="no-indent">中央政治局 4 月 28 日会议分析当前经济形势和经济工作，并未提及"降准降息"，强调"用好用足宏观政策 / 增强货币政策前瞻性灵活性针对性 / 保持流动性充裕 / 保持人民币汇率在合理均衡水平上的基本稳定"；野村证券据此把原预测的二季度降准 50 个基点 + 四季度降息 10 个基点双双推迟到明年。<br><br>何立峰会见英国怡和控股执行主席凯瑟克，表示"十五五"时期中国坚定不移扩大高水平对外开放；同日国家网信办对剪映 / 即梦 AI 等平台采取约谈、责令改正等处置；一季度交通重大工程完成投资约 3300 亿元；全球最大汽车运输船"格罗唯视领航"广州交付。议程主轴从对外央行议题（同期话题缺席 6 日含周末）切换至国内技术 + 外资开放 + 实体硬实力四主轴 = 议程主动替换信号成立。</p>
+        <p class="subhed smallcaps">来源</p>
+        <p class="no-indent" style="font-size:12.5px; color:var(--ink-soft);">中·联合早报 + 中·人民日报 + 中·新华社</p>
+      </div>
+    </div>
+  </article>
+  <!-- 示例（kicker → hed → deck → 双栏 body）：
+    <article class="article redline flagged">
+      <div class="artnum">①</div>
+      <div>
+        <div class="artkicker"><span class="chip cus">美</span><span class="chip t1">CRITICAL</span> · Geopolitics</div>
+        <h3 class="arthed">标题……</h3>
+        <p class="artdeck">一句话斜体 deck，概括本文核心张力……</p>
+        <div class="story cols-2">
+          <p class="no-indent">首段……</p>
+          <p>续段……</p>
+          <p class="subhed smallcaps">对市场的影响</p>
+          <p class="no-indent">小结段……</p>
+        </div>
+      </div>
+    </article>
+  -->
+
+  
+  <!-- 可选；默认空串。仅当确有新增信息，且不与 §II 编辑复核 headline / lead 重复时才渲染：
+    <div class="pullquote">一句话金句……</div>
+    <div class="src">§II · 焦点判断</div>
+  -->
+
+  
+  <!-- FOURTH_PARTY_AUDIT 投影的读者版编辑复核块（技术来源仍是 Phase 3b 体外评审）
+       生成条件：archive/$MMDD/critique_codex.md 存在且 ≥ 2 KB, 且 reader_projection 内
+       FOURTH_PARTY_AUDIT 字段非 EMPTY
+       降级时本块留空, 同时 5 篇头条 · 前 2 条重点事件 去掉 ` · 末尾附编辑复核` 后缀（publish_gates #26）
+       结构示例:
+         <div class="src">§II · 编辑复核</div>
+         <div class="box audit audit-review">
+           <h3>被削弱的是一条前提，不是整个主叙事</h3>
+           <p class="audit-lead no-indent">一段 reader-facing 导语……</p>
+           <div class="audit-grid">
+             <div class="audit-main">
+               <div class="audit-block">
+                 <div class="audit-kicker">宜降权使用的三类证据</div>
+                 <ol class="audit-list"><li>……</li></ol>
+               </div>
+               <div class="audit-block">
+                 <div class="audit-kicker">编辑判断</div>
+                 <p class="no-indent">……</p>
+               </div>
+             </div>
+             <aside class="audit-side">
+               <div class="audit-kicker">关键订正</div>
+               <div class="audit-cards"><div class="audit-card">……</div></div>
+               <div class="audit-kicker spaced">下一期补测</div>
+               <dl><div><dt>……</dt><dd>……</dd></div></dl>
+             </aside>
+           </div>
+           <div class="audit-verdict"><p><b>编辑结论</b>：……</p></div>
+           <p class="audit-source"><b>来源</b>：基于当日盘面与原始新闻材料交叉核对</p>
+         </div>
+  -->
+</section>
+
+<!-- ============================================================
+     §III 宏观叙事与结构性信号
+     规则：
+       - Core thesis 永远展开（.box.red）
+       - 三个结构性信号 + 右侧"事件节奏"aside（.with-aside 布局）
+       - Corrective scan 非空则 .box.warn
+       - Cross-cluster divergence 非空则 div-event × N + 官媒沉默 .silence
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">III</div>
+    <h2>宏观叙事与结构性信号<em>可证伪缺口 · 反向信号 · 跨媒体视角差异</em></h2>
+    <div class="meta">Section III of VI<br>3 signals · 4 correctives · 3 divergences</div>
+  </div>
+
+  <div class="box red" style="border-left-width:6px;">
+    <div class="box-kicker">核心矛盾</div>
+    <h3>长端 57.4 个基点与 VIX 17.83 反向同序裂口</h3>
+    <p class="no-indent">机制层面，长端利率全曲线扩散同时跨大西洋（美国 10 年减 2 年利差 57.4 个基点 + 英国 10 年期国债收益率 5% + 德国 2027 预算近 €200B 国防优先），驱动来自油价 + 财政 + 政治锁三因子，而不是纯粹的熊市陡峭化。</p><p>数据层面，VIX 17.83 周跌 8.56% + 美元指数 98.60 在 98.80 阈下方第三日 + 金价/标普比值 0.6458 跌破 0.665 阈值 = 跨资产风险定价反向同步发生，市场已把"三决议合议结果"作为基线情景定价，三决议任一意外才会推动波动率抬升。</p><p>分歧层面，日银 6-3 鹰派持有 + 中川顺子"任期-票位"博弈 + 经济展望罕见明确写中东 = 把日银的鹰派偏向内嵌于制度而非单人裁量；欧洲央行同周 4 月 30 日议息前的实体—预期—金融三层数据组合验证欧洲鹰派被动加速。</p><p>叙事层面，伊朗谈判停滞 + 布伦特盘中破 $110 后回落 5.5% + 液化天然气船首过霍尔木兹三事件叙事张力，对"战争风险永久溢价"叙事给出首条结构性反向证据，与日银"硬锚地缘"形成对冲；如果实物通行成主线，日银鹰派持有条件失锚 + 欧洲央行主动剔除一次能源冲击逻辑回归 + 美联储油价权重部分释放，反而把"政治"权重推到主导位置。</p>
+    <p style="font-size:13px; color:var(--ink-soft); border-top:1px dashed var(--hair); padding-top:8px; margin-top:10px;"><b>证伪条件：</b>5 个交易日内 10 年减 2 年美债利差回落至 55 个基点下方 + 同期 VIX 单日上涨 ≥3 个点 → 长端独立扩散 + 风险定价反向"新机制"被否</p>
+  </div>
+
+  <div class="box red">
+    <div class="box-kicker">核心叙事</div>
+    <h3>central bank corrective vs term structure independent strengthen 双向裂口</h3>
+    <p class="no-indent">本期核心矛盾在 4/29 升格为机制层定价新范式：长端三轴利差 57.4 个基点全曲线扩散 + 英国 Gilt 5% + 德国 €200B 财政—军费第四链制度落地 strengthen，与日银中川加入加息阵营 + 伊朗实物通行反向触发 + VIX 周 -8.56% / 美元指数 98.60 / 金价/标普 0.6458 跨资产风险反向 三轴对冲。</p><p>4/29-30 双央行（FOMC + ECB）+ 双数据（耐用品 + Core PCE）+ 5/11 沃什提名 cloture 三时点合议结果决定该新机制定价范式是否硬化为 4-8 周持续主线。日银 6-7 月加息可能性升高（条件化在伊朗缓解 + 外汇稳定）+ 欧元区滞胀压力实体—预期—金融三层互证 + 美联储反应函数政治权重边际抬升 5pt（从 50/40/10 漂向 ≥45/40/15）= 反应函数提速候选差强度同时序。</p><p>外汇市场对欧洲央行被动加速尚未充分定价（欧元/美元 1.1719 周 -0.55% + 美元指数 98.60 周 +0.19%）是本期跨资产分歧最硬的反向辅证；信用利差扩散度 5 日均值数据缺位本身是观察信号，若 4/30 仍缺则降级为开放等待；MOVE 指数 + 做市商 gamma 敞口为下一期补测候选。</p>
+  </div>
+
+  <div class="with-aside">
+    <div>
+      <h3 style="font-size:18px; margin:22px 0 10px; border-bottom:1.5px solid var(--rule); padding-bottom:6px;">三个结构性信号</h3>
+      <div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">① 长端利率三轴跨大西洋同时序硬化升级为机制层定价范式</div>
+<p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">美国 10 年减 2 年利差 57.4 个基点跨过 ≥55 个基点第二阈 + 英国 10 年期国债收益率重回 5% + 德国 2027 预算近 €200B 国防优先 = 长端主动扩升级为美 / 英 / 德三轴跨大西洋同时序硬化；4/30 EOD 终裁前需补信用利差扩散度第四锚（CDX 投资级 5 日均值 ≤5 个基点 = 健康再通胀；> 5 个基点 = 无序去杠杆）。</p>
+<div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">② 财政—军费独立第四链制度落地</div>
+<p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">德国 2027 预算近 €200B 国防优先 + 欧洲叙事主权 re-anchoring 第一次官方文件级合流（与马克龙共债倡议合流），构成地缘 / 央行 / 通胀 / 军费四轴并列；H-27-03 4-8 周双锚回看（4 周对应 ECB 4/30 措辞 + 8 周对应 5 月欧元区财政会议官方文件）。</p>
+<div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">③ 中国对外央行议题保持议程沉默 6 日（含周末）+ 议程主动替换</div>
+<p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">同期议程切到国内 AI 监管（剪映 / 即梦）+ 外资接见（怡和）+ 交通基建（一季度 3300 亿元）+ 高端制造（最大汽车船交付）四主轴，话题缺席信号升级为议程主动替换信号；CN 三层异步叙事 L2 议题集 0428 完整换轨 = 议程主动替换信号 升格。</p>
+      <!-- 每条：
+        <div class="subhed" style="font-family:'Source Serif 4'; font-size:15px; font-weight:700; margin:14px 0 4px;">① 小标题</div>
+        <p style="font-size:13.5px; line-height:1.6; margin:0 0 10px; color:var(--ink-2);">正文……</p>
+      -->
+    </div>
+
+    <aside class="aside">
+      <div class="aside-kicker">事件节奏 · 未来 14 天</div>
+      <h4>三决议同周 + 三时点合议</h4>
+      <dl>
+        <div><dt>4/29 · 美联储议息</dt><dd>FOMC</dd></div>
+<div><dt>4/29 · 美 耐用品订单</dt><dd>预期 +0.50%</dd></div>
+<div><dt>4/29 起 · 大市值科技股财报</dt><dd>MSFT / GOOG / META / AMZN</dd></div>
+<div><dt>4/30 · 欧洲央行议息</dt><dd>€STR OIS 1Y forward</dd></div>
+<div><dt>4/30 · 美 Core PCE MoM</dt><dd>预期 +0.30%</dd></div>
+<div><dt>4/30 · 美 Q1 GDP 初值</dt><dd>双锚定位</dd></div>
+<div><dt>5/2 · €STR OIS 1Y forward</dt><dd>≥2.5 vs ≤1.5 分位</dd></div>
+<div><dt>5/3 · 伊朗实物通行 W2 节点</dt><dd>第二艘船终裁</dd></div>
+<div><dt>5/4 · 中国海湾工具硬窗收口</dt><dd>silence 终裁</dd></div>
+<div><dt>5/11 · 沃什提名 cloture</dt><dd>机构权威断裂窗</dd></div>
+        <!-- 每项：<div><dt>日期 · 事件</dt><dd>短标签</dd></div> -->
+      </dl>
+      <p style="margin-top:10px; font-size:12.5px; color:var(--ink-soft);">注：4/29 至 5/5 为日本黄金周流动性挑战窗口，与央行同周开窗叠加；5/11-31 为 Powell 离任与沃什上任 4 天空窗后的机构权威断裂窗。</p>
+      <!-- 可选尾注 <p>……</p> -->
+    </aside>
+  </div>
+
+  <div class="box warn">
+  <div class="box-kicker" style="color:var(--warn);">反向信号</div>
+  <h3 style="font-size:16px; margin-bottom:8px;">4 条反向路径（按强度梯度）</h3>
+  <p><strong>[C1]</strong> 布伦特盘中破 $110 后单日回吐 5.5%、收 $104.02，对"战争风险永久溢价"叙事给出反向证据；液化天然气甲烷船首次自冲突起穿越霍尔木兹海峡，构成"实物通行恢复"物理事实层面对"工具箱定义权"框架的反向触发候选，<b>强度高</b>，5/3 H-19-04 节点二元定价分流。</p>
+  <p><strong>[C2]</strong> 日银中川顺子"卸任前一票"投给加息阵营 + 经济展望罕见明确写中东 + 欧元区 1 年期通胀预期跳升至 4%，三层证据合流意味"双锚同周双静默"主线被部分推翻、央行内嵌鹰派倾向制度化，<b>强度中</b>，6-7 月加息可能性升高。</p>
+  <p><strong>[C3]</strong> VIX 17.83 周跌 8.56% + 美元指数 98.60 持续在 98.80 阈下方第 3 日 + 金价/标普 0.6458 跌破 0.665，路径加速候选 2 年期上行 +6 个基点距证伪门槛 -4 个基点的脆弱性进一步扩大，<b>强度中</b>，4/29 EOD 终裁 部分确认但波动率反向。</p>
+  <p><strong>[C4]</strong> 美元指数 98.60 在油价高 + 长端走宽叠加情境下反向走强（按 USD safe-asset 隐含路径预期应弱），政治风险溢价对美元折价持续，<b>强度中</b>，与 H-23-05 部分证伪 互镜，5/27 长 30 日窗仍开。</p>
+</div>
+  <!-- 非空时：
+    <div class="box warn">
+      <div class="box-kicker" style="color:var(--warn);">反向信号</div>
+      <h3 style="font-size:16px; margin-bottom:8px;">N 条自修正路径（C1 – Cn）</h3>
+      <p><strong>[C1]</strong> ……</p>
+      <p><strong>[C2]</strong> ……</p>
+    </div>
+  -->
+
+  <h3 style="font-size:18px; margin:28px 0 8px; border-bottom:1.5px solid var(--rule); padding-bottom:6px;">跨媒体视角差异
+  <span style="font-family:Inter; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:500; margin-left:10px;">跨集群叙事矩阵 · E1 – E3</span>
+</h3>
+
+<div class="div-event">
+  <div class="dk">E1 · 日银议息</div>
+  <h4>日银 4/28 鹰派持有 + 中川加入加息</h4>
+  <div class="d-body">
+    <p><span class="chip cjp">日</span>日経 / 日·Bloomberg：中川意外加入鹰派 + 经济展望罕见明确写中东，"任期-票位"博弈外露 = 把内部裂口固化在记录上。</p>
+    <p><span class="chip cus">美</span>美·WSJ / 美·Reuters：仅串到美元路径，把决议工具化为外汇桌讯息（限美元下行空间）。</p>
+    <p><span class="chip cn">中</span>中·新华 / 中·人民日报：全集群零专题，刻意不抢话以维护对外央行口径 = 对外央行裂口刻意去叙事化。</p>
+  </div>
+  <div class="d-summary"><strong>分歧（议题主权差）：</strong>日媒独家解读权 + 美媒工具化为外汇议题 + 中媒沉默；CN [官媒缺席·双路确认]。</div>
+</div>
+
+<div class="div-event">
+  <div class="dk">E2 · 欧洲央行议息前</div>
+  <h4>欧洲央行 4/30 议息前 信贷紧缩 + 通胀预期跳升</h4>
+  <div class="d-body">
+    <p><span class="chip cuk">英</span>英·Reuters / 英·Investing.com：数据组合验证欧洲央行鹰派被动加速方向已反转 = 实体侧 + 预期侧 + 金融侧三层证据到位。</p>
+    <p><span class="chip cfr">法</span>法·Les Echos：4 月通胀预期由 2.6% 升 3% 实体侧落地 + 法国企业家信心调查地缘威胁压实体 = 实体侧独立证据。</p>
+    <p><span class="chip cus">美</span>美·Reuters / 中·新华 / 日·日経：全集群缺席，欧洲集群独占欧洲央行议题主权。</p>
+  </div>
+  <div class="d-summary"><strong>分歧（议题主权差）：</strong>欧洲集群独占主导 + 其余三集群缺席；4/30 议息后 €STR OIS 1Y forward priced 加息次数（≥2.5 vs ≤1.5）是分位差校验。</div>
+</div>
+
+<div class="div-event">
+  <div class="dk">E3 · 美联储议息 + 沃什施压</div>
+  <h4>美联储 4/29-30 + Powell 离任 + 参议院民主党施压沃什</h4>
+  <div class="d-body">
+    <p><span class="chip cus">美</span>美·WSJ / 美·Reuters：把"政治施压联储独立性"作为头条主线，Powell 离任不确定性与 5/11 法定截止日绑定 = 政治议程被锁定到不可压缩节点。</p>
+    <p><span class="chip cuk">英</span>英·Actuarial Post：投研端"战后再风险化 + 美债转中性 / 偏好短期英国 Gilt + 加澳"，隐含鸽派转向已被定价 = 跨集群对此政治真空 priced 鸽派转向。</p>
+    <p><span class="chip cn">中</span>中·新华 / 中·人民日报：零专题，议程主轴切到国内 AI 监管 + 外资接见 + 高端制造。</p>
+  </div>
+  <div class="d-summary"><strong>分歧（利益差）：</strong>美英同盟集群对联储独立性议题持有共同利益结构 + 中媒不抢话 = T-23-03 L1 selective public 持续。</div>
+</div>
+  <!-- 非空时：
+    <h3 style="font-size:18px; margin:28px 0 8px; border-bottom:1.5px solid var(--rule); padding-bottom:6px;">跨媒体视角差异
+      <span style="font-family:Inter; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:500; margin-left:10px;">Cross-cluster framing matrix · E1 – En</span>
+    </h3>
+
+    <div class="div-event">
+      <div class="dk">E1 · Geopolitics</div>
+      <h4>事件标题</h4>
+      <div class="d-body">
+        <p><span class="chip cus">美</span>WSJ 强调 ……</p>
+        <p><span class="chip cn">中</span>财新提示 ……</p>
+      </div>
+      <div class="d-summary"><strong>分歧：</strong>……</div>
+    </div>
+
+    <div class="silence">
+      <div class="flag">⚑</div>
+      <div>
+        <div class="sk">官媒沉默</div>
+        <p>新华社今日未报 &lt;议题&gt;，此前 N 日同样缺席 —— 指向 ……</p>
+      </div>
+    </div>
+  -->
+</section>
+
+<!-- ============================================================
+     §IV 区域市场分化
+     规则：美 + 中 + 欧 + 日四块标配（缺席则标注"当日无重大变动"）；
+           每块 region-head（名称 + delta）+ rdeck（斜体一句话）+ 2-3 段
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">IV</div>
+    <h2>区域市场分化<em>四大板块 · 四种叙事</em></h2>
+    <div class="meta">Section IV of VI<br>美 · 中 · 欧 · 日</div>
+  </div>
+
+  <div class="regions">
+    <div class="region">
+  <div class="region-head"><span class="rname">美股</span><span class="rdelta down">S&amp;P ▼ 0.49% · 周 +1.06%</span></div>
+  <div class="rdeck">三大指数日内分化下跌 + 板块二八轮换 = 能源板块 +1.38% / 科技板块 -1.63% 同日反向</div>
+  <p>标普 500 收 7138.80 -0.49% 周 +1.06% / 道琼斯 49141.93 -0.05% / 纳斯达克 24663.80 -0.90% 周 +1.66%。10 年期美债 4.354% 周升 6.20 个基点、2 年期 3.78% 周升 6.0 个基点、利差 57.4 个基点跨过 ≥55 个基点第二阈；美元指数 98.60 在 98.80 阈下方第三日；VIX 17.83 周跌 8.56%。板块内部分化明显：能源板块日 +1.38% / 年内 +30.83% vs 科技板块日 -1.63%、基础材料 -2.21%（最大跌幅扩大至 3.59%）。</p>
+  <p>半导体盘前出现集体杀跌（CLS -16.09% / RMBS -17.72% / SPOT -10.25% / AMD -6.77% / KLAC -6.75%），叠加 OpenAI 未达营收和用户目标的报道，构成"再风险化二八轮换"叙事。本周观察核心是 4/29 美联储议息 + 4/30 Core PCE MoM + 微软 / Alphabet / Meta / Amazon 财报指引对长端利率定价 + 财报指引同步耦合或背离。</p>
+</div>
+
+<div class="region">
+  <div class="region-head"><span class="rname">A 股 / 港股</span><span class="rdelta down">沪深 300 ▼ 0.27% · 周 -0.21%</span></div>
+  <div class="rdeck">A 股 / 港股小幅收跌；恒生 -3.05% 区域最弱；离岸人民币区间稳定</div>
+  <p>沪深 300 收 4758.21 -0.27% / 上证综指 4078.64 -0.19% / 深证成指 14830.46 -1.10% / 恒生 25679.78 -0.95% 周 -3.05%（恒生最弱）；离岸人民币 USD/CNH 6.8260 区间稳定 / 10 年期中债 1.7654%。中央政治局 4/28 会议未提"降准降息"，强调"用好用足宏观政策 / 保持流动性充裕 / 保持人民币汇率在合理均衡水平上的基本稳定"；野村证券据此把原预测的二季度降准 50 个基点 + 四季度降息 10 个基点双双推迟到明年。</p>
+  <p>何立峰会见英国怡和控股执行主席凯瑟克 + 网信办对剪映 / 即梦 AI 等平台采取约谈 + 一季度交通重大工程完成投资约 3300 亿元 + 全球最大汽车运输船"格罗唯视领航"广州交付 = 议程主轴换轨至国内技术 + 外资开放 + 实体硬实力四主轴；CN 三层异步叙事 L2 议题集 0428 完整换轨 = 议程主动替换信号 升格。</p>
+</div>
+
+<div class="region">
+  <div class="region-head"><span class="rname">欧股</span><span class="rdelta down">DAX ▼ 0.19% · 周 -1.37%</span></div>
+  <div class="rdeck">CAC 40 周 -2.27% 跌幅最深 = 法国"财政 + 供给 + 能源 + 货币"四轴风险溢价同向抬升</div>
+  <p>DAX 24083.53 周 -1.37% / CAC 40 8141.92 周 -2.27% / FTSE 100 10332.79 周 -1.57% = 欧洲指数集体周跌深于美股；欧元 / 美元 1.1719 周 -0.55%、英国 10 年期国债收益率 5.0%。欧元区 Q1 银行信贷标准明显紧缩 + 1 年期通胀预期跳升至 4%；法国 4 月通胀预期由 2.6% 升 3.0%；德国 2027 年预算草案拟发新债近 €200B + 国防开支大幅上行成为支出优先项。</p>
+  <p>欧洲央行 4/30 议息开窗即裁，市场已 priced 3 次加息，鹰派被动加速候选实体—预期—金融三层证据已到位；€STR OIS 1Y forward priced 加息次数 ≥2.5 次 = 真欧元区曲线 priced 鹰派路径占主导；同期 SIPRI 全球军费数据 +2.9% / 欧洲 +14% 冷战末以来最快增速 = 财政—军费独立第四链候选证据延续。</p>
+</div>
+
+<div class="region">
+  <div class="region-head"><span class="rname">日股 / 日元</span><span class="rdelta up">日经 225 ▲ 1.38% · 周 +2.91%</span></div>
+  <div class="rdeck">日经突破 60,000 + 估值-基本面背离 + USD/JPY 距 160 防线 43 个 pip + 期权 gamma 集中</div>
+  <p>日经平均 60,537.36 日 +1.38% 周 +2.91% 突破 6 万；USD/JPY 159.57 距 160 心理关口仅 43 个基点（前 49 pip 进一步收窄）；日银 6-3 鹰派持有维持 0.75% 利率不变，三董事反对（含 6 月任期到期的中川顺子）提议加息至 1.0%；经济展望报告将 2026 财年核心通胀预测从 1.9% 上调至 2.8%、增长砍至 0.5%、罕见明确写中东对金融与外汇市场的影响。</p>
+  <p>市场定价 6-7 月加息可能性升高，条件化在伊朗冲突缓解 + 外汇稳定。日经突破 60,000 与 2026 财年 GDP 0.5% 的展望出现明显估值-基本面背离，每日新闻社论"实体经济乖离需注视"= 本地口径偏审慎而非跟涨。</p>
+</div>
+    <!-- 每块：
+      <div class="region">
+        <div class="region-head">
+          <span class="rname">美股</span>
+          <span class="rdelta up">S&amp;P ▲ +1.20%</span>
+        </div>
+        <div class="rdeck">一句话定调</div>
+        <p>段落一……</p>
+        <p>段落二……</p>
+      </div>
+    -->
   </div>
 </section>
 
-<h2>§ I · 市场总览<em>跨资产快照 · 2026-04-28 收盘口径 · 24 个资产 · 4 个区域</em></h2>
-
-<table>
-  <thead><tr><th>资产</th><th>收盘</th><th>日 Δ</th><th>周 Δ</th><th>备注</th></tr></thead>
-  <tbody>
-    <tr class="grouphead"><td colspan="5">股指 · 大中华</td></tr>
-    <tr><td>沪深 300</td><td class="num">4,758.21</td><td class="down">−0.27%</td><td class="down">−0.21%</td><td>缩量震荡</td></tr>
-    <tr><td>上证综指</td><td class="num">4,078.64</td><td class="down">−0.19%</td><td class="down">−0.16%</td><td>—</td></tr>
-    <tr><td>深证成指</td><td class="num">14,830.46</td><td class="down">−1.10%</td><td class="down">−1.01%</td><td>创业板拖累</td></tr>
-    <tr><td>恒生指数</td><td class="num">25,679.78</td><td class="down">−0.95%</td><td class="down">−3.05%</td><td>区域最弱 · 南下放量</td></tr>
-
-    <tr class="grouphead"><td colspan="5">股指 · 美国</td></tr>
-    <tr><td>S&amp;P 500</td><td class="num">7,138.80</td><td class="down">−0.49%</td><td class="up">+1.06%</td><td>板块分化下跌</td></tr>
-    <tr><td>道琼斯</td><td class="num">49,141.93</td><td class="down">−0.05%</td><td class="down">−0.02%</td><td>防御性强</td></tr>
-    <tr><td>Nasdaq</td><td class="num">24,663.80</td><td class="down">−0.90%</td><td class="up">+1.66%</td><td>半导体盘前杀跌</td></tr>
-
-    <tr class="grouphead"><td colspan="5">股指 · 欧洲与日本</td></tr>
-    <tr><td>FTSE 100</td><td class="num">10,332.79</td><td class="up">+0.11%</td><td class="down">−1.57%</td><td>短债偏好上升</td></tr>
-    <tr><td>DAX</td><td class="num">24,083.53</td><td class="down">−0.19%</td><td class="down">−1.37%</td><td>—</td></tr>
-    <tr><td>CAC 40</td><td class="num">8,141.92</td><td class="down">−0.19%</td><td class="down">−2.27%</td><td>周内最弱</td></tr>
-    <tr><td>日经 225</td><td class="num">60,537.36</td><td class="up">+1.38%</td><td class="up">+2.91%</td><td>突破 60,000 · 估值-基本面背离</td></tr>
-
-    <tr class="grouphead"><td colspan="5">利率与波动率</td></tr>
-    <tr><td>2 年期美债</td><td class="num">3.78%</td><td class="num">持平</td><td class="up">+6.0 个基点</td><td>FRED vintage 04-27 滞后 1 日</td></tr>
-    <tr><td>10 年期美债</td><td class="num">4.354%</td><td class="up">+1.8 个基点</td><td class="up">+6.2 个基点</td><td>长端走宽</td></tr>
-    <tr><td>10−2 年美债利差</td><td class="num">57.4 个基点</td><td class="up">+1.8 个基点</td><td class="up">+0.2 个基点</td><td>跨过 ≥55bp 第二阈</td></tr>
-    <tr><td>10 年期中债</td><td class="num">1.7654%</td><td class="down">−0.4 个基点</td><td class="num">—</td><td>内外利差扩大</td></tr>
-    <tr><td>VIX</td><td class="num">17.83</td><td class="down">−1.05%</td><td class="down">−8.56%</td><td>跨资产风险反向异常</td></tr>
-
-    <tr class="grouphead"><td colspan="5">外汇</td></tr>
-    <tr><td>USD/CNH</td><td class="num">6.8260</td><td class="up">+0.01%</td><td class="num">—</td><td>区间稳定</td></tr>
-    <tr><td>USD/JPY</td><td class="num">159.57</td><td class="num">持平</td><td class="up">+0.46%</td><td>距 160 大关 43 个基点</td></tr>
-    <tr><td>EUR/USD</td><td class="num">1.1719</td><td class="up">+0.11%</td><td class="down">−0.55%</td><td>—</td></tr>
-    <tr><td>美元指数 DXY</td><td class="num">98.60</td><td class="up">+0.12%</td><td class="up">+0.19%</td><td>98.80 阈下方第 3 日</td></tr>
-
-    <tr class="grouphead"><td colspan="5">商品</td></tr>
-    <tr><td>WTI 原油</td><td class="num">99.47</td><td class="up">+3.22%</td><td class="up">+7.97%</td><td>盘中破 $100</td></tr>
-    <tr><td>Brent 原油</td><td class="num">104.02</td><td class="down">−3.89%</td><td class="up">+5.63%</td><td>盘中触 $110 后回落 -5.5%</td></tr>
-    <tr><td>黄金</td><td class="num">4,610</td><td class="down">−1.40%</td><td class="down">−1.88%</td><td>避险溢价回吐</td></tr>
-    <tr><td>白银</td><td class="num">73.68</td><td class="down">−1.76%</td><td class="down">−3.57%</td><td>跟随黄金</td></tr>
-    <tr><td>铜</td><td class="num">5.976</td><td class="down">−0.70%</td><td class="down">−0.42%</td><td>铜/原油比 0.0574 区间中位</td></tr>
-  </tbody>
-</table>
-
-<h2>§ II · 核心驱动事件</h2>
-
-<article class="event flag">
-  <h3>① 日银 4/28 鹰派持有 + 中川意外加入加息</h3>
-  <p>日本央行 4 月 28 日以 6-3 票决定维持基准利率 0.75% 不变，但反对持有的董事增至 3 人（上次会议仅 1 人），其中 6 月任期到期的中川顺子意外加入加息阵营、提议加息至 1.0%。展望报告将 2026 财年核心通胀预测从 1.9% 大幅上调至 2.8%，同时下调增长至 0.5%，并罕见明确写出"必须特别关注未来中东局势对金融与外汇市场以及日本经济活动和物价的影响"。USD/JPY 盘中一度升至 158.99，距离触发干预的 160 大关仅 43 个基点。彭博通讯把这一决议读为"鹰派持有"以阻止日元跌穿 160；中川"卸任前一票"投给鹰派立场被解读为信号意义大于经济条件，把内部裂口固化在记录上。日经平均 60,537 +1.38% 周 +2.91% 在同日突破 6 万，与 FY26 GDP 0.5% 的展望出现明显估值-基本面背离。</p>
-  <div class="src">日·日経 / 日·Bloomberg / 日·MUFG Research</div>
-</article>
-
-<article class="event flag">
-  <h3>② 长端利率三轴跨大西洋同时序硬化</h3>
-  <p>美国 10 年-2 年国债利差 4 月 28 日扩至 57.4bp，跨过 ≥55bp 第二阈，2 年期维持 3.78%、10 年期升至 4.354%（周升 6.20 个基点）。同日英国 10 年期国债收益率重回 5.0%、德国 2027 年预算草案拟发行近 €200B 新债 + 国防开支从 €82.7B 大幅上行成为支出优先项。这意味着"长端主动扩"叙事不再局限于美国单一节点，而是升级为美 / 英 / 德三轴跨大西洋同时序硬化；驱动来自全曲线（油价 + 财政 + 政治锁），而非纯粹的熊市陡峭化。Brent 收 $104.02 ≥ $100 与利差 ≥52bp 已对锚两个核心阈值，第三锚 2 年期 ≥3.78% 同步达成边界，第四锚（信用利差扩散度）数据当前缺失，是 4 月 30 日尾盘终裁的关键约束。</p>
-  <div class="src">美·Bloomberg / 英·Bloomberg / 法·Les Echos</div>
-</article>
-
-<article class="event">
-  <h3>③ 欧洲央行 4/30 议息前数据组合验证鹰派被动加速</h3>
-  <p>欧元区银行 2026 年第一季度信贷标准出现明显紧缩，企业贷款和消费贷款均现净紧缩，新贷款需求疲弱；同时欧洲央行消费者预期调查显示 3 月 1 年期通胀预期由 2.5% 跳升至 4.0%（+150 个基点）。法国 4 月通胀预期由 2.6% 升至 3.0%（+40 个基点）作为实体侧落地证据。伊朗战 + 能源价格上行被普遍认为是信贷紧缩的主驱动，构成对欧洲央行的滞胀冲击。法国 Les Echos swap 市场已 priced 3 次加息（4 月 27 日落地）。综合实体侧 + 预期侧 + 金融侧三层证据同时序到位，4 月 30 日欧洲央行议息日"开窗即裁"。</p>
-  <div class="src">英·Reuters / 英·Investing.com / 法·Les Echos</div>
-</article>
-
-<article class="event">
-  <h3>④ 伊朗谈判停滞 + 布伦特反向 + 液化天然气船首过霍尔木兹</h3>
-  <p>美伊和平谈判缺少进展、霍尔木兹海峡航运持续受阻，纽约原油期货 4 月 28 日早间突破 $100/桶；Brent 盘中触 $110 后回落，收 $104.02 单日 -3.89%、周 +5.63%。同日一艘载有液化天然气的甲烷船自冲突起首次穿越霍尔木兹海峡，构成"实物通行恢复"的物理事实层面信号。此事在三层叙事上互不相容：信息侧维持紧张（美国主流持续报道谈判停滞）、价格侧出现 5.5% 单日回吐（法国独家披露）、物理事实侧给出实际通行恢复（多源独家），叙事张力第一次出现结构性反向证据，但能否成主线需观察 5 月 3 日是否再有第二艘船成功通行。</p>
-  <div class="src">美·AP / 法·Le Figaro / 英·Tickmill / 中·人民日报</div>
-</article>
-
-<article class="event">
-  <h3>⑤ 中央政治局未提降准降息 + 何立峰外资接见</h3>
-  <p>中央政治局 4 月 28 日会议分析当前经济形势和经济工作，并未提及"降准降息"，强调"用好用足宏观政策 / 增强货币政策前瞻性灵活性针对性 / 保持流动性充裕 / 保持人民币汇率在合理均衡水平上的基本稳定"；野村证券据此把原预测的二季度降准 50 个基点 + 四季度降息 10 个基点双双推迟到明年。何立峰会见英国怡和控股执行主席凯瑟克，表示"十五五"时期中国坚定不移扩大高水平对外开放；同日国家网信办对剪映 / 即梦 AI 等平台采取约谈、责令改正等处置；一季度交通重大工程完成投资约 3300 亿元；全球最大汽车运输船"格罗唯视领航"广州交付。议程主轴从对外央行议题切换至国内技术 + 外资开放 + 实体硬实力四主轴。</p>
-  <div class="src">中·联合早报 / 中·人民日报</div>
-</article>
-
-<h2>§ III · 宏观叙事与结构性信号</h2>
-
-<div class="box red">
-  <div class="bk">核心叙事</div>
-  <h3>长端 57.4bp 与 VIX 17.83 反向同序裂口</h3>
-  <p><b>第一条机制</b>：长端利率全曲线扩散同时跨大西洋（美国 10-2Y 利差 57.4bp + 英国 10Y 国债收益率 5% + 德国 2027 预算 €200B 国防优先），驱动来自油价 + 财政 + 政治锁三因子，而不是纯粹的熊市陡峭化。</p>
-  <p><b>第二条机制</b>：日银 6-3 鹰派持有 + 中川"任期-票位"博弈 + 展望罕见明确写中东，把日银的"鹰派偏向"内嵌于制度而非单人裁量；欧洲央行同周 4 月 30 日议息前的实体—预期—金融三层数据组合验证欧洲鹰派被动加速。</p>
-  <p><b>第三条机制</b>：跨资产风险定价反向同步发生—VIX 周跌 8.56%、美元指数 98.60 在 98.80 阈下方第三日、金价/标普比值 0.6458 跌破 0.665 阈值，三处反向意味着市场已把"三决议合议结果"作为基线情景定价，三决议任一意外才会推动波动率抬升。</p>
-  <p><b>第四条机制</b>：伊朗谈判停滞 + 布伦特盘中破 $110 后回落 5.5% + 液化天然气船首过霍尔木兹三事件叙事张力，对"战争风险永久溢价"叙事给出首条结构性反向证据，与日银"硬锚地缘"形成对冲；如果实物通行成主线，日银鹰派持有条件失锚 + 欧洲央行主动剔除一次能源冲击逻辑回归 + 美联储油价权重部分释放，反而把"政治"权重推到主导位置。</p>
-  <p style="font-size:13px; color:var(--ink-soft); border-top:1px dashed var(--hair); padding-top:8px; margin-top:10px;"><b>证伪条件：</b>5 个交易日内 10 年-2 年美债利差回落至 55bp 下方 且 VIX 单日上涨 ≥3 个点 → 长端独立扩散 + 风险定价反向"新机制"被否</p>
-</div>
-
-<h3>结构性信号</h3>
-<ol>
-  <li>长端利率三轴跨大西洋同时序硬化（美国利差 57.4bp + 英国 10Y 国债收益率 5% + 德国 2027 预算 €200B 国防优先）已升级为机制层定价范式</li>
-  <li>财政—军费独立第四链落地（德国 €200B 国防债 + 欧洲叙事主权 re-anchoring 第一次官方文件级合流），构成地缘 / 央行 / 通胀 / 军费四轴并列</li>
-  <li>中国对外央行议题保持议程沉默 6 日（含周末），同期议程切到国内 AI 监管 + 外资接见 + 交通基建 + 高端制造四主轴，话题缺席信号升级为议程主动替换信号</li>
-</ol>
-
-<div class="box warn">
-  <div class="bk">反向信号</div>
-  <p>四条反向信号同日并存：第一，布伦特盘中破 $110 后单日回吐 5.5%、收 $104.02，对"战争风险永久溢价"叙事给出反向证据。第二，液化天然气甲烷船首次自冲突起穿越霍尔木兹海峡，构成"实物通行恢复"物理事实层面对"工具箱定义权"框架的反向触发候选。第三，日银中川顺子"卸任前一票"投给加息阵营、展望罕见明确写中东、欧元区 1 年期通胀预期跳升至 4%，三层证据合流意味"双锚同周双静默"主线被部分推翻、央行内嵌鹰派倾向制度化。第四，VIX 周跌 8.56% + 美元指数 98.60 持续在 98.80 阈下方 + 金价/标普 0.6458 跌破 0.665 三处反向，路径加速候选 2 年期上行 +6 个基点距证伪门槛 -4 个基点的脆弱性进一步扩大。</p>
-</div>
-
-<h3>跨媒体视角差异</h3>
-
-<div class="div-event">
-  <h4>事件 1：日银 4/28 鹰派持有 + 中川加入加息</h4>
-  <ul>
-    <li><b>日·日経 / 日·Bloomberg</b>：中川意外加入鹰派 + 展望罕见点中东，"任期-票位"博弈外露</li>
-    <li><b>美·WSJ / 美·Reuters</b>：仅串到美元路径，把决议工具化为外汇桌讯息</li>
-    <li><b>中·新华 / 中·人民日报</b>：全集群零专题，刻意不抢话以维护对外央行口径</li>
-  </ul>
-</div>
-
-<div class="div-event">
-  <h4>事件 2：欧洲央行 4/30 议息前 信贷紧缩 + 通胀预期跳升</h4>
-  <ul>
-    <li><b>英·Reuters / 英·Investing.com</b>：数据组合验证欧洲央行鹰派被动加速方向已反转</li>
-    <li><b>法·Les Echos</b>：4 月通胀预期由 2.6% 升 3% 实体侧落地，法国企业家信心调查地缘威胁压实体</li>
-    <li><b>美·Reuters / 中·新华</b>：全集群缺席，欧洲集群独占欧洲央行议题主权</li>
-  </ul>
-</div>
-
-<div class="div-event">
-  <h4>事件 3：美联储 4/29-30 决议 + Powell 离任 + 参议院民主党施压沃什</h4>
-  <ul>
-    <li><b>美·WSJ / 美·Reuters</b>：把"政治施压联储独立性"作为头条主线，Powell 离任不确定性与 5/11 法定截止日绑定</li>
-    <li><b>英·Actuarial Post</b>：投研端"战后再风险化 + 美债转中性 / 偏好短期英国 Gilt + 加澳"，隐含鸽派转向已被定价</li>
-    <li><b>中·新华 / 中·人民日报</b>：零专题，议程主轴切到国内 AI 监管 + 外资接见 + 高端制造</li>
-  </ul>
-</div>
-
-<div class="silence">
-  <div class="flag">⚑</div>
-  <div>
-    <div class="sk">官媒沉默</div>
-    <p>中国对外宣性媒体（环球时报、观察者网、人民日报海外版）今日对日银 4 月 28 日决议、欧洲央行 4 月 30 日议息前数据、美联储 4 月 29-30 日决议三事件全部零专题，构成第六日含周末的话题缺席聚集；同期议程主轴明确换轨至国内 AI 监管（剪映 / 即梦）、外资接见（怡和）、交通基建（一季度 3300 亿元）、高端制造（最大汽车船交付）四主轴。基于 3 个对外宣媒的 48 小时窗口对照（日 / 法对外宣媒同期对应议题有专题），三项门槛全部满足，话题缺席信号硬化为议程主动替换。</p>
+<!-- ============================================================
+     §V 尾部风险
+     规则：tail 表；影响列 imp-h/imp-mh/imp-m/imp-l 按强弱着色；mon 列等宽
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">V</div>
+    <h2>尾部风险<em>触发条件 · 影响评估 · 跟踪要点</em></h2>
+    <div class="meta">Section V of VI<br>6 rows · 1 高 · 2 中高 · 3 中</div>
   </div>
-</div>
 
-<h2>§ IV · 区域市场分化</h2>
+  <table class="tail">
+    <thead>
+      <tr>
+        <th>风险</th>
+        <th>触发路径</th>
+        <th>影响</th>
+        <th>监控指标</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+  <td class="risk">欧洲央行 4/30 议息后 €STR OIS 1Y forward priced ≤1.5 次</td>
+  <td>4/30 议息后欧洲央行鹰派被动加速候选与跨大西洋三轴均失锚 → 长端主动扩 + 财政-军费第四链双轴 priced 路径同序双向落空 → 主叙事方向被强证伪</td>
+  <td class="imp imp-h">高</td>
+  <td class="mon">€STR OIS 1Y forward priced 加息次数；OAT-Bund 利差 · 4/30 至 5/2</td>
+</tr>
+<tr>
+  <td class="risk">伊朗实物通行成主线 → 工具箱定义权框架部分失语</td>
+  <td>5/3 前若再有第二艘液化天然气或货船成功通行霍尔木兹海峡 → 战争风险永久溢价叙事被结构性反向 → 日银鹰派持有条件失锚 + 欧洲央行主动剔除一次能源冲击逻辑回归 + 美联储油价权重部分释放 = 反应函数提速候选油价分量被释放</td>
+  <td class="imp imp-mh">中高</td>
+  <td class="mon">霍尔木兹海峡通行船数；Brent 收盘连续 3 日 &lt;$100 · 4/29 至 5/3</td>
+</tr>
+<tr>
+  <td class="risk">沃什提名 cloture 后 Powell 离任与沃什上任 4 天空窗</td>
+  <td>5/11 cloture 投票后 Powell 离任（任期到 5/15）与沃什上任 4 天空窗（5/12-15）+ 实际正式接任前 1-2 周缓冲期 = 机构权威断裂窗持续 3 周（5/11-31）→ priced duration 7→21 天硬推迟可能再延展至 5/31 后的独立性测试期</td>
+  <td class="imp imp-mh">中高</td>
+  <td class="mon">沃什 cloture 投票结果；SOFR 1Y forward priced 加息次数 cloture 前后比较 · 5/11 至 5/31</td>
+</tr>
+<tr>
+  <td class="risk">日银 6-7 月议息加息至 1.0% + USD/JPY 突破 161</td>
+  <td>USD/JPY 突破 161.00 + 日银不口头干预 → 双锚同周双静默主线全证伪 + 日银制度内嵌鹰派倾向硬化 + 日元反弹空间在 USD/JPY 跌穿 156.00 时开启，日股估值压力上升</td>
+  <td class="imp imp-m">中</td>
+  <td class="mon">日银 6/13 议息会议；USD/JPY；期权 risk reversal call 偏移 · 6-8 周内</td>
+</tr>
+<tr>
+  <td class="risk">中国 5/4 海湾流动性工具硬窗收口 silence 终裁</td>
+  <td>5/4 中国央行 / 商务部 / 外管局对海湾流动性工具公告（中国央行—海湾 swap 或 AED-CNY 清算）若出现 → CN 三层异步叙事 L3 工具层失锚；不出工具即 silence 维度延续但解读分歧未裁；同期中国官方 / 财新 PMI 同序落地</td>
+  <td class="imp imp-m">中</td>
+  <td class="mon">中国央行 / 商务部 / 外管局公告；中国 PMI · 5/4</td>
+</tr>
+<tr>
+  <td class="risk">美 4/30 PCE MoM 实际值 ≥0.50% + Core PCE MoM ≥0.40%</td>
+  <td>美国 4/30 PCE 物价 MoM 实际值 ≥0.50% + Core PCE MoM ≥0.40% → 联储反应函数政治权重抬升至 ≥20%；信用利差扩散度若同时 > 5 个基点 = 无序去杠杆 + 长端利差 W1 守稳路径补充观察锚命中</td>
+  <td class="imp imp-m">中</td>
+  <td class="mon">美国 4/30 PCE / Core PCE MoM；CDX 投资级 5 日变动 · 1 个交易日内</td>
+</tr>
+      <!-- 每行：
+        <tr>
+          <td class="risk">风险名</td>
+          <td>触发链……</td>
+          <td class="imp imp-h">高</td>
+          <td class="mon">监控指标……</td>
+        </tr>
+      -->
+    </tbody>
+  </table>
+</section>
 
-<div class="regions">
-  <div class="reg">
-    <h4>美国</h4>
-    <p>美股三大指数日内分化下跌（S&amp;P 500 -0.49% / 道琼斯 -0.05% / 纳斯达克 -0.90%）；美债 10 年期 4.354% 周升 6.20 个基点、2 年期 3.78% 周升 6.0 个基点，10-2 年利差 57.4 个基点；美元指数 98.60 在 98.80 阈下方第三日；VIX 17.83 周跌 8.56%。板块内部分化明显：能源板块日 +1.38% / 年内 +30.83% vs 科技板块日 -1.63%、基础材料 -2.21%（最大跌幅扩大至 3.59%）；半导体盘前出现集体杀跌（CLS -16.09% / RMBS -17.72% / SPOT -10.25% / AMD -6.77% / KLAC -6.75%），叠加 OpenAI 未达营收和用户目标的报道，构成"再风险化二八轮换"叙事。</p>
+<!-- ============================================================
+     §VI 资产配置思路
+     规则：alloc 2-col grid；每 item 有编号（i-n）+ 标题（i-t）+ 描述（i-deck）
+           末尾可接 .box 风险提示
+============================================================ -->
+<section class="section">
+  <div class="section-head">
+    <div class="num">VI</div>
+    <h2>资产配置思路<em>落地头寸 · 仓位与止损</em></h2>
+    <div class="meta">Section VI of VI<br>6 watch · 4 advanced</div>
   </div>
-  <div class="reg">
-    <h4>中国</h4>
-    <p>A 股 / 港股小幅收跌：沪深 300 4,758.21 -0.27%、上证综指 4,078.64 -0.19%、深证成指 14,830.46 -1.10%、恒生指数 25,679.78 -0.95% 周 -3.05%；离岸人民币 USD/CNH 6.8260 区间稳定。中央政治局 4 月 28 日会议未提"降准降息"，强调"用好用足宏观政策 / 保持流动性充裕 / 保持人民币汇率在合理均衡水平上的基本稳定"；野村证券据此把原预测的二季度降准 50 个基点 + 四季度降息 10 个基点双双推迟到明年。何立峰会见英国怡和控股执行主席凯瑟克，表示"十五五"时期中国坚定不移扩大高水平对外开放；网信办对剪映 / 即梦 AI 等平台采取约谈、责令改正等处置；一季度交通重大工程完成投资约 3300 亿元；全球最大汽车运输船"格罗唯视领航"广州交付。</p>
-  </div>
-  <div class="reg">
-    <h4>欧洲</h4>
-    <p>欧股普跌：DAX 24,083.53 周 -1.37%、CAC 40 8,141.92 周 -2.27%、FTSE 100 10,332.79 周 -1.57%；EUR/USD 1.1719 周 -0.55%。英国 10 年期国债收益率重回 5.0%；欧元区 Q1 银行信贷标准明显紧缩 + 1 年期通胀预期跳升至 4%；法国 4 月通胀预期由 2.6% 升 3.0%；德国 2027 年预算草案拟发新债近 €200B + 国防开支大幅上行成为支出优先项。欧洲央行 4 月 30 日议息开窗即裁，市场已 priced 3 次加息，鹰派被动加速候选实体—预期—金融三层证据已到位。</p>
-  </div>
-  <div class="reg">
-    <h4>日本</h4>
-    <p>日经平均 60,537.36 日 +1.38% 周 +2.91% 突破 6 万；USD/JPY 159.57 距 160 心理关口仅 43 个基点。日银 6-3 鹰派持有维持 0.75% 利率不变，三董事反对（含 6 月任期到期的中川顺子）提议加息至 1.0%；展望报告将 2026 财年核心通胀预测从 1.9% 上调至 2.8%、增长砍至 0.5%、罕见明确写中东对金融与外汇市场的影响。市场定价 6-7 月加息可能性升高，条件化在伊朗冲突缓解 + 外汇稳定。</p>
-  </div>
+
+  <h3 style="font-size:15px; margin:6px 0 12px; font-family:'Inter',sans-serif; letter-spacing:0.08em; color:var(--ink-soft);">公开可执行观测点</h3>
+  <div class="alloc">
+    <div class="item">
+  <div class="ihed"><span class="i-n">W1 / 利率</span><span class="i-t">10 年-2 年美债利差守稳 ≥55 个基点</span></div>
+  <p class="i-deck">实时基线 57.4 个基点跨过 ≥55 个基点第二阈 + 信用利差扩散度 5 日均值 ≤5 个基点；连续 4 日保持 = 长端守稳路径落实；任一日跌破 55 个基点 = 退回扩散窗。</p>
 </div>
-
-<h2>§ V · 核心矛盾</h2>
-
-<p>central bank corrective vs term structure independent strengthen 双向裂口在 4/29 升格为机制层定价新范式：长端三轴利差 57.4bp 全曲线扩散 + 英国 Gilt 5% + 德国 €200B 财政—军费第四链制度落地 strengthen，与日银中川入鹰 + 伊朗实物通行 corrective + VIX 周 -8.56% / DXY 98.60 / gold/S&amp;P 0.6458 跨资产风险反向 三轴对冲。4/29-30 双央行 + 双数据 + 5/11 cloture 三时点合议结果决定该新机制定价范式是否硬化为 4-8 周持续主线。</p>
-
-<h2>§ VI · 尾部风险表</h2>
-
-<table>
-  <thead><tr><th>序号</th><th>风险</th><th>影响力</th><th>时间窗</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>4 月 30 日欧洲央行议息后 €STR OIS 1Y forward 加息次数定价 ≤1.5 次 → 欧洲央行鹰派被动加速候选与跨大西洋三轴均失锚</td><td><span class="imp imp-h">高</span></td><td>1 个交易日内</td></tr>
-    <tr><td>2</td><td>5 月 3 日前若再有第二艘液化天然气或货船成功通行霍尔木兹海峡 → "工具箱定义权"框架部分失语，伊朗风险溢价永久化叙事被结构性反向</td><td><span class="imp imp-mh">中高</span></td><td>5 个交易日内</td></tr>
-    <tr><td>3</td><td>5 月 11 日沃什提名 cloture 投票后 Powell 离任与沃什上任 4 天空窗 → "机构权威断裂窗"持续 3 周（5/11-31）</td><td><span class="imp imp-mh">中高</span></td><td>4 周内</td></tr>
-    <tr><td>4</td><td>日银 6-7 月议息加息至 1.0% + USD/JPY 突破 161.00 + 日银不口头干预 → 双锚同周双静默主线全证伪</td><td><span class="imp imp-m">中</span></td><td>6-8 周内</td></tr>
-    <tr><td>5</td><td>5 月 4 日中国央行 / 商务部 / 外管局对海湾流动性工具公告（中国央行—海湾 swap 或 AED-CNY 清算）若出现 → 中国三层异步叙事 L3 工具层失锚</td><td><span class="imp imp-m">中</span></td><td>5 个交易日内</td></tr>
-    <tr><td>6</td><td>美国 4 月 30 日 PCE 物价 MoM 实际值 ≥0.50% + Core PCE MoM ≥0.40% → 联储反应函数"政治"权重抬升至 ≥20%</td><td><span class="imp imp-m">中</span></td><td>1 个交易日内</td></tr>
-  </tbody>
-</table>
-
-<h2>§ VII · 资产配置思路</h2>
-
-<h3>公开可执行观测点</h3>
-<div class="alloc">
-  <div class="item"><div class="ihed">① 长端利差</div><p>美国 10 年-2 年国债利差是否在 4/30 尾盘维持 ≥55bp（关键阈值）+ 信用利差扩散度 5 日均值 ≤5 个基点</p></div>
-  <div class="item"><div class="ihed">② 欧洲央行后路径</div><p>欧洲央行 4/30 议息后 €STR OIS 1Y forward priced 加息次数（≥2.5 次确认 / ≤1.5 次推翻方向）</p></div>
-  <div class="item"><div class="ihed">③ 日元干预线</div><p>USD/JPY 是否在 5 个交易日内突破 161.00 大关并触发日银口头干预</p></div>
-  <div class="item"><div class="ihed">④ 波动率反转</div><p>VIX 单日变化是否 ≥3 个点（确认市场基线情景定价过浅）</p></div>
-  <div class="item"><div class="ihed">⑤ 油价回吐主线</div><p>布伦特原油是否在 5 月 3 日前出现连续 3 日 &lt;$100 收盘（确认风险溢价回吐主线）</p></div>
-  <div class="item"><div class="ihed">⑥ 中国海湾工具</div><p>中国 5 月 4 日前是否出现中国央行—海湾流动性工具公告</p></div>
+<div class="item">
+  <div class="ihed"><span class="i-n">W2 / 欧央行</span><span class="i-t">4/30 €STR OIS 1Y forward priced 加息次数</span></div>
+  <p class="i-deck">≥2.5 次 = 真欧元区曲线 priced 鹰派路径占主导 + 鹰派被动加速 confirmed；≤1.5 次 = 法国单集群曲线漂移 + 主判断证伪。</p>
 </div>
-
-<h3>条件性 / 风险结构头寸</h3>
-<div class="alloc">
-  <div class="item"><div class="ihed">A · 长端独立扩散全对</div><p>长端独立扩散在 4/30 尾盘三 / 四锚全对（含信用利差）→ 利率久期偏短 + 防御性持有黄金白银</p></div>
-  <div class="item"><div class="ihed">B · 欧洲央行鹰派加速</div><p>欧洲央行鹰派被动加速若 4/30 后 €STR OIS 1Y forward priced ≥2.5 次 → 欧元区银行业相对吸引力提升 + 短端欧债空头</p></div>
-  <div class="item"><div class="ihed">C · 日银 6-7 月加息</div><p>日银 6-7 月加息可能性进一步升高 → 日元反弹空间在 USD/JPY 跌穿 156.00 时开启，日股估值压力上升</p></div>
-  <div class="item"><div class="ihed">D · 伊朗实物通行</div><p>伊朗实物通行成主线 → 能源板块超配空间收窄，半导体 / AI 板块若估值修正叠加 → 全球科技板块再平衡</p></div>
+<div class="item">
+  <div class="ihed"><span class="i-n">W3 / 日元</span><span class="i-t">USD/JPY 4/29 至 5/5 是否破 161 防线</span></div>
+  <p class="i-deck">当前 159.57 距 160 仅 43 个 pip、期权 gamma 高度集中 160 strike；突破 161 + 日银不口头干预 = 双锚静默主线全证伪。</p>
 </div>
+<div class="item">
+  <div class="ihed"><span class="i-n">W4 / 商品</span><span class="i-t">布伦特 5/3 前是否连续 3 日 &lt;$100 收盘</span></div>
+  <p class="i-deck">当前 $104.02 / 周 +5.63%，但盘中已破 $110 后回吐 5.5% + 液化天然气船首过霍尔木兹；连续 3 日 &lt;$100 = 风险溢价回吐主线确认。</p>
+</div>
+<div class="item">
+  <div class="ihed"><span class="i-n">W5 / 中国工具</span><span class="i-t">5/4 海湾 / 人民币流动性工具硬窗收口</span></div>
+  <p class="i-deck">当前为窗内第 6 日（含周末）零公告，5/4 硬窗收口；任一工具发布 = silence 解读维度从被动延续转为主动议程置换。</p>
+</div>
+<div class="item">
+  <div class="ihed"><span class="i-n">W6 / 跨资产</span><span class="i-t">VIX 单日变化 ≥3 个点</span></div>
+  <p class="i-deck">当前 17.83 周跌 8.56% = 市场已把"三决议合议结果"作为基线情景定价；VIX 单日上涨 ≥3 个点 = 市场基线情景定价过浅被矫正、跨资产对冲缺口被矫正。</p>
+</div>
+    <!-- Watchlist · 3-6 条公开可执行观测点
+      <div class="item">
+        <div class="ihed"><span class="i-n">W1 / RATES</span><span class="i-t">标题</span></div>
+        <p class="i-deck">观测窗口 · 阈值 · 收敛/背离判据</p>
+      </div>
+    -->
+  </div>
 
-<h2>§ VIII · 关键指标监控清单</h2>
+  <details class="appx" style="margin-top:22px;">
+    <summary><span>条件性 / 风险结构头寸（点击展开）</span></summary>
+    <div class="appx-body">
+      <div class="alloc">
+        <div class="item">
+  <div class="ihed"><span class="i-n">A1 / 长端利率久期</span><span class="i-t">4/30 尾盘三 / 四锚全对（含信用利差）</span></div>
+  <p class="i-deck">长端独立扩散在 4/30 尾盘三 / 四锚全对（spread ≥55 + Brent ≥$100 + 2Y ≥3.78% + CDX 投资级 5 日均值 ≤5 个基点）→ 利率久期偏短 + 防御性持有黄金白银。</p>
+</div>
+<div class="item">
+  <div class="ihed"><span class="i-n">A2 / 欧元区银行业</span><span class="i-t">€STR OIS 1Y forward priced ≥2.5 次</span></div>
+  <p class="i-deck">欧洲央行鹰派被动加速若 4/30 后 €STR OIS 1Y forward priced ≥2.5 次 → 欧元区银行业相对吸引力提升 + 短端欧债空头候选。</p>
+</div>
+<div class="item">
+  <div class="ihed"><span class="i-n">A3 / 日元方向</span><span class="i-t">日银 6-7 月加息可能性升高</span></div>
+  <p class="i-deck">日银 6-7 月加息可能性进一步升高 → 日元反弹空间在 USD/JPY 跌穿 156.00 时开启，日股估值压力上升；中川顺子 6 月任期到期 + 制度内嵌鹰派倾向硬化为信号锚。</p>
+</div>
+<div class="item">
+  <div class="ihed"><span class="i-n">A4 / 全球科技板块</span><span class="i-t">伊朗实物通行成主线 + AI 估值修正叠加</span></div>
+  <p class="i-deck">伊朗实物通行成主线 → 能源板块超配空间收窄；半导体 / AI 板块若估值修正叠加（OpenAI 未达目标 + 半导体盘前杀跌 7%-17%）→ 全球科技板块再平衡。</p>
+</div>
+        <!-- Advanced · 条件性头寸 · 仅在触发条件全部满足后执行
+          <div class="item">
+            <div class="ihed"><span class="i-n">A1 / HEDGE</span><span class="i-t">标题</span></div>
+            <p class="i-deck">触发条件 · 入场 · 规模 · 止损</p>
+          </div>
+        -->
+      </div>
+    </div>
+  </details>
 
-<table>
-  <thead><tr><th>指标</th><th>阈值</th><th>时间窗</th></tr></thead>
-  <tbody>
-    <tr><td>美国 10 年-2 年国债利差</td><td>≥55 个基点</td><td>4/30 尾盘终裁</td></tr>
-    <tr><td>信用利差扩散度（CDX IG 5 日均值）</td><td>≤5 个基点</td><td>4/30 尾盘补数</td></tr>
-    <tr><td>欧洲央行 4/30 议息后 €STR OIS 1Y forward</td><td>≥2.5 次 / ≤1.5 次</td><td>5/2 终裁</td></tr>
-    <tr><td>USD/JPY</td><td>≤161.00</td><td>5 个交易日内观察</td></tr>
-    <tr><td>VIX 单日变化</td><td>≥3 个点</td><td>滚动 5 个交易日</td></tr>
-    <tr><td>布伦特原油收盘</td><td>≥$100</td><td>5 月 3 日前观察</td></tr>
-    <tr><td>美元指数</td><td>≥98.80</td><td>5 月 27 日长窗回看</td></tr>
-    <tr><td>金价/标普比值</td><td>≥0.665</td><td>5 月 17 日 4 周回看</td></tr>
-    <tr><td>铜/原油比值</td><td>[0.0568, 0.0640] 区间稳定</td><td>5 月 17 日 4 周窗终裁</td></tr>
-    <tr><td>中国对外宣媒体海湾 / 人民币国际化专题数</td><td>≥2 篇</td><td>5 月 4 日 10 日窗终裁</td></tr>
-  </tbody>
-</table>
+  <div class="box" style="margin-top:22px;">
+  <div class="box-kicker">提示</div>
+  <p style="margin:0; font-size:13px; color:var(--ink-soft);">本报告为研究型市场观察简报，不构成投资建议。所有观测点 / 阈值 / 触发条件均为编辑部基于公开信息整理的判断框架，非操作指引；读者据此采取的任何决策由其自行承担。</p>
+</div>
+  <!-- 可选：
+    <div class="box" style="margin-top:22px;">
+      <div class="box-kicker">风险提示</div>
+      <p style="margin:0;">本报告不是投资建议 ……</p>
+    </div>
+  -->
+</section>
 
-<details class="appx">
-  <summary>附录 · 新闻引用</summary>
-  <ul>
-    <li><b>美·WSJ</b> · 参议院民主党在沃什提名听证施压联储独立性议题 · <a href="https://www.wsj.com/politics/policy/senate-democrats-press-kevin-warsh-on-fed-independence-f9a31a05">原文链接</a></li>
-    <li><b>美·Reuters</b> · 鹰鸽派立场追踪：美联储 4/29-30 议息维持 · <a href="https://www.reuters.com/business/doves-hawks-2026-04-28/">原文链接</a></li>
-    <li><b>日·Bloomberg</b> · 三董事反对持有后日元上涨 · 日银维持利率不变 · <a href="https://www.bloomberg.com/news/articles/2026-04-28/yen-gains-against-dollar-after-boj-keeps-interest-rates-on-hold">原文链接</a></li>
-    <li><b>英·Reuters</b> · 欧元区银行收紧信贷标准 · 中东冲突驱动 · 欧洲央行调查 · <a href="https://www.reuters.com/business/finance/euro-zone-banks-tighten-access-credit-iran-war-bites-ecb-survey-2026-04-28/">原文链接</a></li>
-    <li><b>法·Les Echos</b> · 德国 2027 年预算拟发新债近 €200B · 国防优先 · <a href="https://investir.lesechos.fr/marches-indices/economie-politique/allemagne-le-budget-2027-prevoit-un-endettement-de-pres-de-eur200-mds-priorite-a-la-defense-2228971">原文链接</a></li>
-    <li><b>中·联合早报</b> · 中共政治局会议未提降准降息 机构推迟中国降息预期至明年 · <a href="https://www.zaobao.com.sg/news/china/story20260428-8967133">原文链接</a></li>
-  </ul>
+<!-- ============================================================
+     附录：默认全部折叠（details.appx）
+============================================================ -->
+<section class="section" style="margin-top:48px;">
+  <div class="section-head">
+    <div class="num">⁂</div>
+    <h2>附录<em>引用来源与内部索引</em></h2>
+    <div class="meta">点击展开</div>
+  </div>
+
+  <details class="appx">
+    <summary><span>附录 A · 新闻引用</span></summary>
+    <div class="appx-body">
+      <table>
+        <thead><tr><th>N-ID</th><th>集群</th><th>源</th><th>主旨</th><th>置信度</th></tr></thead>
+        <tbody>
+                    <tr><td class="nid">N-0429-01</td><td><span class="chip cus">美</span></td><td>Reuters</td><td>Doves and Hawks tracker · 联储 4/29-30 hold</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-02</td><td><span class="chip cus">美</span></td><td>WSJ</td><td>Senate Democrats Press 沃什 on 联储 Independence</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-03</td><td><span class="chip cus">美</span></td><td>Reuters</td><td>Powell stay-or-go · 鸽派转向 priced 下半年</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-04</td><td><span class="chip cus">美</span></td><td>Reuters Graphics</td><td>联储 多数官员仍倾向年内一次降息 · 条件化在 伊朗 油价</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-05</td><td><span class="chip cus">美</span></td><td>AP</td><td>AI 板块跌 + 油价升 + 10Y UST 4.36%</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-06</td><td><span class="chip cus">美</span></td><td>ALM First</td><td>5Y UST 破 4% · 4/29 耐用品 + 4/30 Core PCE 数据预期</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-07</td><td><span class="chip cus">美</span></td><td>WSJ</td><td>联储 决议或限美元下行空间 · 日银 鹰派持有日元方向</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-08</td><td><span class="chip cus">美</span></td><td>Bloomberg</td><td>CBO 关税变更 10 年加 1.1 万亿赤字</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-09</td><td><span class="chip cuk">英</span></td><td>Bloomberg</td><td>UK 10Y Gilt 重回 5% · BoE 议息前抛售</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-10</td><td><span class="chip cuk">英</span></td><td>Reuters</td><td>欧元区银行 Q1 信贷标准明显紧缩 · 伊朗 战驱动</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-11</td><td><span class="chip cuk">英</span></td><td>Investing.com</td><td>欧央行 双调查显示滞胀压力升 · 1Y 通胀预期 4%</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-12</td><td><span class="chip cuk">英</span></td><td>Actuarial Post</td><td>战后再风险化 · UST 转中性 / 偏好短 Gilt + CA + AU</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-13</td><td><span class="chip cuk">英</span></td><td>Tickmill</td><td>Brent $109 七连阳 · 风险偏好回升至战前水平 0.79</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-14</td><td><span class="chip cn">中</span></td><td>联合早报</td><td>中央政治局未提降准降息 · 野村推迟降息至明年</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-15</td><td><span class="chip cn">中</span></td><td>人民日报</td><td>何立峰会见怡和凯瑟克 · "十五五"扩开放</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-16</td><td><span class="chip cn">中</span></td><td>人民日报</td><td>美伊谈判停滞 · NY 油价破 $100</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-17</td><td><span class="chip cn">中</span></td><td>人民日报</td><td>Q1 交通重大工程投资 ~3300 亿元</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-18</td><td><span class="chip cn">中</span></td><td>新华社</td><td>网信办对剪映 / 即梦 AI 等 AI 标识违规依法查处</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-19</td><td><span class="chip cn">中</span></td><td>人民日报</td><td>全球最大汽车运输船"格罗唯视领航"广州交付</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-20</td><td><span class="chip cjp">日</span></td><td>日経社説</td><td>日銀社説 · 物价警戒 + 灵活运营</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-21</td><td><span class="chip cjp">日</span></td><td>日経</td><td>植田会后"留意上行风险" · 维持 0.75% · FY26 核心 CPI 上调至 2.8%</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-22</td><td><span class="chip cjp">日</span></td><td>日経外為</td><td>日元反落 159 半 · 日银 现状维持 + 原油高位双重压力</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-23</td><td><span class="chip cjp">日</span></td><td>日経</td><td>日银 6-3 维持 · 日元升至 158 区间 · hawkish hold</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-24</td><td><span class="chip cjp">日</span></td><td>日経</td><td>日銀加息"地ならし"被打乱 · 高市政权对央行施压噪声</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-25</td><td><span class="chip cjp">日</span></td><td>Bloomberg</td><td>三 日银 董事反对 hold · 日元升 0.3% 至 158.99 · JGB 期货跌</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-26</td><td><span class="chip cjp">日</span></td><td>Bloomberg Newsletter</td><td>植田 hawkish hold 阻日元跌破 160 · 中川意外加入加息阵营</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-27</td><td><span class="chip cjp">日</span></td><td>AInvest</td><td>日银 hawkish hold 条件化在 伊朗 · 6-7 月加息可能升</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-28</td><td><span class="chip cjp">日</span></td><td>MUFG Research</td><td>日银 Outlook 罕见明确写"中东局势必须特别关注"</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-29</td><td><span class="chip cfr">法</span></td><td>Les Echos</td><td>德国 2027 预算近 €200B 新债 · 国防优先</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-30</td><td><span class="chip cfr">法</span></td><td>Les Echos</td><td>Cac 40 寻方向 · 4 月通胀预期由 2.6% 升 3% · OpenAI 未达目标拖累 AI</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-31</td><td><span class="chip cfr">法</span></td><td>Euronews</td><td>World Bank 预测 伊朗 战 → 最强能源涨 · IMF 下调 2026 增长至 3.1%</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-32</td><td><span class="chip cfr">法</span></td><td>CCI</td><td>4 月企业家调查 · 地缘威胁压企业信心</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-33</td><td><span class="chip cfr">法</span></td><td>Les Echos</td><td>SCOR 2025 业绩支持 CEO 续任 · 法再保险盈利</td><td><span class="chip cmt">核心源</span></td></tr>
+          <tr><td class="nid">N-0429-34</td><td><span class="chip cfr">法</span></td><td>Le Figaro / Tickmill 互证</td><td>Brent 盘中破 $110 等待 霍尔木兹 解决方案 · 收盘 $104.02 -3.89% 触后回落</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-35</td><td><span class="chip cfr">法</span></td><td>gap-fill:gdelt</td><td>LNG 甲烷船首次穿越 霍尔木兹 自冲突起 · 海运恢复破冰信号</td><td><span class="chip cmt">补充源</span></td></tr>
+          <tr><td class="nid">N-0429-36</td><td><span class="chip cjp">日</span></td><td>gap-fill:gdelt 毎日新聞社説</td><td>日経平均破 6 万 · 实体经济乖离需注视</td><td><span class="chip cmt">补充源</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="appx">
+  <summary><span>附录 B · 跨语种引用</span></summary>
+  <div class="appx-body">
+    <table>
+      <thead><tr><th style="width:10%">集群</th><th style="width:25%">源</th><th>中译主旨</th></tr></thead>
+      <tbody>
+        <tr><td>法</td><td>Les Echos</td><td>德国 2027 年预算拟发新债近 €200B · 国防优先 · 自主财政—军费—货币三位一体</td></tr><tr><td>法</td><td>Les Echos / Investir</td><td>Cac 40 寻方向 · 4 月通胀预期由 2.6% 升 3% · OpenAI 拖累</td></tr><tr><td>法</td><td>Le Figaro / GDELT</td><td>布伦特盘中破 $110 等待霍尔木兹解决方案 · 收 $104 单日 -3.89%</td></tr><tr><td>法</td><td>GDELT</td><td>液化天然气甲烷船首次自冲突起穿越霍尔木兹海峡</td></tr><tr><td>法</td><td>CCI</td><td>4 月企业家信心调查 · 地缘威胁压企业信心</td></tr><tr><td>英</td><td>Reuters</td><td>欧元区银行 Q1 信贷标准明显紧缩 · 中东冲突驱动 · 欧央行调查</td></tr><tr><td>英</td><td>Investing.com</td><td>欧央行双调查显示滞胀压力升 · 1 年期通胀预期 4%</td></tr><tr><td>英</td><td>Actuarial Post</td><td>战后再风险化 · 美债转中性 / 偏好短期英国国债 + 加澳</td></tr><tr><td>英</td><td>Bloomberg</td><td>英国 10 年期国债收益率重回 5% · 英央行议息前抛售</td></tr><tr><td>日</td><td>日経新闻</td><td>日银总裁"留意物价上行风险" · 维持 0.75% 不变 · 经济展望 FY26 核心 CPI 上调至 2.8%</td></tr><tr><td>日</td><td>日経新闻</td><td>日元反落 159.50 一线 · 日银现状维持 + 原油高位双重压力</td></tr><tr><td>日</td><td>日経社论</td><td>日银应对物价高保持警戒并维持灵活政策运营</td></tr><tr><td>日</td><td>Bloomberg</td><td>三日银董事反对持有后日元上涨 · 中川顺子意外加入加息阵营</td></tr><tr><td>日</td><td>MUFG Research</td><td>日银经济展望罕见明确写"必须特别关注未来中东局势"</td></tr><tr><td>日</td><td>毎日新聞 / GDELT</td><td>日经平均破 6 万 · 实体经济乖离需注视</td></tr><tr><td>美</td><td>WSJ</td><td>参议院民主党在沃什提名听证施压联储独立性议题</td></tr><tr><td>美</td><td>Reuters</td><td>鹰鸽派立场追踪：联储 4/29-30 议息维持 · 多数官员条件化在伊朗油价</td></tr><tr><td>美</td><td>Reuters Macro</td><td>Powell stay-or-go · 鸽派转向已 priced 在下半年路径里</td></tr><tr><td>美</td><td>AP</td><td>AI 板块下挫叠加油价上行压制大盘 · 10 年期美债升至 4.36%</td></tr><tr><td>美</td><td>Bloomberg</td><td>CBO 主席表示当前政府关税变更可能推升十年财政赤字 1.1 万亿美元</td></tr><tr><td>中</td><td>联合早报</td><td>中央政治局会议未提降准降息 · 机构推迟中国降息预期至明年</td></tr><tr><td>中</td><td>人民日报</td><td>何立峰会见英国怡和控股执行主席凯瑟克 · 十五五扩开放</td></tr><tr><td>中</td><td>人民日报</td><td>美伊谈判停滞 · 纽约油价突破每桶 100 美元</td></tr><tr><td>中</td><td>人民日报</td><td>一季度交通重大工程完成投资约 3300 亿元</td></tr><tr><td>中</td><td>新华社</td><td>国家网信办对剪映 / 即梦 AI 等平台采取约谈、责令改正等处置</td></tr>
+      </tbody>
+    </table>
+  </div>
 </details>
+  <!-- 可选；非空时：
+    <details class="appx">
+      <summary><span>附录 B · 跨语种引用</span></summary>
+      <div class="appx-body">
+        <table>
+          <thead><tr><th>集群</th><th>源</th><th>中译主旨</th></tr></thead>
+          <tbody>……</tbody>
+        </table>
+      </div>
+    </details>
+  -->
 
-<div class="footer">
-  全球财经日报 · 创刊于公元二〇二六年 · 数据截止 2026-04-29 06:30 CST · 本期终 · 卷六 №&nbsp;008
+  <details class="appx">
+  <summary><span>附录 C · 内部索引</span></summary>
+  <div class="appx-body">
+    <ul>
+      <li><code>archive/0429/internal.md</code> — 编辑部内部分析师版（含决策接口五分类、判断变化、Thesis 表、尾部风险、跨媒体矩阵、三方权重、分歧标注）</li>
+      <li><code>archive/0429/synthesis_draft.md</code> — 综合稿（含 Splash 三步过滤）</li>
+      <li><code>archive/0429/confirm.md</code> — 三方确认轮记录（C-1 至 C-5 共识 + D-1 / D-2 折中）</li>
+      <li><code>archive/0429/reader_projection.md</code> — 读者投影（本期渲染唯一源）</li>
+      <li><code>archive/0429/news_classified.md</code> — 新闻分类入库（36 条 · 含 GDELT gap-fill 3 条）</li>
+      <li><code>archive/0429/narrative_matrix.md</code> — 跨语种叙事矩阵（5 事件 + CN 三事件官媒缺席聚集）</li>
+      <li><code>archive/0429/market_overview.json</code> — 跨资产市场总览数据（24 资产）</li>
+    </ul>
+  </div>
+</details>
+  <!-- 可选；非空时：
+    <details class="appx">
+      <summary><span>附录 C · 内部 analyst 版索引</span></summary>
+      <div class="appx-body">
+        <ul>
+          <li><code>archive/2026-04-29/internal.md</code> — ……</li>
+        </ul>
+      </div>
+    </details>
+  -->
+</section>
+
+<!-- ============================================================
+     COLOPHON
+============================================================ -->
+<footer class="colophon">
+  <div>全球财经日报 · 创刊于公元二〇二六年</div>
+  <div class="mid">— 数据截止 2026 年 04 月 29 日 06:30 CST —</div>
+  <div class="r">本期终 · №&nbsp;008</div>
+</footer>
+
 </div>
+
+<!-- ============================================================
+     F-Key Interactive Layer · 默认静态 / 按 F 启用高级模式
+     - 折叠/展开 section（点 section-head）
+     - 表头点击排序（数字优先，回退中文 localeCompare）
+     - 每表反应式控件：搜索 + 分组/方向 chips + 周Δ 滑块（OJS 风格 vanilla 版）
+     - 尾部风险行点击展开 → 触发链路 + 监控指标结构化拆解
+     - 配色墨黑中性，避开 红=涨 语义
+============================================================ -->
+<style>
+  /* HUD · 静态 = 描边墨黑 / 高级 = 实心墨黑 */
+  .fkey-hud {
+    position: fixed; top: 14px; right: 14px; z-index: 9999;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 7px 11px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    user-select: none; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .fkey-hud kbd {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--ink); color: var(--paper);
+    padding: 1px 6px; margin-right: 8px;
+    border-radius: 2px;
+  }
+  .fkey-hud .state { font-weight: 600; }
+  body.interactive .fkey-hud {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  body.interactive .fkey-hud kbd {
+    background: var(--paper); color: var(--ink);
+  }
+
+  /* section collapse */
+  body.interactive .section .section-head {
+    cursor: pointer; border-radius: 2px;
+    transition: background 0.12s;
+  }
+  body.interactive .section .section-head:hover { background: var(--paper-2); }
+  body.interactive .section .section-head h2::after {
+    content: "▾"; margin-left: 10px; font-size: 13px;
+    color: var(--ink-soft); display: inline-block;
+    transition: transform 0.15s;
+  }
+  body.interactive .section.collapsed .section-head h2::after {
+    transform: rotate(-90deg);
+  }
+  body.interactive .section.collapsed > :not(.section-head) { display: none; }
+
+  /* table headers sortable */
+  body.interactive table.prices thead th,
+  body.interactive table.tail thead th {
+    cursor: pointer; user-select: none;
+  }
+  body.interactive table.prices thead th:hover,
+  body.interactive table.tail thead th:hover { color: var(--ink); }
+  body.interactive table.prices thead th.sorted,
+  body.interactive table.tail thead th.sorted { color: var(--ink); }
+  body.interactive table.prices thead th.sorted::after,
+  body.interactive table.tail thead th.sorted::after {
+    content: " ↑"; font-size: 10px;
+  }
+  body.interactive table.prices thead th.sorted.desc::after,
+  body.interactive table.tail thead th.sorted.desc::after {
+    content: " ↓";
+  }
+
+  /* reactive control bar (OJS-style filter strip) */
+  .fkey-controls {
+    display: none;
+    gap: 18px; flex-wrap: wrap; align-items: center;
+    padding: 10px 14px;
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    border-radius: 2px;
+    margin: 6px 0 14px;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px;
+  }
+  body.interactive .fkey-controls { display: flex; }
+  .fkey-control { display: flex; align-items: center; gap: 8px; }
+  .fkey-label {
+    color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 10px;
+  }
+  .fkey-search {
+    font-family: inherit; font-size: 12px;
+    padding: 5px 10px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    color: var(--ink);
+    border-radius: 2px;
+    min-width: 160px;
+  }
+  .fkey-search:focus { outline: none; border-color: var(--ink); }
+  .fkey-chips { display: flex; }
+  .fkey-chips button {
+    font-family: inherit; font-size: 11px;
+    padding: 4px 10px; line-height: 1.4;
+    border: 1px solid var(--hair);
+    background: var(--paper);
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .fkey-chips button + button { border-left: none; }
+  .fkey-chips button:first-child { border-radius: 2px 0 0 2px; }
+  .fkey-chips button:last-child { border-radius: 0 2px 2px 0; }
+  .fkey-chips button:hover { background: var(--paper-2); color: var(--ink); }
+  .fkey-chips button.active {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  .fkey-slider input[type="range"] {
+    width: 130px; accent-color: var(--ink);
+  }
+  .fkey-val {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--ink); font-size: 11px;
+    min-width: 48px; text-align: right;
+  }
+  .fkey-hint {
+    margin-left: auto;
+    font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  body.interactive tr.fkey-hidden { display: none; }
+
+  /* tail row click expand */
+  body.interactive table.tail tbody tr:not(.fkey-detail) { cursor: pointer; }
+  body.interactive table.tail tbody tr:not(.fkey-detail):hover {
+    background: var(--paper-2);
+  }
+  tr.fkey-detail { display: none; }
+  body.interactive tr.fkey-detail.open { display: table-row; }
+  body.interactive tr.fkey-detail.open td {
+    background: #ece4d0;
+    padding: 16px 18px 18px;
+    font-size: 13px; line-height: 1.7;
+    border-top: none;
+  }
+  .fkey-detail-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+  }
+  .fkey-detail-grid .fkey-h {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .fkey-detail-grid ol, .fkey-detail-grid ul {
+    margin: 0; padding-left: 1.4em;
+  }
+  .fkey-detail-grid ol > li { margin-bottom: 8px; }
+  .fkey-detail-stage {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .fkey-detail-grid ul.fkey-mon li {
+    list-style: square; margin-bottom: 4px; color: var(--ink-2);
+  }
+</style>
+
+<div class="fkey-hud" id="fkeyHud" title="按 F 启用 / 关闭 高级模式">
+  <kbd>F</kbd><span class="state">静态</span>
+</div>
+
+<script>
+(function () {
+  const body = document.body;
+  const hud = document.getElementById('fkeyHud');
+  const stateLabel = hud.querySelector('.state');
+  let active = false;
+
+  function setActive(on) {
+    active = on;
+    body.classList.toggle('interactive', on);
+    stateLabel.textContent = on ? '高级' : '静态';
+  }
+
+  document.addEventListener('keydown', function (e) {
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      setActive(!active);
+    }
+  });
+  hud.addEventListener('click', () => setActive(!active));
+
+  /* section collapse */
+  document.querySelectorAll('section.section').forEach(sec => {
+    const head = sec.querySelector('.section-head');
+    if (!head) return;
+    head.addEventListener('click', () => {
+      if (!active) return;
+      sec.classList.toggle('collapsed');
+    });
+  });
+
+  /* numeric parser: ▲/▼/bp/%/comma/—/+ */
+  function parseNum(text) {
+    const t = (text || '').trim();
+    if (t === '—' || t === '') return NaN;
+    const cleaned = t.replace(/[▲▼,\s%+]/g, '').replace(/bp/gi, '').replace(/[^\-\d.]/g, '');
+    const n = parseFloat(cleaned);
+    if (isNaN(n)) return NaN;
+    if (t.includes('▼') || /^-/.test(t)) return -Math.abs(n);
+    return n;
+  }
+
+  function sortGroupedTable(tbody, colIdx, desc) {
+    const groups = [];
+    let cur = null;
+    Array.from(tbody.children).forEach(tr => {
+      if (tr.classList && tr.classList.contains('grouphead')) {
+        cur = { head: tr, rows: [] };
+        groups.push(cur);
+      } else if (tr.classList && tr.classList.contains('fkey-detail')) {
+        // detail rows are wiped on sort; user can re-click to expand
+      } else if (cur) {
+        cur.rows.push(tr);
+      } else {
+        if (!groups.length) groups.push({ head: null, rows: [] });
+        groups[0].rows.push(tr);
+      }
+    });
+    groups.forEach(g => {
+      g.rows.sort((a, b) => {
+        const ta = a.cells[colIdx] ? a.cells[colIdx].textContent : '';
+        const tb = b.cells[colIdx] ? b.cells[colIdx].textContent : '';
+        const na = parseNum(ta), nb = parseNum(tb);
+        let cmp;
+        if (!isNaN(na) && !isNaN(nb)) cmp = na - nb;
+        else cmp = ta.trim().localeCompare(tb.trim(), 'zh-CN');
+        return desc ? -cmp : cmp;
+      });
+    });
+    tbody.innerHTML = '';
+    groups.forEach(g => {
+      if (g.head) tbody.appendChild(g.head);
+      g.rows.forEach(r => tbody.appendChild(r));
+    });
+  }
+
+  function attachSortHandlers(tbl, tbody) {
+    const ths = tbl.querySelectorAll('thead th');
+    ths.forEach((th, idx) => {
+      th.addEventListener('click', () => {
+        if (!active) return;
+        const wasSorted = th.classList.contains('sorted');
+        const wasDesc = th.classList.contains('desc');
+        ths.forEach(t => t.classList.remove('sorted', 'desc'));
+        th.classList.add('sorted');
+        const desc = wasSorted && !wasDesc;
+        if (desc) th.classList.add('desc');
+        sortGroupedTable(tbody, idx, desc);
+      });
+    });
+  }
+
+  function bindChips(bar, filters, applyFn) {
+    bar.querySelectorAll('.fkey-chips').forEach(grp => {
+      const key = grp.dataset.key;
+      grp.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          grp.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filters[key] = btn.dataset.val;
+          applyFn();
+        });
+      });
+    });
+  }
+
+  /* === .prices reactive controls === */
+  document.querySelectorAll('table.prices').forEach(tbl => {
+    const tbody = tbl.querySelector('tbody');
+    if (!tbody) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'fkey-controls';
+    bar.innerHTML = `
+      <div class="fkey-control">
+        <input type="text" class="fkey-search" placeholder="搜索资产 / 备注…">
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">分组</span>
+        <div class="fkey-chips" data-key="group">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="股指">股指</button>
+          <button data-val="汇率">汇率</button>
+          <button data-val="利率">利率</button>
+          <button data-val="商品">商品</button>
+        </div>
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">日Δ 方向</span>
+        <div class="fkey-chips" data-key="dir">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="up">▲</button>
+          <button data-val="down">▼</button>
+        </div>
+      </div>
+      <div class="fkey-control fkey-slider">
+        <span class="fkey-label">|周Δ| ≥</span>
+        <input type="range" min="0" max="8" step="0.5" value="0">
+        <span class="fkey-val">0.0</span>
+      </div>
+    `;
+    tbl.parentNode.insertBefore(bar, tbl);
+
+    const search = bar.querySelector('.fkey-search');
+    const slider = bar.querySelector('input[type="range"]');
+    const sliderVal = bar.querySelector('.fkey-val');
+    const filters = { search: '', group: 'all', dir: 'all', delta: 0 };
+
+    /* tag each row with its group label (parsed from preceding grouphead) */
+    let curGroup = '';
+    Array.from(tbody.children).forEach(tr => {
+      if (tr.classList.contains('grouphead')) {
+        const t = tr.textContent;
+        if (t.includes('股指')) curGroup = '股指';
+        else if (t.includes('汇率')) curGroup = '汇率';
+        else if (t.includes('利率')) curGroup = '利率';
+        else if (t.includes('商品')) curGroup = '商品';
+        else curGroup = '';
+        tr.dataset.group = curGroup;
+      } else {
+        tr.dataset.group = curGroup;
+      }
+    });
+
+    function applyFilters() {
+      const groupCounts = {};
+      Array.from(tbody.children).forEach(tr => {
+        if (tr.classList.contains('grouphead')) return;
+        const g = tr.dataset.group;
+        const text = tr.textContent.toLowerCase();
+        const dayCell = tr.cells[2] ? tr.cells[2].textContent : '';
+        const weekCell = tr.cells[3] ? tr.cells[3].textContent : '';
+        const weekN = parseNum(weekCell);
+
+        let pass = true;
+        if (filters.search && text.indexOf(filters.search) === -1) pass = false;
+        if (filters.group !== 'all' && g !== filters.group) pass = false;
+        if (filters.dir === 'up' && !dayCell.includes('▲')) pass = false;
+        if (filters.dir === 'down' && !dayCell.includes('▼')) pass = false;
+        if (filters.delta > 0) {
+          if (isNaN(weekN) || Math.abs(weekN) < filters.delta) pass = false;
+        }
+
+        tr.classList.toggle('fkey-hidden', !pass);
+        if (pass) groupCounts[g] = (groupCounts[g] || 0) + 1;
+      });
+      /* hide groupheads whose group is empty under current filters */
+      Array.from(tbody.children).forEach(tr => {
+        if (!tr.classList.contains('grouphead')) return;
+        const g = tr.dataset.group;
+        tr.classList.toggle('fkey-hidden', !groupCounts[g]);
+      });
+    }
+
+    search.addEventListener('input', () => {
+      filters.search = search.value.trim().toLowerCase();
+      applyFilters();
+    });
+    slider.addEventListener('input', () => {
+      filters.delta = parseFloat(slider.value);
+      sliderVal.textContent = filters.delta.toFixed(1);
+      applyFilters();
+    });
+    bindChips(bar, filters, applyFilters);
+    attachSortHandlers(tbl, tbody);
+  });
+
+  /* === .tail reactive controls + row expand === */
+  document.querySelectorAll('table.tail').forEach(tbl => {
+    const tbody = tbl.querySelector('tbody');
+    if (!tbody) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'fkey-controls';
+    bar.innerHTML = `
+      <div class="fkey-control">
+        <input type="text" class="fkey-search" placeholder="搜索风险条目…">
+      </div>
+      <div class="fkey-control">
+        <span class="fkey-label">影响级别</span>
+        <div class="fkey-chips" data-key="impact">
+          <button class="active" data-val="all">全部</button>
+          <button data-val="imp-h">高</button>
+          <button data-val="imp-mh">中高</button>
+          <button data-val="imp-m">中</button>
+          <button data-val="imp-l">低中</button>
+        </div>
+      </div>
+      <span class="fkey-hint">点击行 → 展开链路与监控指标拆解</span>
+    `;
+    tbl.parentNode.insertBefore(bar, tbl);
+
+    const search = bar.querySelector('.fkey-search');
+    const filters = { search: '', impact: 'all' };
+
+    function applyFilters() {
+      Array.from(tbody.children).forEach(tr => {
+        if (tr.classList.contains('fkey-detail')) {
+          const src = tr.previousElementSibling;
+          if (src && src.classList.contains('fkey-hidden')) tr.classList.remove('open');
+          return;
+        }
+        const text = tr.textContent.toLowerCase();
+        const impCell = tr.querySelector('.imp');
+        const impClass = impCell
+          ? Array.from(impCell.classList).find(c => c.startsWith('imp-'))
+          : '';
+        let pass = true;
+        if (filters.search && text.indexOf(filters.search) === -1) pass = false;
+        if (filters.impact !== 'all' && impClass !== filters.impact) pass = false;
+        tr.classList.toggle('fkey-hidden', !pass);
+      });
+    }
+
+    search.addEventListener('input', () => {
+      filters.search = search.value.trim().toLowerCase();
+      applyFilters();
+    });
+    bindChips(bar, filters, applyFilters);
+    attachSortHandlers(tbl, tbody);
+
+    /* row click → expand structured breakdown */
+    Array.from(tbody.querySelectorAll('tr')).forEach(tr => {
+      if (tr.classList.contains('fkey-detail')) return;
+      if (!tr.cells || tr.cells.length < 4) return;
+      tr.addEventListener('click', () => {
+        if (!active) return;
+        const next = tr.nextElementSibling;
+        if (next && next.classList.contains('fkey-detail')) {
+          next.classList.toggle('open');
+          return;
+        }
+        const detail = buildTailDetail(tr);
+        tr.parentNode.insertBefore(detail, tr.nextSibling);
+        requestAnimationFrame(() => detail.classList.add('open'));
+      });
+    });
+  });
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"]/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+    ));
+  }
+
+  function buildTailDetail(srcTr) {
+    const cells = srcTr.cells;
+    const trigger = (cells[1] && cells[1].textContent || '').trim();
+    const monitor = (cells[3] && cells[3].textContent || '').trim();
+
+    /* split trigger by → into stages, each stage by " + " into parallel triggers */
+    const stages = trigger.split(/→/).map(s => s.trim()).filter(Boolean);
+    const stageHtml = stages.map((stage, i) => {
+      const parts = stage.split(/\s\+\s/).map(p => p.trim()).filter(Boolean);
+      const inner = parts.length > 1
+        ? '<ul style="margin:4px 0 0;padding-left:1.2em;">'
+            + parts.map(p => `<li>${escapeHtml(p)}</li>`).join('') + '</ul>'
+        : `<div>${escapeHtml(parts[0] || stage)}</div>`;
+      return `<li><div class="fkey-detail-stage">阶段 ${i + 1}</div>${inner}</li>`;
+    }).join('');
+
+    const monItems = monitor.split(/[；;]/).map(s => s.trim()).filter(Boolean);
+    const monHtml = monItems.map(m => `<li>${escapeHtml(m)}</li>`).join('');
+
+    const tr = document.createElement('tr');
+    tr.className = 'fkey-detail';
+    tr.innerHTML = `<td colspan="${cells.length}">
+      <div class="fkey-detail-grid">
+        <div>
+          <div class="fkey-h">触发链路 · 拆解</div>
+          <ol>${stageHtml}</ol>
+        </div>
+        <div>
+          <div class="fkey-h">监控指标</div>
+          <ul class="fkey-mon">${monHtml}</ul>
+        </div>
+      </div>
+    </td>`;
+    return tr;
+  }
+})();
+</script>
 
 </body>
 </html>
